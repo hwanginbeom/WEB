@@ -19,4 +19,14 @@
     <servlet-name>Step01</servlet-name>
     <url-pattern>/test</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Step01Basic</display-name>
+    <servlet-name>Step01Basic</servlet-name>
+    <servlet-class>step01.Step01Basic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Step01Basic</servlet-name>
+    <url-pattern>/test2</url-pattern>
+  </servlet-mapping>
 </web-app>
