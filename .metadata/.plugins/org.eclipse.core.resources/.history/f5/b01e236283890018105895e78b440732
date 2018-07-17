@@ -1,0 +1,27 @@
+학습내용
+
+1. 학습 순서
+	servlet -> jsp -> java script ->Ajax
+	
+2. servlet 주요 학습 내용
+	1. 실행 환경에 대한 이해
+	2. servlet의 주요 API
+	3. web page 이동 API에 대한 이해 및 개발 스킬 
+	4. client 상태 유지를 위한 개발 기술
+	      세션
+	      쿠키
+	      
+3. jsp
+	1. 최초 client가 해당 jsp를 요청시 tomcat이 servlet으로 
+		자동 변환 및 컴파일 및 byte code 메모리에 로딩
+		(*.java -> *.class ->메모리에 로딩)
+		-jsp는 servlet 이다.
+	2.개발 코드는 tag위주
+		1.java/html tag / java script
+		2.jsp tag
+		  jsp scripting tag
+		  jsp action tag
+		  EL
+		  JSTL
+		  
+	<tag명> 데이터 또는 표현식 </tag명>

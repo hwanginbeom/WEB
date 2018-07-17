@@ -1,0 +1,3 @@
+INDEX VERSION 1.130
+C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2259477217.index
+\step01_basic\src
