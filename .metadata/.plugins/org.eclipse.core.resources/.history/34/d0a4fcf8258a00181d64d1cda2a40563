@@ -57,8 +57,6 @@
 	2. port
 		80: http 통신 규약의 default port
 		생략시 무조건 80으로 간주
-	3. url의 web query string
-		http://ip:port/project/file명?key
 		
 	***
 	

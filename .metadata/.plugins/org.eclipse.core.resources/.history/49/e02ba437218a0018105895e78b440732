@@ -26,7 +26,7 @@ public class Step01Basic extends HttpServlet {
 	}
 
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//		request.setCharacterEncoding("utf-8");      한글로 요청
+//		request.setCharacterEncoding("utf-8");      한글 받기 
 		//한글 인코딩 설정
 		response.setContentType("text/html;charset=utf-8");
 		//2byte 출력 가능한 객체 생성

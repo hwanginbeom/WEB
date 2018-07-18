@@ -35,7 +35,7 @@
 	<!--	***method="post"
 			http://localhost/step01_basic/test2
 			
-			method="get or »ý·« "
+			method="get"
 			http://localhost/step01_basic/test2?id=master&pw=1
 		 -->
 		 

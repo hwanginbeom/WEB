@@ -26,7 +26,6 @@ public class Step01Basic extends HttpServlet {
 	}
 
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//		request.setCharacterEncoding("utf-8");      한글로 요청
 		//한글 인코딩 설정
 		response.setContentType("text/html;charset=utf-8");
 		//2byte 출력 가능한 객체 생성
@@ -39,7 +38,7 @@ public class Step01Basic extends HttpServlet {
 		String pw =request.getParameter("pw");
 
 		System.out.println(id+" "+pw);
-	
+		
 		//비교 로직 
 		if(id !=null && id.equals("master")) {
 			out.println("<font color ='blue'> 안녕하세요 master 님 </font>");

@@ -19,7 +19,6 @@ servlet 학습
 		3.http를 고려해서 구현한 상위 클래스로 제공 API
 			:HttpServlet
 			
-			
 		-문제
 		servlet A객체 : HttpServletRequest 객체수 : HttpservletResponse 객체 수 : 접속한 client수
 			= 1 : 100 : 100 : 100명
@@ -32,7 +31,6 @@ servlet 학습
 		-post라는 코드상의 명시없이 url로 요청하는 모든방식 (default방식)
 			예:http//www.daum.net
 			   http://www.naver.com
-		-북마크용으로 사용되는 형태
 		
 	2.post 방식
 		-client가 서버에 데이터 전송시 url에 데이터가 은닉

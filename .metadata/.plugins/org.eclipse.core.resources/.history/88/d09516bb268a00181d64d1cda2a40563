@@ -32,7 +32,6 @@ servlet 학습
 		-post라는 코드상의 명시없이 url로 요청하는 모든방식 (default방식)
 			예:http//www.daum.net
 			   http://www.naver.com
-		-북마크용으로 사용되는 형태
 		
 	2.post 방식
 		-client가 서버에 데이터 전송시 url에 데이터가 은닉
