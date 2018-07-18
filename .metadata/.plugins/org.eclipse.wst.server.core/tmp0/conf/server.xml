@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step01_basic" path="/step01_basic" reloadable="true" source="org.eclipse.jst.jee.server:step01_basic"/></Host>
+      <Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step01_basic" path="/step01_basic" reloadable="true" source="org.eclipse.jst.jee.server:step01_basic"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step02_pageMove" path="/step02_pageMove" reloadable="true" source="org.eclipse.jst.jee.server:step02_pageMove"/></Host>
     </Engine>
   </Service>
 </Server>
