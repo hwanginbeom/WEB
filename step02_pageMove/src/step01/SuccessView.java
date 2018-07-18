@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Succ")
+@WebServlet("/succ")
 public class SuccessView extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +19,8 @@ public class SuccessView extends HttpServlet {
 		//출력
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("유효");
+		out.println("유효~~~~~<br>");
+		out.println(request.getAttribute("newData"));
 	}
 
 }

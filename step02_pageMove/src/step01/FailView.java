@@ -22,7 +22,10 @@ public class FailView extends HttpServlet {
 		//출력
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.println("무효");
+		out.println("무효~~~<br>");
+		out.println(request.getAttribute("newData"));
+		
+
 	}
 
 }
