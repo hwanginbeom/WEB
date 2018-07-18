@@ -52,12 +52,13 @@
 		pageReq.html ->LoginCheckController -> Success
 		http://localhost/step02_pageMove/cont
 		//서블릿이 여러개라고 해도 하나로 간주해야 된다.
+	
 	2. 무효 : redirect 방식
 		pageReq.html -> LoginCheckController -> Fail
 		http://localhost/step02_pageMove/fail
 		//cont가 끝나고 새로운 요청 응답이 하나 생긴다.
 		
-	1.
+	
 		
 		
 		
