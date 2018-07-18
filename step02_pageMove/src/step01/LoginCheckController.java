@@ -18,6 +18,8 @@ public class LoginCheckController extends HttpServlet {
 		//client 가 입력한 데이터 획득
 		
 		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+
 		//id값 뽑는 것
 		System.out.println(request.getRemoteAddr());
 		System.out.println(request.getRemoteHost());
@@ -31,7 +33,7 @@ public class LoginCheckController extends HttpServlet {
 		 * 	-redirect로 이동
 		 */
 		
-		if(id.equals("admin")) {
+		if(id.equals("admin")&&pw.equals("ppp")) {
 			request.setAttribute("newData","요청에 새로운 데이터 저장");
 			//cont와 succ는 다른 servlet이긴 하나 하나의 servlet으로 간주 
 			//요청,응답객체가 공유 그래서 여기서 담아놓은 객체를 succ 에서도 쓸 수 있다.

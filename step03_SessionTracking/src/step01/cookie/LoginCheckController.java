@@ -17,22 +17,29 @@ public class LoginCheckController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");
+		
 		//밑에 이부분이 있어서 상관없다.
+		
+		/*학습내용
+		 * 1.쿠키 데이터 사용 시점에 대한 test
+		 * 2.request 객체가 생성되는 시점에 브라우저에 Cookie 정보 존재 여부 확인 필수 
+		 * 3.논리적으로 쿠키 생성 코드는 응답 완료 되는 화면 이동 방식 사용
+		 * 	(link , button 클릭 , redirect) 
+		 */
 		
 		if(id.equals("admin")) {
 			//데이터로 쿠키 객체 생성
-			Cookie c1 =new Cookie("data1",id);//data1이란 별칭으로 id값 저장
-			Cookie c2 =new Cookie("data2",request.getParameter("pw"));//data1이란 별칭으로 id값 저장
+//			Cookie c1 =new Cookie("data1",id);//data1이란 별칭으로 id값 저장
+//			Cookie c2 =new Cookie("data2",request.getParameter("pw"));//data1이란 별칭으로 id값 저장
 
 			//life time 설정
-			c1.setMaxAge(60*60*24*365);//초단위 설정 
-			c2.setMaxAge(60*60*24);//초단위 설정 
+//			c1.setMaxAge(60*60*24*365);//초단위 설정 
+//			c2.setMaxㄴAge(60*60*24);//초단위 설정 
 			
 			//client 시스템에 전송해서 저장
 //			response.addCookie(c1);
 //			response.addCookie(c2);
 			
-
 			request.setAttribute("newData","요청에 새로운 데이터 저장");
 			request.getRequestDispatcher("succ").forward(request, response);
 			//0x할 때 request가 넘어간다.
