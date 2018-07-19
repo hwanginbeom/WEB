@@ -28,6 +28,10 @@ public class LoginCheckController extends HttpServlet {
 			request.setAttribute("newData", "요청에 새로운 데이터 저장");
 			request.getRequestDispatcher("succ2").forward(request, response);
 		} else {
+			HttpSession session = request.getSession();
+
+			session.setAttribute("name","코난");
+
 			response.sendRedirect("fail2"); // 리 다이렉트
 		}
 	}

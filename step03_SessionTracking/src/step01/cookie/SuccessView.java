@@ -28,12 +28,10 @@ public class SuccessView extends HttpServlet {
 		Cookie[] all=request.getCookies();
 		for(int i=0 ; i < all.length; i++) { //배열을 오른쪽으로 주고 
 //			Cookie c1 =new Cookie("data1",id);//data1이란 별칭으로 id값 저장
-			if(all[i].getName().equals("data1")) {
+			if(all[i].getName().equals("data1")) { //쿠키에서 가져온 이름의 값이 data1의 값과 같으면 출력해라
 				out.println(all[i].getValue());
 			}
 		}
-		
-		
 		out.println("유효~~~~~<br>");
 		out.println(request.getAttribute("newData"));
 	}

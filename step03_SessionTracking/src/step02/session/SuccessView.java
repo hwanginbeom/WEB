@@ -24,13 +24,13 @@ public class SuccessView extends HttpServlet {
 		//없으면 새로 생성
 		HttpSession session = request.getSession();
 		//세션에 저장된 이름을 화면에 출력
-		out.print(session.getAttribute("name") + "<br>");
+		out.print(session.getAttribute("name") + "<br>"); //key값을 호출 하면 value가 출력된다.
+		out.println(request.getAttribute("newData"));
 		session.invalidate();  // 이걸 쓰면 오류가 생겨서 밑에 부분이 다 출력이 안된다.
 		
 		out.print(2+" "+session.getAttribute("name"));
 		session = null;
 		
 		out.println("유효~~~~~<br>");
-		out.println(request.getAttribute("newData"));
 	}
 }
