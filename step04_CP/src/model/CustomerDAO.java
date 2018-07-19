@@ -45,10 +45,10 @@ public class CustomerDAO {
 		boolean result = false;
 		try {
 			con = DBUtil.getConnetion();
-			pstmt = con.prepareStatement("update customer set name =? where id=? ");
+			pstmt = con.prepareStatement("update customer set name =? where id=?");
 			
 			pstmt.setString(1, newName);
-			pstmt.setString(1, id);
+			pstmt.setString(2, id);
 
 			int r =pstmt.executeUpdate();
 			//하나만 있다면 if 아니면 while

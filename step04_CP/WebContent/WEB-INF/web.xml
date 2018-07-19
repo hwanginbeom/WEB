@@ -39,4 +39,14 @@
     <servlet-name>LoginSuccessView1</servlet-name>
     <url-pattern>/LoginSuccess</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginRename</display-name>
+    <servlet-name>LoginRename</servlet-name>
+    <servlet-class>view.LoginRename</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginRename</servlet-name>
+    <url-pattern>/LoginRename</url-pattern>
+  </servlet-mapping>
 </web-app>

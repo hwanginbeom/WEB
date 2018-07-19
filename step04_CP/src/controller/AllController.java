@@ -39,42 +39,89 @@ import model.CustomerDAO;
 
 public class AllController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//login or rename or logout 
 		String command = request.getParameter("command");
 		
 		if(command.equals("login")) {
-			String id = request.getParameter("id");
-			String pw = request.getParameter("pw");
-			if(id!=null && pw!= null) {
-				try {
-					String name = CustomerDAO.loginCheck(id, pw); //db 부분에 id랑 pw 를 넣고 거기서 이름 값을 가져온다 그래서 name으로 보기좋게만들고
-					if(name != null) {//회원 일 경우
-						HttpSession session = request.getSession();
-						session.setAttribute("name",name); // 세션에다가 name부분에  우리가 받아온 이름 값을 넣는다 .  매개체가 세션 ! 
-														//세션을 쓰는 이유는 화면 전환을 하더라도 계속 쓰기 위함이다. 
-						response.sendRedirect("LoginSuccess"); // 이제 redirect 방식으로  loginsucc로 보낸다 .(화면 전환)
-					}else {//비회원 일 경우
-						//요청 객체에 "당신은 회원이 아니십니다."
-						request.setAttribute("msg","당신은 회원이 아니십니다.");  //request 방식으로 저장한 것은 포워드 방시이고 일회성으로 한다.
-						request.getRequestDispatcher("msgView").forward(request, response);;
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				} 
-			}else {
-				response.sendRedirect("login.html"); // null이면 로그인 화면으로 화면 전환 
-			}
+			login(request,response);
 
 		}else if(command.equals("rename")) {
-			
+			rename(request,response);
+
+		}else if(command.equals("logout")) {
+			 //이미 존재할 경우 반환
+			logout(request,response);
 		}
 		else {
 			
 		}
 		
 	}
+	//로그인  처리 메소드
+	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		if(id!=null && pw!= null) {
+			try {
+				String name = CustomerDAO.loginCheck(id, pw); //db 부분에 id랑 pw 를 넣고 거기서 이름 값을 가져온다 그래서 name으로 보기좋게만들고
+				if(name != null) {//회원 일 경우
+					HttpSession session = request.getSession();
+					session.setAttribute("name",name); // 세션에다가 name부분에  우리가 받아온 이름 값을 넣는다 .  매개체가 세션 ! 
+													//세션을 쓰는 이유는 화면 전환을 하더라도 계속 쓰기 위함이다. 
+					response.sendRedirect("LoginSuccess"); // 이제 redirect 방식으로  loginsucc로 보낸다 .(화면 전환)
+				}else {//비회원 일 경우
+					//요청 객체에 "당신은 회원이 아니십니다."
+					request.setAttribute("msg","당신은 회원이 아니십니다.");  //request 방식으로 저장한 것은 포워드 방시이고 일회성으로 한다.
+					request.getRequestDispatcher("msgView.jsp").forward(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}else {
+			response.sendRedirect("login.html"); // null이면 로그인 화면으로 화면 전환 
+		}
+	}
+	
+	
+	//rename 메소드
+	
+	protected void rename(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		String newName = request.getParameter("newName");
+		if(id!=null && newName!= null) {
+			try {
+				boolean result = CustomerDAO.update(id, newName); //db 부분에 id랑 pw 를 넣고 거기서 이름 값을 가져온다 그래서 name으로 보기좋게만들고
+				if(result == true) {//회원 일 경우
+					HttpSession session = request.getSession();
+					session.setAttribute("name",newName); // 세션에다가 name부분에  우리가 받아온 이름 값을 넣는다 .  매개체가 세션 ! 
+													//세션을 쓰는 이유는 화면 전환을 하더라도 계속 쓰기 위함이다. 
+					response.sendRedirect("LoginRename"); // 이제 redirect 방식으로  loginsucc로 보낸다 .(화면 전환)
+				}else {//비회원 일 경우
+					//요청 객체에 "당신은 회원이 아니십니다."
+					request.setAttribute("msg","이름 수정에 실패하였습니다.");  //request 방식으로 저장한 것은 포워드 방시이고 일회성으로 한다.
+					request.getRequestDispatcher("msgView.jsp").forward(request, response);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}else {
+			response.sendRedirect("login.html"); // null이면 로그인 화면으로 화면 전환 
+		}
+	}
 
+	
+	//로그아웃 처리 메소드 
+		protected void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			session = null;
+			response.sendRedirect("byView.jsp");
+		}
 }
 
 //http://ip:port/project명/login.html 
 //http://ip:port/project명
 //http://ip:port/project명/cont
+//http://ip:port/project명/byView.jsp
+//http://ip:port/project명/msgView.jsp
