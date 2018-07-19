@@ -7,10 +7,26 @@
 <body>
 
 <h4>로그인</h4>
-
-	<hr color="blue">
+	<form action = "cont" method ="post">
+		id:<input type ="text" name="id"><br>
+		pw:<input type ="password" name="pw"><br>
+		<input type="hidden"name ="command" value="login">
+		<!-- 어떤 명령인지 언급해주는 부분  -->
+		<input type="submit" value="로그인">
+	</form>
 	
-<h4> 이름 변경</h4>
-
+	
+	<h4 color="blue"></h4>
+	
+	
+	<h4> 이름 변경</h4>
+		<form action = "cont" method ="post">
+		id:<input type ="text" name="id"><br>
+		pw:<input type ="password" name="newName"><br>
+		<input type="hidden"name ="command" value="rename">
+		<!-- 어떤 명령인지 언급해주는 부분  -->
+		<input type="submit" value="로그인">
+	</form>
+	
 </body>
 </html>

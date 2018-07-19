@@ -149,7 +149,10 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step01_basic" path="/step01_basic" reloadable="true" source="org.eclipse.jst.jee.server:step01_basic"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step02_pageMove" path="/step02_pageMove" reloadable="true" source="org.eclipse.jst.jee.server:step02_pageMove"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step03_SessionTracking" path="/step03_SessionTracking" reloadable="true" source="org.eclipse.jst.jee.server:step03_SessionTracking"/></Host>
+      <Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step01_basic" path="/step01_basic" reloadable="true" source="org.eclipse.jst.jee.server:step01_basic"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step02_pageMove" path="/step02_pageMove" reloadable="true" source="org.eclipse.jst.jee.server:step02_pageMove"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step03_SessionTracking" path="/step03_SessionTracking" reloadable="true" source="org.eclipse.jst.jee.server:step03_SessionTracking"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step04_CP" path="/step04_CP" reloadable="true" source="org.eclipse.jst.jee.server:step04_CP">
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="TIGER" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1523:xe" username="SCOTT"/>
+
+</Context></Host>
     </Engine>
   </Service>
 </Server>
