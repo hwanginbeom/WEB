@@ -3,10 +3,52 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
+import model.domain.customerDTO;
 import util.DBUtil;
 
 public class CustomerDAO {
+	//모든 고객 검색
+	public static ArrayList<customerDTO> allSeach() throws Exception {
+		Connection con =null;
+		PreparedStatement pstmt= null;
+		ResultSet rset =null;
+		
+		ArrayList<customerDTO> data = null;
+		
+		try {
+			con = DBUtil.getConnetion();
+			pstmt = con.prepareStatement("select * from customer?");
+			
+			
+			rset = pstmt.executeQuery();
+			//하나만 있다면 if 아니면 while
+			data = new ArrayList<customerDTO>();
+			while(rset.next()) {
+				data.add(new customerDTO(rset.getString(1),
+						rset.getString(2),
+						rset.getString(3)));
+							
+			
+			}
+		} 
+		finally {
+			DBUtil.close(con,pstmt,rset);
+		}
+		return data;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//login 검증 - ip/pw 값으로 name 반환
 	//select : query
 	public static String loginCheck(String id,String pw) throws Exception {
