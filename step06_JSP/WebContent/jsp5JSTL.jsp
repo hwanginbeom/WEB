@@ -1,6 +1,8 @@
+<%@page import="java.util.HashMap,model.domain.customerDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ page import="java.util.ArrayList"%>
+
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -34,6 +36,22 @@
 		</c:forEach>
 	</table>
 	
+	<br><hr><br>
+	<%
+	customerDTO c6 = new customerDTO("tester","11","신동엽");
+	customerDTO c7 = new customerDTO("admin","22","이영자");
+	HashMap<String , customerDTO>mAll = new HashMap<String,customerDTO>();
+	mAll.put(c6.getId(),c6);
+	mAll.put(c7.getId(),c7);
+	
+	session.setAttribute("data6", mAll);
+	%>
+	<%--HashMap을 forEach에서 사용시 key,value 속성으로 데이터 활용 
+	key 속성 : HashMap의 key 반환
+	value 속성 : HashMap에 저장된 데이터 값 --%>
+	<c:forEach items = "${sessionScope.data6 }" var ="data">
+	${data.key }-${data.value.name}<br>
+	</c:forEach>
 	
 </body>
 </html>

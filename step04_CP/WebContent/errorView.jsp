@@ -8,8 +8,9 @@
 </head>
 <body>
 	<h2>발생된 예외 상황</h2>
-	<img  src="img/error.jpg" width="30%" height="30%">
-	<br><hr><br>
+	<img  src="img/error.jpeg" width="30%" height="30%"
+	onclick = "location.href='login.html'">
+	<br><hr><br> 
 	${requestScope.msg }
 </body>
 </html>

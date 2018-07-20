@@ -2,7 +2,12 @@
 
 
 ${sessionScope.name}<br>
-<button onclick='location.href="cont?command=logout"'>로그아웃</button>
+
+
+<button onclick="location.href='cont?command=all'">모두 보기</button>
+
+
+<button onclick="location.href='cont?command=logout'">로그아웃</button>
 
 <%-- 
 out.println(session.getAttribute("name"));

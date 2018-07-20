@@ -98,7 +98,7 @@ public class AllController extends HttpServlet {
 				request.getRequestDispatcher("errorView.jsp").forward(request, response);
 			}
 		} else {// 로그인 로직 skip
-			response.sendRedirect("lohgin.html");
+			response.sendRedirect("login.html");
 		}
 
 	}
