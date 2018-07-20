@@ -61,6 +61,7 @@
 			-자바 코드를 tag로 개발할수 있음
 			-자바 데이터 출력을 위해서는 반드시 request or session에 
 			 setAttribute로 저장한 데이터에 한해서만 사용가능
+			-JSTL library를 개발 환경세 새롭게 세팅 필수
 			
 			
 3.특징

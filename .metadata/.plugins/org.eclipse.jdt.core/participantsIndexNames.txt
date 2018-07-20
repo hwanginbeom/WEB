@@ -3,5 +3,7 @@ C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\22594772
 \step01_basic\src
 C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2757784670.index
 \step04_CP\src
+C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1441810625.index
+\step06_JSP\src
 C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\998067629.index
 \step06_JSP\src

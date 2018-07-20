@@ -17,6 +17,7 @@ public class customerDTO {
 	}
 	
 	public String getId() {
+		System.out.println("getID()-----");
 		return id;
 	}
 	
@@ -33,6 +34,8 @@ public class customerDTO {
 	}
 	
 	public String getName() {
+		System.out.println("getname()-----");
+
 		return name;
 	}
 	
