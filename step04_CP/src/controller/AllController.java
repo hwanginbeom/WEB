@@ -39,7 +39,7 @@ import model.CustomerDAO;
 
 public class AllController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("EUC-KR");//한글 인코딩 하는부분
 		//login or rename or logout 
 		String command = request.getParameter("command");
 		
@@ -56,7 +56,6 @@ public class AllController extends HttpServlet {
 		else {
 			
 		}
-		
 	}
 	//로그인  처리 메소드
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -109,8 +108,6 @@ public class AllController extends HttpServlet {
 			response.sendRedirect("login.html"); // null이면 로그인 화면으로 화면 전환 
 		}
 	}
-
-	
 	//로그아웃 처리 메소드 
 		protected void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			HttpSession session = request.getSession();
@@ -119,7 +116,6 @@ public class AllController extends HttpServlet {
 			response.sendRedirect("byView.jsp");
 		}
 }
-
 //http://ip:port/project명/login.html 
 //http://ip:port/project명
 //http://ip:port/project명/cont
