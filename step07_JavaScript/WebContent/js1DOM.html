@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>js1DOM.html</title>
+</head>
+<body>
+	*** Document Object Model : 데이터를 동적으로 처리 가능한 기술***<br>
+	1.java script는 client 브라우저에서 실행 되는 client side 언어 <br>
+	2.동적 화면 구성에 적합한 이벤트용 언어<br>
+	3.비동기 처리에 필수인 언어<br>
+	4.실습내용 - 두개의 input tag 값을 크로스로 변경 <br>
+	5.DOM - Html 문서 구조를 상속 관계, tag와 속성, text등을 객체로 인지
+	
+	<br><hr><br>
+	<input type= "text" id ="one" value="js 언어"> <br>
+	<input type= "text" id ="two"> <br>
+	
+	<button onclick="myFun()">클릭</button>
+	
+	<!-- js사용자 정의 함수  -->
+	<script type="text/javascript">
+		function myFun(){
+			document.getElementById("two").value= document.getElementById("one").value
+			document.getElementById("one").value =" "
+			
+			//one의 value 값 "" 으로 설정
+		}
+	</script>
+</body>
+</html>
