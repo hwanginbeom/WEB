@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>js2VarFun.html</title>
+	<!-- head 내부에 js 개발 -->
+	<script type="text/javascript">
+	//전역 변수 선언 
+	var data;
+	data = 10;
+	//alert(data);
+	data = "문자열";
+	//alert(data);
+
+	//사용자 정의 함수  - 로컬 변수 , 전역변수(키워드가 있고 없고에 따라서 전역변수가 되고 로컬변수가 된다) 호출
+	function myFun1(){
+	var data2=1111;//로컬 변수
+	data3=22222; //전역변수
+	document.write(data+"<br>");
+	document.write(data2+"<br>");
+	document.write(data3+"<br>");
+
+}
+	//사용자 정의 함수 호출
+	myFun1();
+	//js 자체 함수 & 브라우저 자체 내장 함수
+	
+	</script>
+</head>
+<body>
+
+<!-- body 마지막 부분 js 개발 -->
+<script type ="text/javascript">
+//브라우저 body 에 출력하는 내장 함수
+document.write("한글<br>");
+document.write(data);
+
+
+function myFun2(){
+	document.write("-----<br>");
+
+	document.write(data+"<br>");
+	document.write(data2+"<br>");
+	document.write(data3+"<br>");
+
+}
+myFun2();
+
+</script>
+</body>
+</html>

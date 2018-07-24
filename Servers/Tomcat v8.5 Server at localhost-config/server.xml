@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="step01_basic" path="/step01_basic" reloadable="true" source="org.eclipse.jst.jee.server:step01_basic"/><Context docBase="step02_pageMove" path="/step02_pageMove" reloadable="true" source="org.eclipse.jst.jee.server:step02_pageMove"/><Context docBase="step03_SessionTracking" path="/step03_SessionTracking" reloadable="true" source="org.eclipse.jst.jee.server:step03_SessionTracking"/><Context docBase="step04_CP" path="/step04_CP" reloadable="true" source="org.eclipse.jst.jee.server:step04_CP"/><Context docBase="step05_UITest" path="/step05_UITest" reloadable="true" source="org.eclipse.jst.jee.server:step05_UITest"/><Context docBase="step06_JSP" path="/step06_JSP" reloadable="true" source="org.eclipse.jst.jee.server:step06_JSP"/><Context docBase="step07_JavaScript" path="/step07_JavaScript" reloadable="true" source="org.eclipse.jst.jee.server:step07_JavaScript"/><Context docBase="step08_UITest" path="/step08_UITest" reloadable="true" source="org.eclipse.jst.jee.server:step08_UITest"/></Host>
+      <Context docBase="movie_project" path="/movie_project" reloadable="true" source="org.eclipse.jst.jee.server:movie_project"/></Host>
     </Engine>
   </Service>
 </Server>
