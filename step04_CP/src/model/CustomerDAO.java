@@ -42,13 +42,6 @@ public class CustomerDAO {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	//login 검증 - ip/pw 값으로 name 반환
 	//select : query
 	public static String loginCheck(String id,String pw) throws Exception {

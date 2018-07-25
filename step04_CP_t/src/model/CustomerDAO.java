@@ -43,8 +43,7 @@ public class CustomerDAO {
 		String name = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select name from"
-					+ " customer where id=? and pw=?");
+			pstmt = con.prepareStatement("select name from customer where id= ? and pw= ?");
 			
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
