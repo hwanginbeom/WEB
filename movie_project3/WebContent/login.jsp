@@ -98,7 +98,7 @@ span.psw {
 
 <h2>Login Form</h2>
 
-	<form action="cont" method="post">
+	<form action="AllController" method="post">
 		<input type="hidden" name="command" value="login">
   		<div class="imgcontainer">
    		 <img src="images/login_image.jpg"  alt="login_image" class="avatar">

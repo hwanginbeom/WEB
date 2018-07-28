@@ -17,10 +17,14 @@ public class DBUtil {
       try {
          // 서버의 설정파일 정보 활용 가능한 자바 객체
          // 설정 별칭으로 자원을 검색 및 받아서 활용
-         // java:/comp/env - java component environment 
          Context initContext = new InitialContext();
-         Context envContext  = (Context)initContext.lookup("java:/comp/env");
-         ds = (DataSource)envContext.lookup("jdbc/myoracle");
+         Context envContext  = (Context)initContext.lookup("java:/comp/env"); // java:/comp/env - java component environment 
+
+         
+//         Context envContext  = (Context)new InitialContext().lookup("java:/comp/env");
+
+         
+         ds = (DataSource)envContext.lookup("jdbc/myoracle"); // context에 있는 resource name 부분이다 
       } catch (Exception e) {
          e.printStackTrace();
       }
@@ -29,16 +33,21 @@ public class DBUtil {
    //etc.
    static {
       try {
-         Class.forName("oracle.jdbc.driver.OracleDriver");
+         Class.forName("oracle.jdbc.driver.OracleDriver"); //context에 있는 driverclassname 이다 
       } catch (ClassNotFoundException e) {
          e.printStackTrace();
       }
    }
+   
+   
+   
 // Connection 객체 반환 메소드
    public static Connection getConnetion() throws SQLException {
       return ds.getConnection(); // 제대로 써도 실시간으로 접속이 안될 수 있음 >> 예외를 던져야함 
             // >> 하지만 try catch 로 처리하면 관리자만 문제 터진것을 안다, end user는 모른다 
    }
+   
+   
    
    // select 문 자원 반환 - Connection,Statement, ResultSet // 파라미터가 3개로 들어오면 이걸로 바로 실행되고 
    public static void close (Connection con, Statement stmt, ResultSet rs) {

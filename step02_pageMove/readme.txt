@@ -30,6 +30,7 @@
 		1.String getPasrameter()
 			-web query string 구조로 전송되는 데이터 값 획득
 			-String으로만 반환
+	
 		2.getRequestDispatcher() //이걸로 던져서 보낸다. 
 		//			request.getRequestDispatcher("succ").forward(request, response);
 		//이런식으로 어디로 보낼지 정해주고 request를 담아서 보내는데 forward 방식으로 던진다.

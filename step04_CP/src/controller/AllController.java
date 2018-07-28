@@ -80,17 +80,17 @@ public class AllController extends HttpServlet {
 		//null or 세션 객체 반환
 		// null반환시는 이전에 세션 객체가 없을 경우
 		//객체 반환시는 이미 세션 객체가 존재하는 상태로 호출 된 경우
-		HttpSession session = request.getSession(false); //있는거에 한해서 받아온다.
+		HttpSession session = request.getSession(false); //있는거에 한해서 받아온다. //false를 줘서 get을 안주고 이상태에서 sessoion이 null이 아니면 기존에 로그인이 되있는 상태이다. 
 		if(session != null) {
 			try {
-				ArrayList<customerDTO> all = CustomerDAO.allSeach();
+				ArrayList<customerDTO> all = CustomerDAO.allSeach(); // 커스터머 dao를 해서 all.seach 한것을 가져오고 all 에 넣는다.
 				
-				if(all.size()==0) {
-				request.setAttribute("msg", "고객 정보가 없습니다."); // request 방식으로 저장한 것은 포워드 방시이고 일회성으로 한다.
-				request.getRequestDispatcher("msgView.jsp").forward(request, response);
+				if(all.size()==0) { //만약 데이터가 없으면 
+				request.setAttribute("msg", "고객 정보가 없습니다."); // request 방식으로 저장한 것은 포워드 방시이고 일회성으로 한다. //고객정보가 없다는 것을 msg에 넣는다. // request로 넣어서 
+				request.getRequestDispatcher("msgView.jsp").forward(request, response); // getRequestDispatcher 식으로 넣는다.
 				}else {
-					session.setAttribute("allData", all);
-					response.sendRedirect("allView.jsp");
+					session.setAttribute("allData", all); // all 한것을 alldata에 넣는다. 이것을 session으로 받고 
+					response.sendRedirect("allView.jsp"); // redirect로 보낸다  각자의 servlet라고 생각하면 된다.
 				}
 			} catch (Exception e) {
 				e.printStackTrace(); //문제가 생겼을 때 관리자가 볼 수 있는 부분 
