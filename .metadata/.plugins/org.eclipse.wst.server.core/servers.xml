@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <servers>
-  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost" name="Tomcat v8.5 Server at localhost" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="60" stop-timeout="15" testEnvironment="true" timestamp="23">
-    <list key="modules" value0="movie_project3::org.eclipse.jst.jee.server:movie_project3::jst.web::3.1" value1="step01_basic::org.eclipse.jst.jee.server:step01_basic::jst.web::2.5" value2="step02_pageMove::org.eclipse.jst.jee.server:step02_pageMove::jst.web::3.1" value3="step03_SessionTracking::org.eclipse.jst.jee.server:step03_SessionTracking::jst.web::3.1" value4="forestRoad_web::org.eclipse.jst.jee.server:forestRoad_web::jst.web::3.1" value5="teslaProject::org.eclipse.jst.jee.server:teslaProject::jst.web::3.1"/>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost" name="Tomcat v8.5 Server at localhost" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="60" stop-timeout="15" testEnvironment="true" timestamp="24">
+    <list key="modules" value0="tmap1::org.eclipse.jst.jee.server:tmap1::jst.web::3.1"/>
   </server>
 </servers>
