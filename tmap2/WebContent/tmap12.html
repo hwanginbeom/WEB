@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+function loadSearchIndex( searchKeyword ) {
+	var searchCategory ='';
+	
+	var resultHtml = '';
+	
+	if( searchKeyword && searchKeyword != '' ) {
+		searchCategory = $('#side_search .dropdown_wrapper a').html().trim(); // 검색범위(Web, Android, iOS, WebService)
+		
+		setSelectedMenuCSS('search_result');
+		$('#contents').load( 'search_result.html', function(response, status, xhr){
+			var resultLinkGuide = '';
+			var resultLinkSample = '';
+			var resultLinkDocs = '';
+			var resultLinkUsecase = '';
+
+			var resultCnt = 0;
+			var eachCnt = 0;
+			if( status == "success" ) {
+				// 메인 페이지 로드 성공 시 작업
+			   
+				// 검색 페이지 로드시 Anchor 가 변하지 않아 임의로 페이지 새로고침 필요
+				mIsNeedRefresh = true;
+			   
+				// 카테고리 표시
+				$('#divIndexCategory').html(searchCategory);
+				$('#divIndexCategory').addClass(searchCategory.replace(/\s/gi, ""));
+				
+				// 각 메뉴 복제하여 로드
+				$('#indexResultGuide').html( $('#tit_'+searchCategory.replace(" ","_")).siblings('ul').find('li > span:contains("Guide")').siblings('ul').clone().addClass('filetree').wrapAll("<div/>").parent().html() );
+				$('#indexResultSample').html( $('#tit_'+searchCategory.replace(" ","_")).siblings('ul').find('li > span:contains("Sample")').siblings('ul').clone().addClass('filetree').wrapAll("<div/>").parent().html() );
+				$('#indexResultDocs').html( $('#tit_'+searchCategory.replace(" ","_")).siblings('ul').find('li > span:contains("Docs")').siblings('ul').clone().addClass('filetree').wrapAll("<div/>").parent().html() );
+				$('#indexResultUsecase').html( $('#tit_'+searchCategory.replace(" ","_")).siblings('ul').find('li > span:contains("Use case")').siblings('ul').clone().addClass('filetree').wrapAll("<div/>").parent().html() );
+				$('#tbodyResult ul, #tbodyResult li').css('display', 'none');
+				
+				// Guide 검색 결과 생성
+				eachCnt=0;
+				$('#indexResultGuide a').each(function(){
+					var aTagText = $(this).text();
+					if( aTagText.toLowerCase().indexOf(searchKeyword.toLowerCase()) != -1 ) {
+						//resultHtml += '<dd>' + $(this).parent().html() + '</dd>';
+						$(this).parents('ul, li').css('display', 'block');
+						resultCnt++;
+						eachCnt++;
+					}
+				});
+				if(eachCnt == 0){
+					$('#search_guide').css('display','none');
+					$('#search_guide_list').css('display','none');
+				}
+				
+				// Sample 검색 결과 생성
+				eachCnt=0;
+				$('#indexResultSample a').each(function(){
+					var aTagText = $(this).text();
+					if( aTagText.toLowerCase().indexOf(searchKeyword.toLowerCase()) != -1 ) {
+						//resultHtml += '<dd>' + $(this).parent().html() + '</dd>';
+						$(this).parents('ul, li').css('display', 'block');
+						resultCnt++;
+						eachCnt++;
+					}
+				});
+				if(eachCnt == 0){
+					$('#search_sample').css('display','none');
+					$('#search_sample_list').css('display','none');
+				}
+				
+				// Docs 검색 결과 생성
+				eachCnt=0;
+				$('#indexResultDocs a').each(function(){
+					var aTagText = $(this).text();
+					if( aTagText.toLowerCase().indexOf(searchKeyword.toLowerCase()) != -1 ) {
+						//resultHtml += '<dd>' + $(this).parent().html() + '</dd>';
+						$(this).parents('ul, li').css('display', 'block');
+						resultCnt++;
+						eachCnt++;
+					}
+				});
+				if(eachCnt == 0){
+					$('#search_docs').css('display','none');
+					$('#search_docs_list').css('display','none');
+				}
+				
+				// Use case 검색 결과 생성
+				if(searchCategory == "Web"){
+					eachCnt=0;
+					$('#indexResultUsecase a').each(function(){
+						var aTagText = $(this).text();
+						if( aTagText.toLowerCase().indexOf(searchKeyword.toLowerCase()) != -1 ) {
+							//resultHtml += '<dd>' + $(this).parent().html() + '</dd>';
+							$(this).parents('ul, li').css('display', 'block');
+							resultCnt++;
+							eachCnt++;
+						}
+					});
+					if(eachCnt == 0){
+						$('#search_usecase').css('display','none');
+						$('#search_usecase_list').css('display','none');
+					}
+				}
+				
+				
+				if( resultCnt > 0 ) {
+					// 검색결과가 존재할 경우
+					// Index 결과검색 테마 적용
+					$('#tbodyResult a').addClass('h_underline');
+					$('#tbodyResult a').each(function(){
+						$(this).html( '· <span>' + $(this).html() + '</span>' );
+					});
+				}
+				else {
+					$('#tbodyResult').html( '<td style="padding:100px 20px">검색 결과가 없습니다.</td>' );
+				}
+				
+				// 스크롤 맨 위로 이동
+				$('main').animate({ scrollTop : 0 }, 100);
+  			}
+		});
+	}
+}
+
+// 메인페이지 로드 함수
+function loadMainContents( urlAnchorString ) {
+	var urlString = null; // (URL?Prameter) : .html 없음
+	var urlWithHtml = null; // 메인 페이지에 띄울 실제 요청 주소
+	var anchorIndex = -1; // 앵커 인덱스
+	var anchorString = null; // 앵커 스트링
+	
+	// 자동 검색창 초기화 - START
+	$('#search_keyword').val('');
+	$('#search_result').hide();
+	$('#search_result dl').html( "" );
+	// 자동 검색창 초기화 - END
+
+	
+</script>
+		<div id="side_search">
+					<div class="input_wrap">
+						<input id="search_keyword" type="text" placeholder="index search">
+						<div class="dropdown_wrapper">
+		                          <a href="#" class="select_re web">Web</a>
+							<div class="dropdown_select">
+								<ul>
+									<li class="web"><a href="#">Web</a></li>
+									<li class="android"><a href="#">Android</a></li>
+									<li class="ios"><a href="#">iOS</a></li>
+									<li class="webService"><a href="#">Web service</a></li>
+								</ul>
+							</div>
+		                </div>
+						<a id="search_button" href="#" class="btn_search"><img src="resources/images/sub/btn_search_01.png" alt="btn_search"></a>
+					</div>
+				</div>
+				<div id="search_result">
+					<div class="in_wrap mCustomScrollbar">
+						<dl>
+							<dt>검색 결과가 없습니다.</dt>
+						</dl>
+					</div>
+				</div>
+		
+</body>
+</html>
