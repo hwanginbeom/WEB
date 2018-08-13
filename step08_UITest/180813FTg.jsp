@@ -1,16 +1,18 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>자동차 다중 경로안내 30</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
 </head>
 <body>
 <div id="map_div" ></div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
 
-	function div_sh(dd) { 
-<p id="result"></p>				
+
+
 <script>	
 	// 1. 지도 띄우기
 	// map 생성
@@ -21,7 +23,7 @@
 		height : "400px",// map의 height 설정
 	});
 map.setCenter(new Tmap.LonLat("126.986072", "37.570028").transform("EPSG:4326", "EPSG:3857"), 15);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 즁심점을 설정합니다.	
-var addr1="인천광역시 부평구 산곡2동";
+
 // 2. API 사용요청
 $.ajax({
 	method:"GET",
@@ -29,10 +31,10 @@ $.ajax({
 	async:false,
 	data:{
 		"coordType" : "WGS84GEO",//지구 위의 위치를 나타내는 좌표 타입입니다.
-		"fullAddr" : addr1, //주소 정보 입니다, 도로명 주소 표준 표기 방법을 지원합니다.  
+		"fullAddr" : "서울시 마포구 와우산로29가길 69", //주소 정보 입니다, 도로명 주소 표준 표기 방법을 지원합니다.  
 		"page" : "1",//페이지 번호 입니다.
 		"count" : "20",//페이지당 출력 갯수 입니다.
-		"appKey" : "ec633e08-ce42-48a8-9674-a3e09c7bea73",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
+		"appKey" : "발급AppKey",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 	},
 	//데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
 	success:function(response){
@@ -213,64 +215,9 @@ $.ajax({
 });
 
 </script>
-<style>
-
-/* Style the tab */
-.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-}
-
-/* Style the buttons that are used to open the tab content */
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-}
-</style>
-
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<body>
-
-<form action="/action_page.php">
-  <input type="radio" name="gender" value="male"> 1번경로<br>
-    <input type="radio" name="gender" value="male"> 2번 경로<br>
-    <input type="radio" name="gender" value="male"> 3번 경로<br>
-    <input type="radio" name="gender" value="male"> 4번 경로<br>
-  <input type="radio" name="gender" value="female"> 5번 경로<br>
-  <input type="radio" name="gender" value="other"> 6번경로<br>  
-  <input type="submit" value="Submit">
-</form>
+			
+			
 
 
-
-            
 </body>
 </html>
--------------------------------------------------------------------------------------------

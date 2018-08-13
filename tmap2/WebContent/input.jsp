@@ -22,31 +22,28 @@ map = new Tmap.Map({
 	height : "380px", // map의 height 설정
 });
 map.setCenter(new Tmap.LonLat("126.9850380932383", "37.566567545861645").transform("EPSG:4326", "EPSG:3857"), 15);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 즁심점으로 설정합니다.
-
 var routeLayer = new Tmap.Layer.Vector("route");//벡터 레이어 생성
 var markerLayer = new Tmap.Layer.Markers("start");// 마커 레이어 생성
 map.addLayer(routeLayer);//map에 벡터 레이어 추가
 map.addLayer(markerLayer);//map에 마커 레이어 추가
-
 //시작
 var size = new Tmap.Size(24, 38);//아이콘 크기 설정
 var offset = new Tmap.Pixel(-(size.w / 2), -size.h);//아이콘 중심점 설정
 var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_s.png />', size, offset);//마커 아이콘 설정
 var marker_s = new Tmap.Marker(new Tmap.LonLat("126.9850380932383", "37.566567545861645").transform("EPSG:4326", "EPSG:3857"), icon);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
 markerLayer.addMarker(marker_s);//마커 레이어에 마커 추가
-
 //도착
 var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_e.png />', size, offset);//마커 아이콘 설정
 var marker_e = new Tmap.Marker(new Tmap.LonLat("127.10331814639885", "37.403049076341794").transform("EPSG:4326", "EPSG:3857"), icon);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
 markerLayer.addMarker(marker_e);//마커 레이어에 마커 추가
 </script>
+
+
 <script> 
 function div_sh(dd) { 
 if(dd=="0") { 
 d1.style.display=''; 
 } 
-
-
 var headers = {}; 
 headers["appKey"]="ec633e08-ce42-48a8-9674-a3e09c7bea73";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 var search = dd;
@@ -85,7 +82,6 @@ $.ajax({
  	var tTime = " 총 시간 : "+($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue/60).toFixed(0)+"분,";	
  	var tFare = " 총 요금 : "+$intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원,";	
  	var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
-
  	$("#result").text(tDistance+tTime+tFare+taxiFare+", "+search+ "번 경로 입니다.");
 		
 		prtcl=new Tmap.Format.KML({extractStyles:true, extractAttributes:true}).read(prtcl);//데이터(prtcl)를 읽고, 벡터 도형(feature) 목록을 리턴합니다.
@@ -123,7 +119,6 @@ $.ajax({
 });
 } 
  
-
 </script> 
 
 <center> 
