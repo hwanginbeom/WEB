@@ -16,10 +16,6 @@
 
 <script> 
 function div_sh(dd) { 
-if(dd=="1") { 
-d1.style.display='none'; 
-} else { 
-d1.style.display=''; 
 
 //map 생성
 //Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.						
@@ -68,7 +64,7 @@ $.ajax({
 		//각도입니다.
 		angle : "172",
 		//경로 탐색 옵션 입니다.
-		searchOption : search
+		searchOption : dd
 	},
 	//데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
 	success:function(response){
@@ -126,7 +122,13 @@ $.ajax({
 </script> 
 
 <center> 
-<input type="radio" name="ww" value="1" onclick="div_sh(1);" checked>안쓰기&nbsp;<input type="radio" name="ww" value="2" onclick="div_sh(2);">쓰기<br> 
+<input type="radio" name="ww" value="0" onclick="div_sh(0);" checked>지도 없음
+&nbsp;<input type="radio" name="ww" value="1" onclick="div_sh(1);">1번 경로 지도 
+&nbsp;<input type="radio" name="ww" value="2" onclick="div_sh(2);">2번 경로 지도 
+&nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(3);">3번 경로 지도
+&nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(4);">4번 경로 지도
+&nbsp;<input type="radio" name="ww" value="4" onclick="div_sh(5);">5번 경로 지도
+&nbsp;<input type="radio" name="ww" value="5" onclick="div_sh(6);">6번 경로 지도<br> 
 <div id="d1" style="display:none;"><input type="text"></div> 
 </center>
 </body>
