@@ -26,10 +26,10 @@ map.setCenter(new Tmap.LonLat("126.986072", "37.570028").transform("EPSG:4326", 
 </script>
 
 <script>
-function showSum(input) {
+function fun() {
 	
 		//입력한 문자열을 읽어온다.
-		var addr = document.getElementsByTagName("input").value;
+		var addr = document.getElementById("two").value
 		
 	
 // 2. API 사용요청
@@ -223,17 +223,11 @@ $.ajax({
 });
 }
 </script>
-			
-  
-  
-<input type=”text” />
-<button onclick="showSum()">=</button>
-
-<input type="text" id="input"><br>
 
 
-
-
+<input type= "text" id ="two"> <br>
+	<button onclick="fun()">클릭</button>
+	
 
 
 
