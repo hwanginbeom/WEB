@@ -82,6 +82,7 @@ $.ajax({
  	var tTime = " 총 시간 : "+($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue/60).toFixed(0)+"분,";	
  	var tFare = " 총 요금 : "+$intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원,";	
  	var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
+ 	
  	$("#result").text(tDistance+tTime+tFare+taxiFare+", "+search+ "번 경로 입니다.");
 		
 		prtcl=new Tmap.Format.KML({extractStyles:true, extractAttributes:true}).read(prtcl);//데이터(prtcl)를 읽고, 벡터 도형(feature) 목록을 리턴합니다.
@@ -124,13 +125,14 @@ $.ajax({
 <center> 
 
 <input type="radio" name="ww" value="0" onclick="div_sh(0);" checked>지도 없음
-&nbsp;<input type="radio" name="ww" value="1" onclick="div_sh(1);">1번 경로 지도 
-&nbsp;<input type="radio" name="ww" value="2" onclick="div_sh(2);">2번 경로 지도 
-&nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(3);">3번 경로 지도
-&nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(4);">4번 경로 지도
-&nbsp;<input type="radio" name="ww" value="4" onclick="div_sh(5);">5번 경로 지도
-&nbsp;<input type="radio" name="ww" value="5" onclick="div_sh(6);">6번 경로 지도<br> 
-<div id="d1" style="display:none;"><input type="text"></div> 
+&nbsp;<input type="radio" name="ww" value="0" onclick="div_sh(0);">1번 경로 지도 
+&nbsp;<input type="radio" name="ww" value="1" onclick="div_sh(1);">2번 경로 지도 
+&nbsp;<input type="radio" name="ww" value="2" onclick="div_sh(2);">3번 경로 지도
+&nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(3);">4번 경로 지도
+&nbsp;<input type="radio" name="ww" value="4" onclick="div_sh(4);">5번 경로 지도
+&nbsp;<input type="radio" name="ww" value="10" onclick="div_sh(10);">6번 경로 지도<br> 
+&nbsp;<input type="radio" name="ww" value="12" onclick="div_sh(12);">6번 경로 지도<br> 
+
 </center>
 </body>
 </html>
