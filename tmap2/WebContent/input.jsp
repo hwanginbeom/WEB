@@ -41,9 +41,7 @@ markerLayer.addMarker(marker_e);//마커 레이어에 마커 추가
 
 <script> 
 function div_sh(dd) { 
-if(dd=="0") { 
-d1.style.display=''; 
-} 
+
 var headers = {}; 
 headers["appKey"]="ec633e08-ce42-48a8-9674-a3e09c7bea73";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 var search = dd;
@@ -124,8 +122,8 @@ $.ajax({
 
 <center> 
 
-<input type="radio" name="ww" value="0" onclick="div_sh(0);" checked>지도 없음
-&nbsp;<input type="radio" name="ww" value="0" onclick="div_sh(0);">1번 경로 지도 
+
+<input type="radio" name="ww" value="0" onclick="div_sh(0);">1번 경로 지도 
 &nbsp;<input type="radio" name="ww" value="1" onclick="div_sh(1);">2번 경로 지도 
 &nbsp;<input type="radio" name="ww" value="2" onclick="div_sh(2);">3번 경로 지도
 &nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(3);">4번 경로 지도
