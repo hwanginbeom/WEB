@@ -26,12 +26,12 @@ map.setCenter(new Tmap.LonLat("126.986072", "37.570028").transform("EPSG:4326", 
 </script>
 
 <script>
-function start() {
+function fun() {
 	
 		//입력한 문자열을 읽어온다.
-		 start = document.getElementById("one").value;
+		var start = document.getElementById("one").value
 		
-
+	
 // 2. API 사용요청
 $.ajax({
 	method:"GET",
@@ -53,7 +53,6 @@ $.ajax({
 		xmlDoc = $.parseXML( prtclString ),
 		$xml = $( xmlDoc ),
 		$intRate = $xml.find("coordinate");
-
 		//검색 결과 정보가 없을 때 처리
 		if($intRate.length==0){
 			//예외처리를 위한 파싱 데이터
@@ -66,6 +65,8 @@ $.ajax({
 		}	
 			  		    
 		var lon, lat;
+	 	
+
 		if($intRate[0].getElementsByTagName("lon").length>0){//구주소
 			lon = $intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue;
 		   	lat = $intRate[0].getElementsByTagName("lat")[0].childNodes[0].nodeValue;
@@ -154,8 +155,11 @@ $.ajax({
 			}
 			
 			// 검색 결과 표출
+			var abc = " 총 요금 : "+$intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue+"";	
+
+			$("#result").text(abc);
 			var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-			$("#result").html("검색결과(새주소) : "+lot+","+"\n"+"응답코드:"+lat+"(상세 코드 내역은 "+docs+"에서 확인)");
+			$("#result").html("검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");
 		}
 		
 		//구주소일 때 검색 결과 표출
@@ -211,8 +215,11 @@ $.ajax({
 			}
 			
 			// 검색 결과 표출
+			var abc = " 총 요금 : "+$intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue+"";	
+
+			$("#result").text(abc);
 			var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-			$("#result").html("검색결과(지번주소) : "+lot+","+"\n"+"응답코드:"+lat+"(상세 코드 내역은 "+docs+"에서 확인)");
+			$("#result").html("검색결과(지번주소) : "+address+","+"\n"+"응답코드:"+matchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");
 			
 		}
 	},
@@ -222,15 +229,15 @@ $.ajax({
 	}
 });
 }
-
 </script>
+
 <script>
-function end() {
+function fun1() {
 	
 		//입력한 문자열을 읽어온다.
-		 end = document.getElementById("two").value;
+		var start = document.getElementById("two").value
 		
-
+	
 // 2. API 사용요청
 $.ajax({
 	method:"GET",
@@ -238,7 +245,7 @@ $.ajax({
 	async:false,
 	data:{
 		"coordType" : "WGS84GEO",//지구 위의 위치를 나타내는 좌표 타입입니다.
-		"fullAddr" : end, //주소 정보 입니다, 도로명 주소 표준 표기 방법을 지원합니다.  
+		"fullAddr" : start, //주소 정보 입니다, 도로명 주소 표준 표기 방법을 지원합니다.  
 		"page" : "1",//페이지 번호 입니다.
 		"count" : "20",//페이지당 출력 갯수 입니다.
 		"appKey" : "ec633e08-ce42-48a8-9674-a3e09c7bea73",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
@@ -252,7 +259,6 @@ $.ajax({
 		xmlDoc = $.parseXML( prtclString ),
 		$xml = $( xmlDoc ),
 		$intRate = $xml.find("coordinate");
-
 		//검색 결과 정보가 없을 때 처리
 		if($intRate.length==0){
 			//예외처리를 위한 파싱 데이터
@@ -288,6 +294,7 @@ $.ajax({
 		var matchFlag, newMatchFlag;
 	  	//검색 결과 주소를 담을 변수
 	  	var address = '', newAddress = '';
+	  	var resultlat ='';
 	  	var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 	  	var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 		//새주소일 때 검색 결과 표출
@@ -351,10 +358,19 @@ $.ajax({
 				newBuildingDong = $intRate[0].getElementsByTagName("newBuildingDong")[0].childNodes[0].nodeValue;
 				newAddress += newBuildingDong+"\n";
 			}
-			
+			if($intRate[0].getElementsByTagName("newLat").length>0){
+				newBuildingDong = $intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue;
+				n_lon += newLat+"\n";
+			}
+			if($intRate[0].getElementsByTagName("newLon").length>0){
+				newBuildingDong = $intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue;
+				n_lat += newLon+"\n";
+			}
 			// 검색 결과 표출
+			var abc = " 총 요금 : "+$intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue+"";	
+
 			var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-			$("#result").html("검색결과(새주소) : "+lot+","+"\n"+"응답코드:"+lat+"(상세 코드 내역은 "+docs+"에서 확인)");
+			$("#result").html("검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)"+n_lon+n_lat);
 		}
 		
 		//구주소일 때 검색 결과 표출
@@ -408,12 +424,21 @@ $.ajax({
 				buildingDong = $intRate[0].getElementsByTagName("buildingDong")[0].childNodes[0].nodeValue;
 				address += buildingDong+"\n";
 			}
-			
+			if($intRate[0].getElementsByTagName("buildingDong").length>0){
+				buildingDong = $intRate[0].getElementsByTagName("buildingDong")[0].childNodes[0].nodeValue;
+				address += buildingDong+"\n";
+			}
+			if($intRate[0].getElementsByTagName("lat").length>0){
+	             resultlat = $intRate[0].getElementsByTagName("lat")[0].childNodes[0].nodeValue;
+	             resultlat +=lat+"\n" ;
+	          }
+			if($intRate[0].getElementsByTagName("lon").length>0){
+	             resultlat = $intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue;
+	             resultlat +=lon+"\n" ;
+	          }
 			// 검색 결과 표출
-			var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-			$("#result").html("검색결과(지번주소) : "+lot+","+"\n"+"응답코드:"+lat+"(상세 코드 내역은 "+docs+"에서 확인)");
-			
-		}
+			 var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
+		         $("#result").html("위도 : "+resultlat+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		}
 	},
 	//요청 실패시 콘솔창에서 에러 내용을 확인할 수 있습니다.
 	error:function(request,status,error){
@@ -421,14 +446,14 @@ $.ajax({
 	}
 });
 }
-
 </script>
 
+
 	<input type= "text" id ="one" > 
-	<button onclick="start()">출발지</button><br>
+	<button onclick="fun()">출발지</button><br>
 	
 	<input type= "text" id ="two" > 
-	<button onclick="end()">도착지</button><br>
+	<button onclick="fun1()">도착지</button><br>
 	
 
 
