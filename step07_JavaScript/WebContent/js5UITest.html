@@ -2,25 +2,24 @@
 <html>
 <head>
 <title>js5UITest.html</title>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 /*
-. : html tagì˜ class ì†ì„±
-# : "    " id ì†ì„±
-ì´ë¦„ : tag ëª…
-1. html tagì˜ ì†ì„±
-	class = "fa fa-facebook"
-2. class ì†ì„±
-	- cssë¡œ í™”ë©´ ì²˜ë¦¬ ì˜ë¯¸
-	- class ì†ì„±ê°’: fa fa-facebookë€?
-		faë¼ëŠ” ì„¤ì •ê³¼ fa-facebookë¼ëŠ” ì„¤ì •ì´ ë”°ë¡œ ìˆìœ¼ë‚˜ ë‘ê°€ì§€ ì„¤ì •ì´ í•˜ë‚˜ì˜ tagì— ë°˜ì˜í•˜ê² ë‹¤ëŠ” ì˜ë¯¸
-	.fa{...}
-	.fa-facebook{...}
-	
+. : html tagÀÇ classs ¼Ó¼º
+# : html tagÀÇ id ¼Ó¼º
+ÀÌ¸§ : tag¸í
 
-
+1. html tagÀÇ ¼Ó¼º
+	class="fa fa-facebook"
+2. class ¼Ó¼º
+	- css·Î È­¸é Ã³¸® ÀÇ¹Ì
+	- class ¼Ó¼º°ª : fa fa-facebook¶õ? fa¶ó´Â Å¬·¡½º ¼Ó¼ºÀ» ¹İ¿µÇÏ°í fa-facebook 
+		fa¶ó´Â ¼³Á¤°ú fa-facebook¶ó´Â ¼³Á¤ÀÌ µû·Î ÀÖÀ¸³ª
+		µÎ°¡Áö ¼³Á¤ÀÌ ÀÌ ÇÏ³ªÀÇ tag¿¡ ¹İ¿µÇÏ°Ú´Ù´Â ÀÇ¹Ì	
+		.fa{...}
+		.fa-facebook{...}	
 */
 
 .fa {
@@ -56,51 +55,133 @@
   color: white;
 }
 
-p {color: red;}
-p.ex1 {display: none;}
-p.ex2 {display: inline;}
-p.ex3 {display: block;}
-p.ex4 {display: inline-block;}
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
 
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+.fa-android {
+  background: #a4c639;
+  color: white;
+}
+
+.fa-dribbble {
+  background: #ea4c89;
+  color: white;
+}
+
+.fa-vimeo {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-tumblr {
+  background: #2c4762;
+  color: white;
+}
+
+.fa-vine {
+  background: #00b489;
+  color: white;
+}
+
+.fa-foursquare {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-stumbleupon {
+  background: #eb4924;
+  color: white;
+}
+
+.fa-flickr {
+  background: #f40083;
+  color: white;
+}
+
+.fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+.fa-soundcloud {
+  background: #ff5500;
+  color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.fa-rss {
+  background: #ff6600;
+  color: white;
+}
 </style>
 </head>
 <body>
 
+
 <h2>Style Social Media Buttons</h2>
 
+<div id="imgView"></div>
+<button onclick="iconView()">Å¬¸¯</button>
 
-<div id = "imgView"> </div>
-<button onclick="iconView()">Click</button>
-<button onclick="iconView1()">ì§€ìš°ê¸°</button>
-<button onclick="iconView2()">ì™€ì›…</button>
+<hr>
+
+<h2>ÀÌ¹Ì Á¸ÀçÇÏ´Â tagµéÀ» display ¼Ó¼ºÀ¸·Î view È­¸é Á¶ÀıÇØ º¸±â</h2>
+<div id="imgView2">
+   <a href="#" class="fa fa-facebook"></a>
+   <a href="#" class="fa fa-twitter"></a>
+   <a href="#" class="fa fa-google"></a>
+   <a href="#" class="fa fa-linkedin"></a>
+   <a href="#" class="fa fa-youtube"></a>
+</div>
+<button onclick="displayView('block')">È­¸é º¸ÀÌ±â</button>
+<button onclick="displayView('none')">È­¸é ¼û±â±â</button>
+
+<script type="text/javascript">
+   function displayView(v){
+      document.getElementById("imgView2").style.display=v;
+   }
+
+   function iconView(){
+      document.getElementById("imgView").innerHTML 
+      = '<a href="#" class="fa fa-facebook"></a>'
+      +'<a href="#" class="fa fa-twitter"></a>'
+      +'<a href="#" class="fa fa-google"></a>'
+      +'<a href="#" class="fa fa-linkedin"></a>'
+      +'<a href="#" class="fa fa-youtube"></a>';
+   }   
 
 
-<script type ="text/javascript">
-	function iconView(){
-		
-	}
-	function iconView1(){
-		document.getElementById("imgView").innerHTML
-		='<a href="#" class="fa fa-facebook"></a>'
-		+'<a href="#" class="fa fa-twitter"></a><a href="#" class="fa fa-google"></a><a href="#" class="fa fa-linkedin"></a><a href="#" class="fa fa-youtube"></a>'
-	}
-	function iconView2(){
-		document.getElementById("imgView").innerHTML
-		='<a href="#" class="fa fa-facebook"></a>'
-		+'<a href="#" class="fa fa-twitter"></a><a href="#" class="fa fa-google"></a><a href="#" class="fa fa-linkedin"></a><a href="#" class="fa fa-youtube"></a>'
-	}
 
+
+	
+	
 </script>
-
-
-<div>
-<p class="ex1">HELLO WORLD!</p> 
-<button onclick="ex1">Click</button>
-</div>
-
-<div>
-<p class="ex2">HELLO WORLD!</p> 
-</div>
-      
 </body>
-</html>
+</html> 

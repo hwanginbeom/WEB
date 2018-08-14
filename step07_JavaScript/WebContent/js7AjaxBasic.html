@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>js7AjaxBasic.html</title>
+</head>
+<body>
+	* 버튼 클릭하면 두명 친구의 정보가 화면에 출력<br>
+	
+	step01 : 동기 요청<br>
+	<button onclick="location.href='js7AjaxRes.jsp'">501반의 God은 누구일까요</button>
+	
+	
+	
+	<br><hr><br>
+	
+	step02 : 비동기 요청
+	2-1. 응답완료에 대한 체크<br>
+	2-2. 응답 완료가 success? 404? 500? 여부 확인<br>
+	2-3. 응답 완료인 경우에만 응답된 데이터를 적절하게 가공<br>
+	2-4. 암기 : xhr(XMLHttpRequest)의 속성중 200번(정상응답), 4(응답완료)번 중요
+	<br>
+	
+	<button onclick="loadDoc()">비동기 요청</button> 
+	<div id="dataView"></div>
+
+	<br><hr><br>
+	step03 - 배열 형태로 응답된 문자열 데이터를 java script object로 변환해서 사용하기<br>
+	<button onclick="loadDoc2()">비동기 요청</button>
+	<div id="dataView2"></div>
+	
+
+	<script type="text/javascript">
+	
+		function loadDoc2() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var data = this.responseText;
+					data = eval(data); // 포멧이 배열 구조의 문자열인 구조에 한해서만 문자열을 배열 객체로 변환
+					//data = JSON.parse(data); //배열도 변환 가능
+					document.getElementById("dataView2").innerText = data[1][2];
+				}
+			};
+			xhttp.open("GET", "js7AjaxResArray.jsp", true);
+			xhttp.send();
+		}
+
+		//비동기는 화면 전환없이 요청, 응답이 이 코드 상에서 다 진행
+
+		function loadDoc() {
+			//비동기 요청 객체 생성
+			var xhttp = new XMLHttpRequest();
+
+			//정상 응답 완료인 시점에 자동 실행
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var data = this.responseText;
+					data = JSON.parse(data);
+					document.getElementById("dataView").innerText = data.employees[1].firstName
+							+ " " + data.employees[1].lastName;
+				}
+			};
+			//요청 방식 설정, 서버의 어떤 servlet or jsp인지 지정하는 부분, true(비동기 요청 의미)
+			xhttp.open("GET", "js7AjaxRes.jsp", true);
+			xhttp.send();
+		}
+	</script>
+
+
+</body>
+</html>

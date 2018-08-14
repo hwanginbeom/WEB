@@ -29,6 +29,8 @@ C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\19511961
 \forestRoad_web\src
 C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2259477217.index
 \step01_basic\src
+C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1947424758.index
+\step07_JavaScript\src
 C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4285880931.index
 \movie_project\src
 C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3824430771.index

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+
+	<!--  외부 js 파일 include -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- html에 js 코드 개발 -->
+    
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      //사용자 정의 함수를 body tag가 화면에 보여질때(로딩) 자동 호출하는 문법
+      function drawChart(v) {
+        var data = google.visualization.arrayToDataTable(v);
+
+        var options = {
+          title: 'My Daily Activities',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+      
+      //버튼이 클릭되면 요청해서 응답 받은 데이터를 그래프 그리는 함수에 반영
+      function ajaxFun(){
+    	  
+    	  var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var data = this.responseText;
+					data = eval(data); // 포멧이 배열 구조의 문자열인 구조에 한해서만 문자열을 배열 객체로 변환
+					//data = JSON.parse(data); //배열도 변환 가능
+					drawChart(data);
+				}
+			};
+			xhttp.open("GET", "js8ChartRes.jsp", true);
+			xhttp.send();
+		}
+      
+    </script>
+  </head>
+  <body>
+    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+    
+    <button onclick='ajaxFun()'>차트 보기</button>
+  </body>
+</html>
