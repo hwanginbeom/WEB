@@ -90,9 +90,10 @@ $.ajax({
 		var matchFlag, newMatchFlag;
 	  	//검색 결과 주소를 담을 변수
 	  	var address = '', newAddress = '';
-	  	var resultlat ='' ,resultlon=''; 
+	  	var resultlat_s ='' ,resultlon_s=''; 
 	  	var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 	  	var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
+	  	
 		//새주소일 때 검색 결과 표출
 		//새주소인 경우 newMatchFlag가 응닶값으로 온다
 		if($intRate[0].getElementsByTagName("newMatchFlag").length>0){
@@ -155,14 +156,14 @@ $.ajax({
 				newAddress += newBuildingDong+"\n";
 			}
 			if($intRate[0].getElementsByTagName("newLat").length>0){
-	             resultlat +=$intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlat_s +=$intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			if($intRate[0].getElementsByTagName("newLon").length>0){
-	             resultlon +=$intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlon_s +=$intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			// 검색 결과 표출
 			 var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-		         $("#result").html("위도 : "+resultlat+" 경도 : " +resultlon+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
+		         $("#result").html("위도 : "+resultlat_s+" 경도 : " +resultlon_s+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
 			 }
 		
 		//구주소일 때 검색 결과 표출
@@ -217,14 +218,14 @@ $.ajax({
 				address += buildingDong+"\n";
 			}
 			if($intRate[0].getElementsByTagName("lat").length>0){
-	             resultlat +=$intRate[0].getElementsByTagName("lat")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlat_s +=$intRate[0].getElementsByTagName("lat")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			if($intRate[0].getElementsByTagName("lon").length>0){
-	             resultlon +=$intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlon_s +=$intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			// 검색 결과 표출
 			 var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-		         $("#result").html("위도 : "+resultlat+" 경도 : " +resultlon+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
+		         $("#result").html("위도 : "+resultlat_s+" 경도 : " +resultlon_s+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
 			 }
 	},
 	//요청 실패시 콘솔창에서 에러 내용을 확인할 수 있습니다.
@@ -298,7 +299,7 @@ $.ajax({
 		var matchFlag, newMatchFlag;
 	  	//검색 결과 주소를 담을 변수
 	  	var address = '', newAddress = '';
-	  	var resultlat ='', resultlon ='';
+	  	var resultlat_e ='', resultlon_e ='';
 	  	var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 	  	var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 		//새주소일 때 검색 결과 표출
@@ -363,14 +364,14 @@ $.ajax({
 				newAddress += newBuildingDong+"\n";
 			}
 			if($intRate[0].getElementsByTagName("newLat").length>0){
-	             resultlat +=$intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlat_e +=$intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			if($intRate[0].getElementsByTagName("newLon").length>0){
-	             resultlon +=$intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlon_e +=$intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			// 검색 결과 표출
 			 var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-		         $("#result").html("위도 : "+resultlat+" 경도 : " +resultlon+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
+		         $("#result").html("위도 : "+resultlat_e+" 경도 : " +resultlon_e+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
 			 }
 		
 		//구주소일 때 검색 결과 표출
@@ -429,14 +430,15 @@ $.ajax({
 				address += buildingDong+"\n";
 			}
 			if($intRate[0].getElementsByTagName("lat").length>0){
-	             resultlat +=$intRate[0].getElementsByTagName("lat")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlat_e +=$intRate[0].getElementsByTagName("lat")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			if($intRate[0].getElementsByTagName("lon").length>0){
-	             resultlon +=$intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue+"\n" ;
+	             resultlon_e +=$intRate[0].getElementsByTagName("lon")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			// 검색 결과 표출
+			
 			 var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
-		         $("#result").html("위도 : "+resultlat+"경도 : " +resultlon+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
+		         $("#result").html("위도 : "+resultlat_e+"경도 : " +resultlon_e+"검색결과(새주소) : "+newAddress+","+"\n"+"응답코드:"+newMatchFlag+"(상세 코드 내역은 "+docs+"에서 확인)");		
 			 }
 	},
 	//요청 실패시 콘솔창에서 에러 내용을 확인할 수 있습니다.
