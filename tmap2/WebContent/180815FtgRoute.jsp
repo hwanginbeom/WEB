@@ -11,7 +11,12 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
 
+<script>
+var resultlon_s ='' , resultlet_s = '' , resultlon_e = '' , resultlet_e='';
+resultlon_s.__defineGetter__("resultlon_s",function(){return resultlon_s; });
+resultlon_s.__defineSetter__("resultlon_s",function(val){return resultlon_s=val; });
 
+</script>
 <p id="result"></p>	
 <script>	
 	// 1. 지도 띄우기
@@ -30,8 +35,10 @@ function fun() {
 	
 		//입력한 문자열을 읽어온다.
 		var start = document.getElementById("one").value
-		
-	
+		var resultlon_s = '';
+		var resultlet_s = '';
+		var resultlon_e = '';
+		var resultlet_e = '';
 // 2. API 사용요청
 $.ajax({
 	method:"GET",
@@ -90,7 +97,7 @@ $.ajax({
 		var matchFlag, newMatchFlag;
 	  	//검색 결과 주소를 담을 변수
 	  	var address = '', newAddress = '';
-	  	var resultlat_s ='' ,resultlon_s=''; 
+	  	resultlat_s ='' ,resultlon_s=''; 
 	  	var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 	  	var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 	  	
@@ -156,10 +163,10 @@ $.ajax({
 				newAddress += newBuildingDong+"\n";
 			}
 			if($intRate[0].getElementsByTagName("newLat").length>0){
-	             resultlat_s +=$intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue+"\n" ;
+	             this.resultlat_s +=$intRate[0].getElementsByTagName("newLat")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			if($intRate[0].getElementsByTagName("newLon").length>0){
-	             resultlon_s +=$intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue+"\n" ;
+	             this.resultlon_s +=$intRate[0].getElementsByTagName("newLon")[0].childNodes[0].nodeValue+"\n" ;
 	          }
 			// 검색 결과 표출
 			 var docs = "< a style='color:orange' href='#webservice/docs/fullTextGeocoding' >Docs< /a >"
@@ -299,7 +306,7 @@ $.ajax({
 		var matchFlag, newMatchFlag;
 	  	//검색 결과 주소를 담을 변수
 	  	var address = '', newAddress = '';
-	  	var resultlat_e ='', resultlon_e ='';
+	  	resultlat_e ='', resultlon_e ='';
 	  	var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 	  	var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 		//새주소일 때 검색 결과 표출
@@ -445,9 +452,99 @@ $.ajax({
 	error:function(request,status,error){
 		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	}
+	
 });
 }
 </script>
+
+<script> 
+function div_sh(dd) { 
+	 toastr.options = {
+             closeButton: true,
+             progressBar: true,
+             showMethod: 'slideDown',
+             timeOut: 4000
+         };
+         toastr.success('www.leafcats.com', 'Toastr success!');
+var headers = {}; 
+headers["appKey"]="ec633e08-ce42-48a8-9674-a3e09c7bea73";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
+var search = dd;
+$.ajax({
+	method:"POST",
+	headers : headers,
+	url:"https://api2.sktelecom.com/tmap/routes?version=1&format=xml",//자동차 경로안내 api 요청 url입니다.
+	async:false,
+	data:{
+		//출발지 위경도 좌표입니다.
+		startX : resultlon_s,
+		startY : resultlat_s,
+		//목적지 위경도 좌표입니다.
+		endX : resultlon_e,
+		endY : resultlat_e,
+		//출발지, 경유지, 목적지 좌표계 유형을 지정합니다.
+		reqCoordType : "WGS84GEO",
+		resCoordType : "EPSG3857",
+		//각도입니다.
+		angle : "172",
+		//경로 탐색 옵션 입니다.
+		searchOption : search
+	},
+	//데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
+	success:function(response){
+		prtcl = response;
+		
+		// 결과 출력
+		var innerHtml ="";
+		var prtclString = new XMLSerializer().serializeToString(prtcl);//xml to String	
+	    xmlDoc = $.parseXML( prtclString ),
+	    $xml = $( xmlDoc ),
+ 	$intRate = $xml.find("Document");
+ 	
+ 	var tDistance = "총 거리 : "+($intRate[0].getElementsByTagName("tmap:totalDistance")[0].childNodes[0].nodeValue/1000).toFixed(1)+"km,";
+ 	var tTime = " 총 시간 : "+($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue/60).toFixed(0)+"분,";	
+ 	var tFare = " 총 요금 : "+$intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원,";	
+ 	var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
+ 	
+ 	$("#result").text(tDistance+tTime+tFare+taxiFare+", "+search+ "번 경로 입니다.");
+		
+		prtcl=new Tmap.Format.KML({extractStyles:true, extractAttributes:true}).read(prtcl);//데이터(prtcl)를 읽고, 벡터 도형(feature) 목록을 리턴합니다.
+		
+		routeLayer.removeAllFeatures();//레이어의 모든 도형을 지웁니다.
+		
+		//표준 데이터 포맷인 KML을 Read/Write 하는 클래스 입니다.
+		//벡터 도형(Feature)이 추가되기 직전에 이벤트가 발생합니다.
+		routeLayer.events.register("beforefeatureadded", routeLayer, onBeforeFeatureAdded);
+		        function onBeforeFeatureAdded(e) {
+			        	var style = {};
+			        	switch (e.feature.attributes.styleUrl) {
+			        	case "#pointStyle":
+				        	style.externalGraphic = "http://topopen.tmap.co.kr/imgs/point.png"; //렌더링 포인트에 사용될 외부 이미지 파일의 url입니다.
+				        	style.graphicHeight = 16; //외부 이미지 파일의 크기 설정을 위한 픽셀 높이입니다.
+				        	style.graphicOpacity = 1; //외부 이미지 파일의 투명도 (0-1)입니다.
+				        	style.graphicWidth = 16; //외부 이미지 파일의 크기 설정을 위한 픽셀 폭입니다.
+			        	break;
+			        	default:
+				        	style.strokeColor = "#ff0000";//stroke에 적용될 16진수 color
+				        	style.strokeOpacity = "1";//stroke의 투명도(0~1)
+				        	style.strokeWidth = "5";//stroke의 넓이(pixel 단위)
+			        	};
+		        	e.feature.style = style;
+		        }
+		
+		routeLayer.addFeatures(prtcl); //레이어에 도형을 등록합니다.
+		
+		map.zoomToExtent(routeLayer.getDataExtent());//map의 zoom을 routeLayer의 영역에 맞게 변경합니다.	
+	},
+	//요청 실패시 콘솔창에서 에러 내용을 확인할 수 있습니다.
+	error:function(request,status,error){
+		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	}
+});
+} 
+ 
+</script> 
+
+
 
 
 	<input type= "text" id ="one" > 
@@ -457,7 +554,13 @@ $.ajax({
 	<button onclick="fun1()">도착지</button><br>
 	
 
-
+<input type="radio" name="ww" value="0" onclick="div_sh(0);">1번 경로 지도 
+&nbsp;<input type="radio" name="ww" value="1" onclick="div_sh(1);">2번 경로 지도 
+&nbsp;<input type="radio" name="ww" value="2" onclick="div_sh(2);">3번 경로 지도
+&nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(3);">4번 경로 지도
+&nbsp;<input type="radio" name="ww" value="4" onclick="div_sh(4);">5번 경로 지도
+&nbsp;<input type="radio" name="ww" value="10" onclick="div_sh(10);">6번 경로 지도<br> 
+&nbsp;<input type="radio" name="ww" value="12" onclick="div_sh(12);">6번 경로 지도<br> 
 
 </body>
 </html>
