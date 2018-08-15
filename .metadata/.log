@@ -4345,3 +4345,15 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/step04_CP/buil
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
 !SUBENTRY 1 org.eclipse.core.resources 4 369 2018-08-15 16:31:53.895
 !MESSAGE Resource '/step04_CP/build/classes/model/domain/customerDTO.class' is not local.
+
+!ENTRY org.eclipse.jface.text 2 0 2018-08-15 16:47:15.371
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-08-15 16:47:15.463
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-08-15 17:11:46.036
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-08-15 17:11:46.041
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
