@@ -519,36 +519,28 @@ $.ajax({
 	var tTime = " 총 시간 : "+($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue/60).toFixed(0)+"분,";	
 	var tFare = " 총 요금 : "+$intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원,";	
 	var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
-	
+	var roadName='';
 	//list 선언문
-	var List = function(){
-	    this.dataStore = [];
-	    this.pos = 0;
-	    this.listSize = 0;
-	}
+	var List = [];
 
 	//i의 갯수를 1000으로하고 값이 null이 나오면 종료되게 한다. 
-	for (var a=0 ; a <1000 ;a++ ){
-		 roadName = " 도로 이름2 : "+$intRate2[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+	for (let a=0 ; a <1000 ;a++ ){
+		 roadName =$intRate2[a].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+			document.write(roadName);
+
 		if(roadName==null){
 			break;
 		}
 		//값 넣기
-		List.prototype.append = function(roadName){
-		     this.dataStore[this.listSize] = element;
-		     this.listSize++;
-		}
+		List.push(roadName);
+		
 	}
 		//값 찾기 
-		List.prototype.find = function(element){
-		      for(var i=0; i<this.listSize; i++){
-		          if(this.dataStore[i] === element){
-		        	  document.write(i);
-		                return i;
-		          }
-		      }
-		      return -1;
-		};
+		List.forEach(function(item){
+			console.log(item);
+			document.write(item);
+		})
+		
 		
 	
 	$("#result").text(tDistance+tTime+tFare+taxiFare+", "+search+ "번 경로 입니다.");

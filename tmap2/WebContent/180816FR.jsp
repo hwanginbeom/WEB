@@ -519,7 +519,7 @@ $.ajax({
 	var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
 	
 	
-	var roadName = " 도로 이름 : "+$intRate2[0].getElementsByTagName("tmap:nextRoadName")[0].childNodes[0].nodeValue;
+	var roadName = " 도로 이름 : "+$intRate2[0].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 	//var nextname= "다음 도로 :" + $intRate[0].getElementsByTagName("tmap:nextroadname")[0].childNodes[0].nodeValue+"원,";
 	var roadName2 = " 도로 이름2 : "+$intRate2[8].getElementsByTagName("name")[0].childNodes[0].nodeValue;
 	var roadName3 = " 도로 이름3 : "+$intRate2[7].getElementsByTagName("name")[0].childNodes[0].nodeValue;
