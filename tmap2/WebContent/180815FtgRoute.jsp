@@ -11,12 +11,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
 
-<script>
-var resultlon_s ='' , resultlet_s = '' , resultlon_e = '' , resultlet_e='';
-resultlon_s.__defineGetter__("resultlon_s",function(){return resultlon_s; });
-resultlon_s.__defineSetter__("resultlon_s",function(val){return resultlon_s=val; });
 
-</script>
 <p id="result"></p>	
 <script>	
 	// 1. 지도 띄우기
@@ -37,8 +32,6 @@ function fun() {
 		var start = document.getElementById("one").value
 		var resultlon_s = '';
 		var resultlet_s = '';
-		var resultlon_e = '';
-		var resultlet_e = '';
 // 2. API 사용요청
 $.ajax({
 	method:"GET",
@@ -97,7 +90,7 @@ $.ajax({
 		var matchFlag, newMatchFlag;
 	  	//검색 결과 주소를 담을 변수
 	  	var address = '', newAddress = '';
-	  	resultlat_s ='' ,resultlon_s=''; 
+	  	window.resultlat_s ='' ,window.resultlon_s=''; 
 	  	var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 	  	var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 	  	
@@ -245,11 +238,12 @@ $.ajax({
 
 <script>
 function fun1() {
-	
+	var resultlon_e = '';
+	var resultlet_e = '';
 		//입력한 문자열을 읽어온다.
 		var start = document.getElementById("two").value
-		
-	
+
+
 // 2. API 사용요청
 $.ajax({
 	method:"GET",
@@ -306,7 +300,7 @@ $.ajax({
 		var matchFlag, newMatchFlag;
 	  	//검색 결과 주소를 담을 변수
 	  	var address = '', newAddress = '';
-	  	resultlat_e ='', resultlon_e ='';
+	  	window.resultlat_e ='', window.resultlon_e ='';
 	  	var city, gu_gun, eup_myun, legalDong, adminDong, ri, bunji;
 	  	var buildingName, buildingDong, newRoadName, newBuildingIndex, newBuildingName, newBuildingDong;
 		//새주소일 때 검색 결과 표출
@@ -476,11 +470,11 @@ $.ajax({
 	async:false,
 	data:{
 		//출발지 위경도 좌표입니다.
-		startX : resultlon_s,
-		startY : resultlat_s,
+		startX : window.resultlon_s,
+		startY : window.resultlat_s,
 		//목적지 위경도 좌표입니다.
-		endX : resultlon_e,
-		endY : resultlat_e,
+		endX : window.resultlon_e,
+		endY : window.resultlat_e,
 		//출발지, 경유지, 목적지 좌표계 유형을 지정합니다.
 		reqCoordType : "WGS84GEO",
 		resCoordType : "EPSG3857",
