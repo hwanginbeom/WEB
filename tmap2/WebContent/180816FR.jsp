@@ -511,13 +511,26 @@ $.ajax({
 	    xmlDoc = $.parseXML( prtclString ),
 	    $xml = $( xmlDoc ),
 	$intRate = $xml.find("Document");
+	$intRate2 = $xml.find("Placemark");
 	
 	var tDistance = "총 거리 : "+($intRate[0].getElementsByTagName("tmap:totalDistance")[0].childNodes[0].nodeValue/1000).toFixed(1)+"km,";
 	var tTime = " 총 시간 : "+($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue/60).toFixed(0)+"분,";	
 	var tFare = " 총 요금 : "+$intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원,";	
-	var nextname= "다음 도로 :" + $intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원,";
 	var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
-	$("#result").text(tDistance+tTime+tFare+taxiFare+", "+search+ "번 경로 입니다.");
+	var roadName2 = " 도로 이름2 : "+$intRate2[8].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+	var roadName3 = " 도로 이름3 : "+$intRate2[7].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+	var roadName4 = " 도로 이름4 : "+$intRate2[6].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+	var roadName5 = " 도로 이름5 : "+$intRate2[5].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+	var List = function(){
+	    this.dataStore = [];
+	    this.pos = 0;
+	    this.listSize = 0;
+	}
+	
+	for (var i ; i <1000 ;i++ ){
+
+	}
+	$("#result").text(tDistance+tTime+tFare+taxiFare+", "+search+ "번 경로 입니다."+roadName+" "+roadName2+" 1"+roadName3+"2 "+roadName4+" 3"+roadName5);
 		
 	prtcl=new Tmap.Format.KML({extractStyles:true, extractAttributes:true}).read(prtcl);//데이터(prtcl)를 읽고, 벡터 도형(feature) 목록을 리턴합니다.
 	
