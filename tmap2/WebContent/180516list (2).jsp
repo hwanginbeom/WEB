@@ -526,7 +526,7 @@ $.ajax({
 	//i의 갯수를 1000으로하고 값이 null이 나오면 종료되게 한다. 
 	for (let a=0 ; a <1000 ;a++ ){
 		 roadName =$intRate2[a].getElementsByTagName("name")[0].childNodes[0].nodeValue+",";
-	//		document.write(roadName);
+			document.write(roadName);
 
 		if(roadName==null){
 			break;
@@ -537,8 +537,8 @@ $.ajax({
 	}
 		//값 찾기 
 		List.forEach(function(item){
-	//		console.log(item);
-		//	document.write(item);
+			console.log(item);
+			document.write(item);
 		})
 		
 		
