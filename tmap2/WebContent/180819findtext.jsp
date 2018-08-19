@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,13 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="map_div" ></div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
+	<div id="map_div"></div>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript"
+		src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
 
 
-<p id="result"></p>	
-<script>	
+	<p id="result"></p>
+	<script>	
 	// 1. 지도 띄우기
 	// map 생성
 	// Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
@@ -40,13 +42,13 @@ markerLayer.addMarker(marker_e);//마커 레이어에 마커 추가
 </script>
 
 
-<script>
+	<script>
 var resultlon_s2  ;
 var resultlat_s2  ;
 var resultlon_e2 ;
 var resultlat_e2 ;
 </script>
-<script>
+	<script>
 function fun() {
 	
 	//입력한 문자열을 읽어온다.
@@ -521,6 +523,7 @@ $.ajax({
 	
 	var roadName='';
 	var roadName2='';
+	var roadNum=0;
 	//list 선언문
 	var List = [];
 	var List2 = [];
@@ -548,14 +551,15 @@ $.ajax({
 	for(var a in List) {
 		
 		   if(List[a].indexOf("로") > -1)
-	            List2.push(List[a])				 	
+	            List2.push(List[a]);	
 	}	
 		
-for(var a in List2) {
+	for(var a in List2) {
+		roadNum++;
 	
-	document.write(List2[a]+" ");
+		document.write(roadNum+List2[a]+" ");
 			 	
-}	
+	}	
 
 	
 	
@@ -603,20 +607,31 @@ error:function(request,status,error){
 
 
 
-	<input type= "text" id ="one" > 
-	<button onclick="fun()">출발지</button><br>
-	
-	<input type= "text" id ="two" > 
-	<button onclick="fun1()">도착지</button><br>
-	
+	<input type="text" id="one">
+	<button onclick="fun()">출발지</button>
+	<br>
 
-<input type="radio" name="ww" value="0" onclick="div_sh(0);">1번 경로 지도 
-&nbsp;<input type="radio" name="ww" value="1" onclick="div_sh(1);">2번 경로 지도 
-&nbsp;<input type="radio" name="ww" value="2" onclick="div_sh(2);">3번 경로 지도
-&nbsp;<input type="radio" name="ww" value="3" onclick="div_sh(3);">4번 경로 지도
-&nbsp;<input type="radio" name="ww" value="4" onclick="div_sh(4);">5번 경로 지도
-&nbsp;<input type="radio" name="ww" value="10" onclick="div_sh(10);">6번 경로 지도<br> 
-&nbsp;<input type="radio" name="ww" value="12" onclick="div_sh(12);">6번 경로 지도<br> 
+	<input type="text" id="two">
+	<button onclick="fun1()">도착지</button>
+	<br>
+
+
+	<input type="radio" name="ww" value="0" onclick="div_sh(0);">1번
+	경로 지도 &nbsp;
+	<input type="radio" name="ww" value="1" onclick="div_sh(1);">2번
+	경로 지도 &nbsp;
+	<input type="radio" name="ww" value="2" onclick="div_sh(2);">3번
+	경로 지도 &nbsp;
+	<input type="radio" name="ww" value="3" onclick="div_sh(3);">4번
+	경로 지도 &nbsp;
+	<input type="radio" name="ww" value="4" onclick="div_sh(4);">5번
+	경로 지도 &nbsp;
+	<input type="radio" name="ww" value="10" onclick="div_sh(10);">6번
+	경로 지도
+	<br> &nbsp;
+	<input type="radio" name="ww" value="12" onclick="div_sh(12);">6번
+	경로 지도
+	<br>
 
 </body>
 </html>
