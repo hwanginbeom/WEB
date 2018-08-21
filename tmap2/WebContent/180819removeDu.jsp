@@ -555,15 +555,42 @@ $.ajax({
 	}	
 		
 
-	for(var a in List2) {
+//	for(var a in List2) {
+	//	roadNum++;
+	
+		//document.write(roadNum+List2[a]+" ");
+			 	
+//	}	
+	  
+	        var tempArr = [];
+	        for (var i = 0; i < List2.length; i++) {
+	            if (tempArr.length == 0) {
+	                tempArr.push(List2[i]);
+	            } else {
+	                var duplicatesFlag = true;
+	                for (var j = 0; j < tempArr.length; j++) {
+	                    if (tempArr[j] == List2[i]) {
+	                        duplicatesFlag = false;
+	                        break;
+	                    }
+	                }
+	                if (duplicatesFlag) {
+	                    tempArr.push(List2[i]);
+	                }
+	            }
+
+	        }
+	    
+	
+
+	
+	for(var a in tempArr) {
 		roadNum++;
 	
-		document.write(roadNum+List2[a]+" ");
+		document.write(roadNum+tempArr[a]+" ");
 			 	
 	}	
-	  
-	
-	
+
 
 	
 	

@@ -155,6 +155,9 @@
 </Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step07_JavaScript" path="/step07_JavaScript" reloadable="true" source="org.eclipse.jst.jee.server:step07_JavaScript"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step04_CP" path="/step04_CP" reloadable="true" source="org.eclipse.jst.jee.server:step04_CP">
 	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="TIGER" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1523:xe" username="SCOTT"/>
 
+</Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Security_Navigation_Web" path="/Security_Navigation_Web" reloadable="true" source="org.eclipse.jst.jee.server:Security_Navigation_Web">
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="30" maxWaitMillis="-1" name="jdbc/myoracle" password="ldh1228" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="RoadManager"/>
+
 </Context></Host>
     </Engine>
   </Service>
