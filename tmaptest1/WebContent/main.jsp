@@ -888,6 +888,8 @@ $.ajax({
        return result;
    }
    
+   
+   
   
 
    var roName;
@@ -911,10 +913,13 @@ $.ajax({
        }
        
    }
+
+
    
  	//중복값 제거
    var uniqList = uniqArr(List);
  	//alert(uniqList);
+ 	
  	
  	//값 찾기 
    for(var a in uniqList) {
@@ -964,6 +969,7 @@ error:function(request,status,error){
 } 
 
 </script>
+
 
  <div class="button-holder">
 <input type="radio" checked="" class="regular-radio" name="ww" id="radio-1-set" value="0" onclick="div_sh(0);"><label for="radio-1-set">1번경로지도</label><br>
