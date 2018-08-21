@@ -158,7 +158,7 @@
 </Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Security_Navigation_Web" path="/Security_Navigation_Web" reloadable="true" source="org.eclipse.jst.jee.server:Security_Navigation_Web">
 	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="30" maxWaitMillis="-1" name="jdbc/myoracle" password="ldh1228" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="RoadManager"/>
 
-</Context></Host>
+</Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\tmaptest1" path="/tmaptest1" reloadable="true" source="org.eclipse.jst.jee.server:tmaptest1"/></Host>
     </Engine>
   </Service>
 </Server>
