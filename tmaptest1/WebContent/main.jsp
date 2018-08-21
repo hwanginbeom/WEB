@@ -317,15 +317,26 @@ label {
 				<button onclick="fun1()">도착지</button>
 				<br>
 			</div>
-			
-  </div>
-  
-<div id="map_div" class=" w3-padding w3-col " style="max-width:1200px" width="680" height="550"; >
+			<form action="cont" method="GET">
+				<div class="w3-col m3">
+					<label><i class="fa fa-search"></i> Search</label>
+
+					<div class="w3-col m2">
+						<input type="hidden"  name="namestring" value="">
+						<input type="hidden" name="command" value="avgRoute">
+					</div>
+					<button type="submit" class="w3-button w3-block w3-black">Search</button>
+				</div>
+			</form>
+
+		</div>
+
+<div id="map_div" class=" w3-padding w3-col" style="max-width:1200px" width="680" height="550"; >
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b"></script>
 
 
-<p id="result"></p>   
+<p id="result">   
 <script>   
    // 1. 지도 띄우기
    // map 생성
@@ -351,6 +362,7 @@ var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap
 var marker_e = new Tmap.Marker(new Tmap.LonLat(resultlon_e2.toString(), resultlat_e2.toString()).transform("EPSG:4326", "EPSG:3857"), icon);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
 markerLayer.addMarker(marker_e);//마커 레이어에 마커 추가
 </script>
+</p>
 </div>
 
 <script>
@@ -888,8 +900,6 @@ $.ajax({
        return result;
    }
    
-   
-   
   
 
    var roName;
@@ -913,14 +923,20 @@ $.ajax({
        }
        
    }
-
-
    
  	//중복값 제거
    var uniqList = uniqArr(List);
  	//alert(uniqList);
- 	
- 	
+ 	var namestring="";
+ 	for(var i=0;i<uniqList.length;i++){
+ 		namestring+=uniqList[i];
+ 		if(i<uniqList.length-1){
+ 			namestring+="q";
+ 		}
+ 	}
+ 	console.log(namestring);
+ 	//값 넣기
+ 	$('input[name=namestring]').attr('value',namestring);
  	//값 찾기 
    for(var a in uniqList) {
        console.log(uniqList[a]+" ");
@@ -969,7 +985,6 @@ error:function(request,status,error){
 } 
 
 </script>
-
 
  <div class="button-holder">
 <input type="radio" checked="" class="regular-radio" name="ww" id="radio-1-set" value="0" onclick="div_sh(0);"><label for="radio-1-set">1번경로지도</label><br>

@@ -6359,3 +6359,29 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.jface.text 2 0 2018-08-21 16:30:12.758
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-08-21 18:22:58.702
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-08-21 18:22:58.752
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:55:25.119
+!MESSAGE Could not publish server configuration for Tomcat v8.5 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:55:25.119
+!MESSAGE Multiple Contexts have a path of "/tmaptest1".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:55:25.192
+!MESSAGE Could not publish server configuration for Tomcat v8.5 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:55:25.193
+!MESSAGE Multiple Contexts have a path of "/tmaptest1".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:55:25.301
+!MESSAGE Could not publish server configuration for Tomcat v8.5 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:55:25.301
+!MESSAGE Multiple Contexts have a path of "/tmaptest1".
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:56:34.800
+!MESSAGE Could not publish server configuration for Tomcat v8.5 Server at localhost.
+!SUBENTRY 1 org.eclipse.jst.server.tomcat.core 4 0 2018-08-21 18:56:34.800
+!MESSAGE Multiple Contexts have a path of "/tmaptest1".
