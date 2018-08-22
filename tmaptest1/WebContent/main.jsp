@@ -242,7 +242,7 @@ label {
 
 <div class="w3-bar w3-white w3-large">
   <a href="#" class="w3-bar-item w3-button w3-black w3-mobile"><i class="fa fa-map w3-margin-right"></i>HOME</a>
-  <a href="#rooms" class="w3-bar-item w3-button w3-mobile">SEARCH</a>
+  <a href="#rooms" id="searchsection" class="w3-bar-item w3-button w3-mobile">SEARCH</a>
        <a class ="w3-bar-item w3-button" onclick="document.getElementById('id02').style.display='block'" >SIGNUP</a>
       <a class ="w3-bar-item w3-button" onclick="document.getElementById('id01').style.display='block'" >LOGIN</a>
   <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">SEARCH NOW</a>
@@ -274,33 +274,35 @@ label {
     <p>We always search the safety route where you are.</p>
   </div>
   
+  <!-- 고정시키는 부분 -->
   <div class="w3-row-padding">
 			<div class="w3-col m3">
-				<label><i class="fa fa-cal"></i> 출발</label>
-				<c:if test="${empty requestScope.Start }">
-					<input class="w3-input w3-border" type="text" id="one"
-						placeholder="출발지">
-				</c:if>
-				<c:if test="${not empty requestScope.Start }">
-					<input class="w3-input w3-border" type="text" id="one"
-						value="${requestScope.Start }">
-				</c:if>
-			</div>
-			<div class="w3-col m1 ">
-				<button class="btn btn-dark btn-lg" onclick="fun()">출발지</button>
-				<br>
-			</div>
-			<div class="w3-col m3">
-				<label><i class="fa fa-calendar-o"></i> 도착</label>
-				<c:if test="${empty requestScope.End }">
-					<input class="w3-input w3-border" type="text" id="two"
-						placeholder="도착지">
-				</c:if>
-				<c:if test="${not empty requestScope.End }">
-					<input class="w3-input w3-border" type="text" id="two"
-						value="${requestScope.End }">
-				</c:if>
-			</div>
+            <label><i class="fa fa-cal"></i> 출발</label>
+            <c:if test="${empty requestScope.Start }">
+               <input class="w3-input w3-border" type="text" id="one"
+                  placeholder="출발지">
+            </c:if>
+            <c:if test="${not empty requestScope.Start }">
+               <input class="w3-input w3-border" type="text" id="one"
+                  value="${requestScope.Start }">
+            </c:if>
+         </div>
+         <div class="w3-col m1 ">
+            <button class="btn btn-dark btn-lg" onclick="fun()">출발지</button>
+            <br>
+         </div>
+         <div class="w3-col m3">
+            <label><i class="fa fa-calendar-o"></i> 도착</label>
+            <c:if test="${empty requestScope.End }">
+               <input class="w3-input w3-border" type="text" id="two"
+                  placeholder="도착지">
+            </c:if>
+            <c:if test="${not empty requestScope.End }">
+               <input class="w3-input w3-border" type="text" id="two"
+                  value="${requestScope.End }">
+            </c:if>
+         </div>
+         
 			<div class="w3-col m1 ">
 				<button class="btn btn-dark btn-lg" onclick="fun1()">도착지</button>
 				<br>
@@ -1473,16 +1475,19 @@ error:function(request,status,error){
 
 
 </script>
+
+<!--고정시키는 부분  -->
 <c:if test="${not empty requestScope.SearchOption }">
 <script>
 
 (function(){
-	div_sh(${requestScope.SearchOption});
-	})()
-
+   div_sh(${requestScope.SearchOption});
+   })()
+document.getElementById("searchsection").click();
 </script>
-</c:if>
-		<div class="w3-bar w3-large">
+</c:if>		
+
+<div class="w3-bar w3-large">
       <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><h4>Search Option</h4></a>
 		</div>
 		<div class="w3-row-padding w3-col w3-margin-top">
@@ -1612,8 +1617,8 @@ setInterval(randomValue, 2000);
 
 // set random value
 function randomValue() {
-  var value = ${requestScope.RiskGrade};
-  value=value*25;
+  var value = ${requestScope.RiskRatio};
+  value=(value/16)*100;
   chart2.arrows[0].setValue(value);
   chart2.axes[0].setTopText(value+" %");
   // adjust darker band to new value
@@ -1631,97 +1636,140 @@ function randomValue() {
       <div class="tab">
       
        <button class="tablink" onclick="openPage('RouteInfo', this, 'red')">해당 경로 데이터</button>
-<button class="tablink" onclick="openPage('RiskPercent', this, 'green')" id="defaultOpen">평균 위험 등급</button>
+<button class="tablink" onclick="openPage('RiskPercent', this, 'green')" id="defaultOpen">평균 위험도</button>
 <button class="tablink" onclick="openPage('AccidentInfo', this, 'blue')">사고 평균 데이터</button>
 <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
          
       </div>
       </div>
       
-			<div class="w3-margin-left w3-center">
-				<div id="RouteInfo" class="tabcontent">
-				
-				  		<img class="w3-image" src="img/kiss.png" alt="The main" style="width:20% ;height:20%">
-				
-				
-				
-				
-					<p id="msg">${requestScope.msg }</p>
-					<p id="SearchOption">
-					
-					<h4>경로 유형</h4>${requestScope.SearchOption }</p>
-					<p id="RiskRatio">
-					
-					<h4>도로별 평균 위험도</h4>${requestScope.RiskRatio }</p>
-					<p id="RiskGrade">
-					
-					<h4>도로별 평균 위험 등급</h4>${requestScope.RiskGrade }</p>
-					<p id="AccidentNum">
-					
-					<h4>도로별 평균 사고건수</h4>${requestScope.AccidentNum }</p>
-					<p id="DeadNum">
-					
-					<h4>도로별 평균 사망자 수</h4>${requestScope.DeadNum }</p>
-					<p id="CriticalNum">
-					
-					<h4>도로별 평균 중상자 수</h4>${requestScope.CriticalNum }</p>
-					<p id="StableNum">
-					
-					<h4>도로별 평균 경상자 수</h4>${requestScope.StableNum }</p>
-					<p id="ClaimantNum">
-					
-					<h4>도로별 평균 부상신고자 수</h4>${requestScope.ClaimantNum }</p>
-					<p id="Start">
-					
-					<h4>출발지</h4>${requestScope.Start }</p>
-					<p id="End">
-					
-					<h4>목적지</h4>${requestScope.End }</p>
-					<p id="StartLat">
-					
-					<h4>출발지 위도</h4>${requestScope.StartLat }</p>
-					<p id="StartLng">
-					
-					<h4>출발지 경도</h4>${requestScope.StartLng }</p>
-					<p id="EndLat">
-					
-					<h4>목적지 위도</h4>${requestScope.EndLat }</p>
-					<p id="EndLng">
-					
-					<h4>목적지 경도</h4>${requestScope.EndLng }</p>
-					<p id="TDistance">
-					
-					<h4>총 거리</h4>${requestScope.TDistance  }</p>
-					<p id="TTime">
-					
-					<h4>총 시간</h4>${requestScope.TTime  }</p>
-					<p id="TFare">
-					
-					<h4>통행 비용</h4>${requestScope.TFare }</p>
-					<p id="TaxiFare">
-					
-					<h4>예상 택시 요금</h4>${requestScope.TaxiFare  }</p>
-						<p id="totalnamestring">
-					
-					<h4>총 도로</h4>${requestScope.totalnamestring  }</p>
+		<div class="w3-margin-left w3-center">
+         <div id="RouteInfo" class="tabcontent" style="background-color:#C4E0F3">
+               <div class="w3-bar w3-white w3-large">
+               <h4>${requestScope.Start }...${requestScope.End }</h4>
+               </div>
+               <div class="w3-row-padding" >
+                  <div class="w3-quarter" style="position: relative; bottom: 16px">
+                     <h4>선택 경로 : ${requestScope.SearchOption }</h4>
+                     &nbsp;&nbsp;&nbsp;
+                     <h5><%@ page import="java.util.*, java.text.*"%>
+                        <%
+                           java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
+                              String time = formatter.format(new java.util.Date());
+                              out.println("현재 시간 : " + time);
+                        %>
+                     </h5>
+                     <br>
+                     <h1>
+                        <font color="green">${requestScope.TTime } 분</font>
+                     </h1>
+                  </div>
+                  <div class="w3-quarter">
+               <c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
+                  <c:choose>
+                     <c:when test= "${RiskRatio_icon <= 3.0}">
+                        <img class="w3-image" src="img/kiss.png" alt="The main"
+                           style="width:70%; height:70%;">
+                           <h1><font color="green">매우 안전-!</font></h1>
+                     </c:when>
+                     <c:when test= "${RiskRatio_icon <= 6.0}">
+                        <img class="w3-image" src="img/happiness2.png" alt="The main"
+                           style="width:70%; height:70%;">
+                           <h1><font color="green">안전-!</font></h1>
+                     </c:when>
+                     <c:when test= "${RiskRatio_icon <= 9.0}">
+                        <img class="w3-image" src="img/happiness.png" alt="The main"
+                           style="width:70%; height:70%;">
+                           <h1><font color="green">보통</font></h1>
+                     </c:when>
+                     <c:when test= "${RiskRatio_icon <= 12.0}">
+                        <img class="w3-image" src="img/sad.png" alt="The main"
+                           style="width:70%; height:70%;">
+                           <h1><font color="green">위험-!</font></h1>
+                     </c:when>
+                     <c:when test= "${RiskRatio_icon <= 15.0}">
+                        <img class="w3-image" src="img/angry.png" alt="The main"
+                           style="width:70%; height:70%;">
+                           <h1><font color="green">매우 위험-!</font></h1>
+                     </c:when>
+                        <c:when test= "${RiskRatio_icon <= 35.0}">
+                        <img class="w3-image" src="img/dead.png" alt="The main"
+                           style="width:70%; height:70%;">
+                           <h1><font color="green">죽음의 길-!</font></h1>
+                     </c:when>
+
+                  </c:choose>
+               </div>
+               <div class="w3-half " style="position:relative; bottom:16px">
+            
+               <p id="msg">${requestScope.msg }</p>
+               <p id="SearchOption">
+               
+               <h4>경로 유형</h4>${requestScope.SearchOption }</p>
+               <p id="RiskRatio">
+               
+               <h4>도로별 평균 위험도</h4>${requestScope.RiskRatio }</p>
+               <p id="RiskGrade">
+               
+               <h4>도로별 평균 위험 등급</h4>${requestScope.RiskGrade }</p>
+               <p id="AccidentNum">
+               
+               <h4>도로별 평균 사고건수</h4>${requestScope.AccidentNum }</p>
+               <p id="DeadNum">
+               
+               <h4>도로별 평균 사망자 수</h4>${requestScope.DeadNum }</p>
+               <p id="CriticalNum">
+               
+               <h4>도로별 평균 중상자 수</h4>${requestScope.CriticalNum }</p>
+               <p id="StableNum">
+               
+               <h4>도로별 평균 경상자 수</h4>${requestScope.StableNum }</p>
+               <p id="ClaimantNum">
+               
+               <h4>도로별 평균 부상신고자 수</h4>${requestScope.ClaimantNum }</p>
+               
+               <p id="StartLat">
+               
+               <h4>출발지 위도</h4>${requestScope.StartLat }</p>
+               <p id="StartLng">
+               
+               <h4>출발지 경도</h4>${requestScope.StartLng }</p>
+               <p id="EndLat">
+               
+               <h4>목적지 위도</h4>${requestScope.EndLat }</p>
+               <p id="EndLng">
+               
+               <h4>목적지 경도</h4>${requestScope.EndLng }</p>
+               <p id="TDistance">
+               
+               <h4>총 거리</h4>${requestScope.TDistance  }</p>
+               <p id="TTime">
+               
+               <h4>총 시간</h4>${requestScope.TTime  }</p>
+               <p id="TFare">
+               
+               <h4>통행 비용</h4>${requestScope.TFare }</p>
+               <p id="TaxiFare">
+               
+               <h4>예상 택시 요금</h4>${requestScope.TaxiFare  }</p>
+               </div>
+               </div>
+            </div>
+
+            <div id="RiskPercent" class="tabcontent">
+            <div class="w3-row-padding w3-padding-16">
+               <div id="gaugediv" class="w3-third w3-margin-top"style="width: 100%"></div>
+            </div>
+            </div>
+
+            <div id="AccidentInfo" class="tabcontent">
+               <div class="w3-row-padding w3-padding-16">
+                  <div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 100%"></div>
+               </div>
+            </div>
 
 
-				</div>
-
-				<div id="RiskPercent" class="tabcontent">
-				<div class="w3-row-padding w3-padding-16">
-					<div id="gaugediv" class="w3-third w3-margin-top"style="width: 100%"></div>
-				</div>
-				</div>
-
-				<div id="AccidentInfo" class="tabcontent">
-					<div class="w3-row-padding w3-padding-16">
-						<div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 100%"></div>
-					</div>
-				</div>
-
-
-			</div>
+         </div>
 </c:if>
 
 
