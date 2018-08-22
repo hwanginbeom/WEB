@@ -320,14 +320,16 @@ label {
 						<input type="hidden" name="tdistance" value="">
                  		 <input type="hidden" name="ttime" value="">
                  		 <input type="hidden" name="tfare" value="">
-                		  <input type="hidden" name="taxifare" value="">
+                		 <input type="hidden" name="taxifare" value="">
+                		 <input type="hidden" name="totalnamestring" value="">
+                		  
 						
 					</div>
 					<button type="submit" class="btn btn-success btn-lg" ><i class="fa fa-search"></i> Search</button>
 					<button class="btn btn-success btn-lg" onclick="totalsearch()" ><i class="fa fa-search"></i> TotoalSearch</button>
 
 <script>
- var ListNameString ="";
+ var totalnamestring ="";
 
 </script>
 					<script>
@@ -1368,25 +1370,25 @@ $.ajax({
  	 
  	switch (dd){
  	case 0 :
- 		ListNameString=namestring;
+ 		totalnamestring=namestring;
  	break;
  	case 1 :
- 		ListNameString=ListNameString+"w"+namestring1;
+ 		totalnamestring=totalnamestring+"w"+namestring1;
  	break;
  	case 2 :
- 		ListNameString=ListNameString+"w"+namestring2;
+ 		totalnamestring=totalnamestring+"w"+namestring2;
  	break;
  	case 3 : 
- 		ListNameString=ListNameString+"w"+namestring3;
+ 		totalnamestring=totalnamestring+"w"+namestring3;
  	break;
  	case 4 :
- 		ListNameString=ListNameString+"w"+namestring4;
+ 		totalnamestring=totalnamestring+"w"+namestring4;
  	break;
  	case 10 :
- 		ListNameString=ListNameString+"w"+namestring10;
+ 		totalnamestring=totalnamestring+"w"+namestring10;
  	 	break;
  	case 12 :
- 		ListNameString=ListNameString+"w"+namestring12;
+ 		totalnamestring=totalnamestring+"w"+namestring12;
  	 	break;
  	default :
  	 	alert("damn it!");
@@ -1396,7 +1398,7 @@ $.ajax({
  
  	
  	
- 	alert(ListNameString);
+ 	alert(totalnamestring);
  	
  	
  	
@@ -1410,9 +1412,10 @@ $.ajax({
  	var end = document.getElementById("two").value;
  	
  	//값 넣기
- 	$('input[name=namestring]').attr('value',ListNameString);
+ 	$('input[name=totalnamestring]').attr('value',totalnamestring);
  	
 
+ 	
  	
 
  	//값 찾기 
@@ -1698,6 +1701,9 @@ function randomValue() {
 					<p id="TaxiFare">
 					
 					<h4>예상 택시 요금</h4>${requestScope.TaxiFare  }</p>
+						<p id="totalnamestring">
+					
+					<h4>총 도로</h4>${requestScope.totalnamestring  }</p>
 
 
 				</div>
