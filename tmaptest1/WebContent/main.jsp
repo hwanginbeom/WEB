@@ -16,19 +16,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/pie.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-<script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
-
-
-
-
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <style>
+
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}    
+#gaugediv {
+  width: 100%;
+  height: 500px;
+} 
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 80%;
@@ -39,18 +41,11 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 button {
-    background-color: #616161;
-    color: white;
+  
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.8;
+    width: auto;
 }
 
 /* Extra styles for the cancel button */
@@ -117,15 +112,6 @@ span.psw {
     font-size: 35px;
     font-weight: bold;
 }
-#chartdiv {
-  width: 100%;
-  height: 700px;
-}	
-
-#chartdiv2 {
-  width: 100%;
-  height: 800px;
-}
 
 .close:hover,
 .close:focus {
@@ -138,47 +124,6 @@ span.psw {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
-
-* {box-sizing: border-box}
-
-/* Set height of body and the document to 100% */
-body, html {
-    height: 500px;
-    margin: 0;
-    font-family: Arial;
-}
-
-/* Style tab links */
-.tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 25%;
-}
-
-.tablink:hover {
-    background-color: #777;
-}
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-    color: white;
-    display: none;
-    padding: 100px 20px;
-    height: 100%;
-}
-
-#Home {background-color: red;}
-#News {background-color: green;}
-#Contact {background-color: blue;}
-#About {background-color: orange;}
-
-
 
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)}
@@ -217,15 +162,14 @@ body, html {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-    font-size: 22px;
+    font-size: 18px;
     font-color: #FFFFFF;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
+    background-color: #777;
 }
-
 
 /* Create an active/current tablink class */
 .tab button.active {
@@ -370,7 +314,7 @@ label {
     	
     </div>
 			<div class="w3-col m1 ">
-				<button onclick="fun()">출발지</button>
+				<button class="btn btn-dark btn-lg" onclick="fun()">출발지</button>
 				<br>
 			</div>
 			<div class="w3-col m3">
@@ -379,13 +323,11 @@ label {
 
 			</div>
 			<div class="w3-col m1 ">
-				<button onclick="fun1()">도착지</button>
+				<button class="btn btn-dark btn-lg" onclick="fun1()">도착지</button>
 				<br>
 			</div>
 			<form action="cont" method="GET">
 				<div class="w3-col m3">
-					<label><i class="fa fa-search"></i> Search</label>
-
 					<div class="w3-col m2">
 						<input type="hidden"  name="namestring" value="">
 						<input type="hidden" name="command" value="avgRoute">
@@ -396,7 +338,7 @@ label {
 						<input type="hidden" name="start" value="">
 						<input type="hidden" name="end" value="">
 					</div>
-					<button type="submit" class="w3-button w3-block w3-black">Search</button>
+					<button type="submit" class="btn btn-success btn-lg" ><i class="fa fa-search"></i> Search</button>
 				</div>
 			</form>
 
@@ -406,7 +348,21 @@ label {
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b"></script>
 
-
+ <script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
 <p id="result">   
 <script>   
    // 1. 지도 띄우기
@@ -1072,120 +1028,72 @@ error:function(request,status,error){
 		</div>
 		<div class="w3-row-padding w3-col w3-margin-top">
 			<div class="w3-col m3">
-				<input type="radio" checked="" class="regular-radio" name="ww"
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-1-set" value="0" onclick="div_sh(0);"><label
-					for="radio-1-set">교통최적+추천</label>
+					for="radio-1-set">교&nbsp;&nbsp;통&nbsp;&nbsp;최&nbsp;&nbsp;적&nbsp;+&nbsp;추&nbsp;&nbsp;천</label>
 			</div>
 			<div class="w3-col m3">
-				<input type="radio" checked="" class="regular-radio" name="ww"
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-2-set" value="1" onclick="div_sh(1);"><label
 					for="radio-2-set">교통최적+무료우선</label>
 			</div>
 			<div class="w3-col m3">
-				<input type="radio" checked="" class="regular-radio" name="ww"
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-3-set" value="2" onclick="div_sh(2);"><label
 					for="radio-3-set">교통최적+최소시간</label>
 			</div>
 			<div class="w3-col m3">
-				<input type="radio" checked="" class="regular-radio" name="ww"
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-4-set" value="3" onclick="div_sh(3);"><label
-					for="radio-4-set">교통최적+초보</label>
+					for="radio-4-set">교 통 최 적 + 초 보</label>
 			</div>
 			</div>
 			<div class="w3-row-padding w3-col w3-margin-top">
 			<div class="w3-col m3">
-				<input type="radio" checked="" class="regular-radio" name="ww"
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-5-set" value="4" onclick="div_sh(4);"><label
 					for="radio-5-set">교통최적+고속도로우선</label>
 			</div>
 			<div class="w3-col m3">
-				<input type="radio" checked="" class="regular-radio" name="ww"
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-6-set" value="10" onclick="div_sh(10);"><label
-					for="radio-6-set">최단거리</label>
+					for="radio-6-set">&nbsp;  최&nbsp;&nbsp;&nbsp;&nbsp;단 &nbsp;&nbsp;&nbsp;거 &nbsp;&nbsp;&nbsp;&nbsp;리  &nbsp;</label>
 			</div>
 			<div class="w3-col m3">
-				<input type="radio" checked="" class="regular-radio" name="ww"
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-7-set" value="12" onclick="div_sh(12);"><label
-					for="radio-7-set">이륜차도로우선</label>
+					for="radio-7-set">이 륜 차 도 로 우 선</label>
 			</div>
 			<br>
 		</div>
+<br>
 
 <br>
+<c:if test="${requestScope.RiskGrade==0.0 }">
+
+</c:if>
+
 <br>
-<div class="w3-bar w3-large">
-      <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><h4>위험도 </h4></a>
-		</div>
-		
 
-
-<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
-<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
-<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
-<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
-
-<div id="Home" class="tabcontent">
-  <h3>Home</h3>
-  <p>Home is where the heart is..</p>
-</div>
-
-<div id="News" class="tabcontent">
-  <h3>News</h3>
-  <div id="chartdiv2" class="w3-third w3-margin-top" style="width:50%; height: 350px;" ></div>
-  <p>Some news this fine day!</p> 
-</div>
-
-<div id="Contact" class="tabcontent">
-  <h3>Contact</h3>
-  <div id="chartdiv" class="w3-third w3-margin-bottom" style="width:50%; height: 350px;"></div>
-  
-  <p>Get in touch, or swing by for a cup of coffee.</p>
-</div>
-
-<div id="About" class="tabcontent">
-  <h3>About</h3>
-  <p>Who we are and what we do.</p>
-</div>
-
+<c:if test="${requestScope.RiskGrade!=0.0 }">
+ 
+			<!-- Chart code -->
 <script>
-function openPage(pageName,elmnt,color) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablink");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].style.backgroundColor = "";
-    }
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
-
-}
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-		
-		
-<div class="w3-row-padding w3-padding-16" style="heigth:500px">
-</div>
-  
-    <script>
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "pie",
   "theme": "light",
   "dataProvider": [ {
     "country": "사망자수",
-    "value": ${requestScope.DeadNum };
+    "value": ${requestScope.DeadNum }
   }, {
     "country": "중상자수",
-    "value": ${requestScope.CriticalNum };
+    "value": ${requestScope.CriticalNum }
   }, {
     "country": "경상자수",
-    "value": ${requestScope.StableNum };
+    "value": ${requestScope.StableNum }
   }, {
-    "country": "부상자 신고수",
-    "value": ${requestScope.ClaimantNum } ;
+    "country": "부상신고자수",
+    "value": ${requestScope.ClaimantNum }
   } ],
   "valueField": "value",
   "titleField": "country",
@@ -1198,13 +1106,8 @@ var chart = AmCharts.makeChart( "chartdiv", {
   }
 } );
 </script>
-
-
-
-
-
 <script>
-var chart = AmCharts.makeChart("chartdiv2", {
+var chart2 = AmCharts.makeChart("gaugediv", {
   "theme": "none",
   "type": "gauge",
   "axes": [{
@@ -1212,19 +1115,19 @@ var chart = AmCharts.makeChart("chartdiv2", {
     "topTextYOffset": 70,
     "axisColor": "#31d6ea",
     "axisThickness": 1,
-    "endValue": 4,
+    "endValue": 100,
     "gridInside": true,
     "inside": true,
-    "radius": "60%",
-    "valueInterval": 0.5,
+    "radius": "40%",
+    "valueInterval": 10,
     "tickColor": "#67b7dc",
     "startAngle": -90,
     "endAngle": 90,
-    "unit": "",
+    "unit": "%",
     "bandOutlineAlpha": 0,
     "bands": [{
       "color": "#1ee83c",
-      "endValue": 4,
+      "endValue": 100,
       "innerRadius": "105%",
       "radius": "170%",
       "gradientRatio": [0.5, 0, -0.5],
@@ -1243,7 +1146,6 @@ var chart = AmCharts.makeChart("chartdiv2", {
     "innerRadius": "35%",
     "nailRadius": 0,
     "radius": "170%"
-    ,"legendText": "Department wise Min and Max Salary",
   }]
 });
 
@@ -1251,44 +1153,83 @@ setInterval(randomValue, 2000);
 
 // set random value
 function randomValue() {
-  var value = 1.4;
-  chart.arrows[0].setValue(value);
-  chart.axes[0].setTopText(value);
+  var value = ${requestScope.RiskGrade};
+  value=value*25;
+  chart2.arrows[0].setValue(value);
+  chart2.axes[0].setTopText(value+" %");
   // adjust darker band to new value
-  chart.axes[0].bands[1].setEndValue(value);
+  chart2.axes[0].bands[1].setEndValue(value);
 }
 </script>
+<!-- 
+<div class="w3-row-padding w3-padding-16">
+<div id="gaugediv" class="w3-third w3-margin-top" style="width:50%"></div>
+<div id="chartdiv" class="w3-third w3-margin-bottom" style="width:50%"></div>
+</div>
+-->
+
+<div class="w3-container" style="padding: 64px 16px" id="about">
+      <div class="tab">
+      <style> button{font-family: "Raleway", sans-serif}</style>
+      
+         <button class="tablinks" style="color:black" onclick="openCity(event, 'RouteInfo')">
+            RouteInfo
+         </button>
+         <button class="tablinks" style="color:black" onclick="openCity(event, 'RiskPercent')">
+            RiskPercent
+         </button>
+         <button class="tablinks" style="color:black" onclick="openCity(event, 'AccidentInfo')">
+            AccidentInfo
+         </button>
+         
+      </div>
+      </div>
+			<div class="w3-margin-left w3-center">
+				<div id="RouteInfo" class="tabcontent">
+					<p id="msg">${requestScope.msg }</p>
+					<p id="RiskRatio">
+					<h4>도로별 평균 위험도</h4>${requestScope.RiskRatio }</p>
+					<p id="RiskGrade">
+					<h4>도로별 평균 위험 등급</h4>${requestScope.RiskGrade }</p>
+					<p id="AccidentNum">
+					<h4>도로별 평균 사고건수</h4>${requestScope.AccidentNum }</p>
+					<p id="DeadNum">
+					<h4>도로별 평균 사망자 수</h4>${requestScope.DeadNum }</p>
+					<p id="CriticalNum">
+					<h4>도로별 평균 중상자 수</h4>${requestScope.CriticalNum }</p>
+					<p id="StableNum">
+					<h4>도로별 평균 경상자 수</h4>${requestScope.StableNum }</p>
+					<p id="ClaimantNum">
+					<h4>도로별 평균 부상신고자 수</h4>${requestScope.ClaimantNum }</p>
+					<p id="Start">
+					<h4>출발지</h4>${requestScope.Start }</p>
+					<p id="End">
+					<h4>목적지</h4>${requestScope.End }</p>
+					<p id="StartLat">
+					<h4>출발지 위도</h4>${requestScope.StartLat }</p>
+					<p id="StartLng">
+					<h4>출발지 경도</h4>${requestScope.StartLng }</p>
+					<p id="EndLat">
+					<h4>목적지 위도</h4>${requestScope.EndLat }</p>
+					<p id="EndLng">
+					<h4>목적지 경도</h4>${requestScope.EndLng }</p>
+
+				</div>
+
+				<div id="RiskPercent" class="tabcontent">
+					<div id="gaugediv" class="w3-third w3-margin-top"style="width: 50%"></div>
+				
+				</div>
+
+				<div id="AccidentInfo" class="tabcontent">
+					<div class="w3-row-padding w3-padding-16">
+						<div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 50%"></div>
+					</div>
+				</div>
 
 
-
-<c:if test="${requestScope.RiskGrade==0.0 }">
-
+			</div>
 </c:if>
-
-<br>
-<c:if test="${requestScope.RiskGrade!=0.0 }">
-<p id="msg">${requestScope.msg }</p>
-<p id="RiskRatio"><h4>도로별 평균 위험도</h4>${requestScope.RiskRatio }</p>
-<p id="RiskGrade"><h4>도로별 평균 위험 등급</h4>${requestScope.RiskGrade }</p>
-<p id="AccidentNum"><h4>도로별 평균 사고건수</h4>${requestScope.AccidentNum }</p>
-<p id="DeadNum"><h4>도로별 평균 사망자 수</h4>${requestScope.DeadNum }</p>
-<p id="CriticalNum"><h4>도로별 평균 중상자 수</h4>${requestScope.CriticalNum }</p>
-<p id="StableNum"><h4>도로별 평균 경상자 수</h4>${requestScope.StableNum }</p>
-<p id="ClaimantNum"><h4>도로별 평균 부상신고자 수</h4>${requestScope.ClaimantNum }</p>
-<p id="Start"><h4>출발지</h4>${requestScope.Start }</p>
-<p id="End"><h4>목적지</h4>${requestScope.End }</p>
-<p id="StartLat"><h4>출발지 위도</h4>${requestScope.StartLat }</p>
-<p id="StartLng"><h4>출발지 경도</h4>${requestScope.StartLng }</p>
-<p id="EndLat"><h4>목적지 위도</h4>${requestScope.EndLat }</p>
-<p id="EndLng"><h4>목적지 경도</h4>${requestScope.EndLng }</p>
-
-</c:if>
-
-
-
-
-
-
 
 
 
@@ -1353,9 +1294,6 @@ function randomValue() {
     <h3>Our Hotels</h3>
     <h6>You can find our hotels anywhere in the world:</h6>
   </div>
-  
-
-  
   
   <div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
     <div class="w3-half w3-margin-bottom">
