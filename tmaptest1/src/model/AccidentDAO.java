@@ -36,7 +36,7 @@ public class AccidentDAO {
          }
          rs =pstmt.executeQuery();
          while(rs.next()) {
-            data=new AccidentDTO(rs.getFloat(1),rs.getFloat(2),rs.getFloat(3),rs.getFloat(4),rs.getFloat(5),rs.getFloat(6),rs.getFloat(7));
+            data=new AccidentDTO(rs.getFloat(2),rs.getFloat(1),rs.getFloat(3),rs.getFloat(4),rs.getFloat(5),rs.getFloat(6),rs.getFloat(7));
          }
       }finally {
          DButil.close(con, pstmt, rs);

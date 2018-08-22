@@ -38,8 +38,10 @@
 						<h4 class="modal-title">경로에 따른 위험도 분석</h4>
 					</div>
 					<div class="modal-body">
-						<p>그래프는 안됩니까? </p>
+						<p>그래프야 나와라 </p>
 						
+
+
 
 
 
@@ -48,10 +50,9 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
-					
 				</div>
 
-				
+
 
 			</div>
 		</div>
@@ -64,10 +65,8 @@ $(document).ready(function(){
         $("#myModal").modal();
     });
 });
-
-
-
-
+</script>
+<script>
 
 Highcharts.chart('container', {
   title: {
@@ -117,8 +116,6 @@ Highcharts.chart('container', {
     }
   }, ]
 });
-
-
 
 
 </script>

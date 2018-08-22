@@ -19,7 +19,7 @@
 
 Highcharts.chart('container', {
   title: {
-    text: '경로 별 사고 평균 '
+    text: '     　　　　　　　   경로 별 사고 평균 '
   },
   xAxis: {
     categories: ['경로 1 ', '경로 2', '경로 3', '경로 4', '경로 5','경로 6', '경로 7']

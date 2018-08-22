@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<title>W3.CSS Template</title>
+<title>SOLIDIUM : search the safety route</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -324,6 +324,12 @@ label {
 					<div class="w3-col m2">
 						<input type="hidden"  name="namestring" value="">
 						<input type="hidden" name="command" value="avgRoute">
+						<input type="hidden" name="startlat" value="">
+						<input type="hidden" name="startlng" value="">
+						<input type="hidden" name="endlat" value="">
+						<input type="hidden" name="endlng" value="">
+						<input type="hidden" name="start" value="">
+						<input type="hidden" name="end" value="">
 					</div>
 					<button type="submit" class="w3-button w3-block w3-black">Search</button>
 				</div>
@@ -331,7 +337,7 @@ label {
 
 		</div>
 
-<div id="map_div" class=" w3-padding w3-col" style="max-width:1200px" width="680" height="550"; >
+<div id="map_div" class=" w3-padding w3-col w3-container" style="max-width:1200px" width="680" height="550"; >
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b"></script>
 
@@ -935,8 +941,19 @@ $.ajax({
  		}
  	}
  	console.log(namestring);
+ 	
+ 	var start = document.getElementById("one").value;
+ 	var end = document.getElementById("two").value;
+ 	
  	//값 넣기
  	$('input[name=namestring]').attr('value',namestring);
+ 	$('input[name=startlng]').attr('value',resultlon_s2.toString());
+ 	$('input[name=startlat]').attr('value',resultlat_s2.toString());
+ 	$('input[name=endlng]').attr('value',resultlon_e2.toString());
+ 	$('input[name=endlat]').attr('value',resultlat_e2.toString());
+ 	$('input[name=start]').attr('value',start);
+ 	$('input[name=end]').attr('value',end);
+ 	
  	//값 찾기 
    for(var a in uniqList) {
        console.log(uniqList[a]+" ");
@@ -985,23 +1002,73 @@ error:function(request,status,error){
 } 
 
 </script>
+		<div class="w3-bar w3-large">
+      <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><h4>Search Option</h4></a>
+		</div>
+		<div class="w3-row-padding w3-col w3-margin-top">
+			<div class="w3-col m3">
+				<input type="radio" checked="" class="regular-radio" name="ww"
+					id="radio-1-set" value="0" onclick="div_sh(0);"><label
+					for="radio-1-set">교통최적+추천</label>
+			</div>
+			<div class="w3-col m3">
+				<input type="radio" checked="" class="regular-radio" name="ww"
+					id="radio-2-set" value="1" onclick="div_sh(1);"><label
+					for="radio-2-set">교통최적+무료우선</label>
+			</div>
+			<div class="w3-col m3">
+				<input type="radio" checked="" class="regular-radio" name="ww"
+					id="radio-3-set" value="2" onclick="div_sh(2);"><label
+					for="radio-3-set">교통최적+최소시간</label>
+			</div>
+			<div class="w3-col m3">
+				<input type="radio" checked="" class="regular-radio" name="ww"
+					id="radio-4-set" value="3" onclick="div_sh(3);"><label
+					for="radio-4-set">교통최적+초보</label>
+			</div>
+			</div>
+			<div class="w3-row-padding w3-col w3-margin-top">
+			<div class="w3-col m3">
+				<input type="radio" checked="" class="regular-radio" name="ww"
+					id="radio-5-set" value="4" onclick="div_sh(4);"><label
+					for="radio-5-set">교통최적+고속도로우선</label>
+			</div>
+			<div class="w3-col m3">
+				<input type="radio" checked="" class="regular-radio" name="ww"
+					id="radio-6-set" value="10" onclick="div_sh(10);"><label
+					for="radio-6-set">최단거리</label>
+			</div>
+			<div class="w3-col m3">
+				<input type="radio" checked="" class="regular-radio" name="ww"
+					id="radio-7-set" value="12" onclick="div_sh(12);"><label
+					for="radio-7-set">이륜차도로우선</label>
+			</div>
+			<br>
+		</div>
 
- <div class="button-holder">
-<input type="radio" checked="" class="regular-radio" name="ww" id="radio-1-set" value="0" onclick="div_sh(0);"><label for="radio-1-set">1번경로지도</label><br>
-<input type="radio" checked="" class="regular-radio" name="ww" id="radio-2-set" value="1" onclick="div_sh(1);"><label for="radio-2-set">2번경로지도</label><br>
-<input type="radio" checked="" class="regular-radio" name="ww" id="radio-3-set" value="2" onclick="div_sh(2);"><label for="radio-3-set">3번경로지도</label><br>
-<input type="radio" checked="" class="regular-radio" name="ww" id="radio-4-set" value="3" onclick="div_sh(3);"><label for="radio-4-set">4번경로지도</label><br>
-<input type="radio" checked="" class="regular-radio" name="ww" id="radio-5-set" value="4" onclick="div_sh(4);"><label for="radio-5-set">5번경로지도</label><br>
-<input type="radio" checked="" class="regular-radio" name="ww" id="radio-6-set" value="10" onclick="div_sh(10);"><label for="radio-6-set">6번경로지도</label><br>
-<input type="radio" checked="" class="regular-radio" name="ww" id="radio-7-set" value="12" onclick="div_sh(12);"><label for="radio-7-set">7번경로지도</label><br>
+<br>
+<c:if test="${requestScope.RiskGrade==0.0 }">
 
-</div>
+</c:if>
 
+<br>
+<c:if test="${requestScope.RiskGrade!=0.0 }">
+<p id="msg">${requestScope.msg }</p>
+<p id="RiskRatio"><h4>도로별 평균 위험도</h4>${requestScope.RiskRatio }</p>
+<p id="RiskGrade"><h4>도로별 평균 위험 등급</h4>${requestScope.RiskGrade }</p>
+<p id="AccidentNum"><h4>도로별 평균 사고건수</h4>${requestScope.AccidentNum }</p>
+<p id="DeadNum"><h4>도로별 평균 사망자 수</h4>${requestScope.DeadNum }</p>
+<p id="CriticalNum"><h4>도로별 평균 중상자 수</h4>${requestScope.CriticalNum }</p>
+<p id="StableNum"><h4>도로별 평균 경상자 수</h4>${requestScope.StableNum }</p>
+<p id="ClaimantNum"><h4>도로별 평균 부상신고자 수</h4>${requestScope.ClaimantNum }</p>
+<p id="Start"><h4>출발지</h4>${requestScope.Start }</p>
+<p id="End"><h4>목적지</h4>${requestScope.End }</p>
+<p id="StartLat"><h4>출발지 위도</h4>${requestScope.StartLat }</p>
+<p id="StartLng"><h4>출발지 경도</h4>${requestScope.StartLng }</p>
+<p id="EndLat"><h4>목적지 위도</h4>${requestScope.EndLat }</p>
+<p id="EndLng"><h4>목적지 경도</h4>${requestScope.EndLng }</p>
 
-
-
-
-
+</c:if>
   <div class="w3-row-padding w3-padding-16">
     <div class="w3-third w3-margin-bottom">
       <img src="/w3images/room_single.jpg" alt="Norway" style="width:100%">
@@ -1014,9 +1081,6 @@ error:function(request,status,error){
         <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
       </div>
     </div>
-    
-    
-    
     <div class="w3-third w3-margin-bottom">
       <img src="/w3images/room_double.jpg" alt="Norway" style="width:100%">
       <div class="w3-container w3-white">
@@ -1040,110 +1104,6 @@ error:function(request,status,error){
       </div>
     </div>
   </div>
-
-
-
-
-<!--#######################   차트 부분      ############################  -->
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
-<script>
-
-Highcharts.chart('container', {
-  title: {
-    text: 'Combination chart'
-  },
-  xAxis: {
-    categories: ['경로 1 ', '경로 2', '경로 3', '경로 4', '경로 5','경로 6', '경로 7']
-  },
-  labels: {
-    items: [{
-      html: 'Total fruit consumption',
-      style: {
-        left: '50px',
-        top: '18px',
-        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
-      }
-    }]
-  },
-  series: [{
-    type: 'column',
-    name: '사망자수',
-    data: [3, 2, 1, 3, 4,5,3]
-  }, {
-    type: 'column',
-    name: '중상자수',
-    data: [2, 3, 5, 7, 6,7,6]
-  }, {
-    type: 'column',
-    name: '경상자수',
-    data: [4, 3, 3, 9, 2,5,1]
-  },{
-	    type: 'column',
-	    name: '부상신고자수',
-	    data: [4, 3, 3, 9, 3,5,1]
-	  },
-  
-	
-
-  {
-    type: 'spline',
-    name: '사고건수',
-    data: [3, 2.67, 3, 6.33, 3.33,2.5,4.5],
-    marker: {
-      lineWidth: 2,
-      lineColor: Highcharts.getOptions().colors[3],
-      fillColor: 'white'
-    }
-  }, {
-    type: 'pie',
-    name: 'Total consumption',
-    data: [{
-      name: '사망자수',
-      y: 13,
-      color: Highcharts.getOptions().colors[0] // Jane's color
-    }, {
-      name: '중상자수',
-      y: 23,
-      color: Highcharts.getOptions().colors[1] // 중상자수's color
-    }, {
-      name: '경상자수',
-      y: 19,
-      color: Highcharts.getOptions().colors[2] // 경상자수's color
-    }, {
-        name: '부상자신고수',
-        y: 19,
-        color: Highcharts.getOptions().colors[2] // 경상자수's color
-      }],
-    center: [100, 80],
-    size: 100,
-    showInLegend: false,
-    dataLabels: {
-      enabled: false
-    }
-  }]
-});
-
-
-</script>
-
-
-<!--###################################################  -->
-
-
-
-
-
-
-
-
-
-
 
   <div class="w3-row-padding" id="about">
     <div class="w3-col l4 m7">
@@ -1170,6 +1130,19 @@ Highcharts.chart('container', {
     <h3>Our Hotels</h3>
     <h6>You can find our hotels anywhere in the world:</h6>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   <div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
@@ -1277,6 +1250,7 @@ function myMap()
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 -->
+
 
 <div id="id01" class="modal">
 
