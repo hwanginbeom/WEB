@@ -19,14 +19,14 @@
 
 Highcharts.chart('container', {
   title: {
-    text: 'Combination chart'
+    text: '경로 별 사고 평균 '
   },
   xAxis: {
     categories: ['경로 1 ', '경로 2', '경로 3', '경로 4', '경로 5','경로 6', '경로 7']
   },
   labels: {
     items: [{
-      html: 'Total fruit consumption',
+      html: '',
       style: {
         left: '50px',
         top: '18px',
@@ -63,33 +63,7 @@ Highcharts.chart('container', {
       lineColor: Highcharts.getOptions().colors[3],
       fillColor: 'white'
     }
-  }, {
-    type: 'pie',
-    name: 'Total consumption',
-    data: [{
-      name: '사망자수',
-      y: 13,
-      color: Highcharts.getOptions().colors[0] // Jane's color
-    }, {
-      name: '중상자수',
-      y: 23,
-      color: Highcharts.getOptions().colors[1] // 중상자수's color
-    }, {
-      name: '경상자수',
-      y: 19,
-      color: Highcharts.getOptions().colors[2] // 경상자수's color
-    }, {
-        name: '부상자신고수',
-        y: 19,
-        color: Highcharts.getOptions().colors[2] // 경상자수's color
-      }],
-    center: [100, 80],
-    size: 100,
-    showInLegend: false,
-    dataLabels: {
-      enabled: false
-    }
-  }]
+  }, ]
 });
 
 

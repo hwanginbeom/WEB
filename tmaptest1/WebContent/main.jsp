@@ -996,6 +996,12 @@ error:function(request,status,error){
 <input type="radio" checked="" class="regular-radio" name="ww" id="radio-7-set" value="12" onclick="div_sh(12);"><label for="radio-7-set">7번경로지도</label><br>
 
 </div>
+
+
+
+
+
+
   <div class="w3-row-padding w3-padding-16">
     <div class="w3-third w3-margin-bottom">
       <img src="/w3images/room_single.jpg" alt="Norway" style="width:100%">
@@ -1008,6 +1014,9 @@ error:function(request,status,error){
         <button class="w3-button w3-block w3-black w3-margin-bottom">Choose Room</button>
       </div>
     </div>
+    
+    
+    
     <div class="w3-third w3-margin-bottom">
       <img src="/w3images/room_double.jpg" alt="Norway" style="width:100%">
       <div class="w3-container w3-white">
@@ -1031,6 +1040,110 @@ error:function(request,status,error){
       </div>
     </div>
   </div>
+
+
+
+
+<!--#######################   차트 부분      ############################  -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+<script>
+
+Highcharts.chart('container', {
+  title: {
+    text: 'Combination chart'
+  },
+  xAxis: {
+    categories: ['경로 1 ', '경로 2', '경로 3', '경로 4', '경로 5','경로 6', '경로 7']
+  },
+  labels: {
+    items: [{
+      html: 'Total fruit consumption',
+      style: {
+        left: '50px',
+        top: '18px',
+        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+      }
+    }]
+  },
+  series: [{
+    type: 'column',
+    name: '사망자수',
+    data: [3, 2, 1, 3, 4,5,3]
+  }, {
+    type: 'column',
+    name: '중상자수',
+    data: [2, 3, 5, 7, 6,7,6]
+  }, {
+    type: 'column',
+    name: '경상자수',
+    data: [4, 3, 3, 9, 2,5,1]
+  },{
+	    type: 'column',
+	    name: '부상신고자수',
+	    data: [4, 3, 3, 9, 3,5,1]
+	  },
+  
+	
+
+  {
+    type: 'spline',
+    name: '사고건수',
+    data: [3, 2.67, 3, 6.33, 3.33,2.5,4.5],
+    marker: {
+      lineWidth: 2,
+      lineColor: Highcharts.getOptions().colors[3],
+      fillColor: 'white'
+    }
+  }, {
+    type: 'pie',
+    name: 'Total consumption',
+    data: [{
+      name: '사망자수',
+      y: 13,
+      color: Highcharts.getOptions().colors[0] // Jane's color
+    }, {
+      name: '중상자수',
+      y: 23,
+      color: Highcharts.getOptions().colors[1] // 중상자수's color
+    }, {
+      name: '경상자수',
+      y: 19,
+      color: Highcharts.getOptions().colors[2] // 경상자수's color
+    }, {
+        name: '부상자신고수',
+        y: 19,
+        color: Highcharts.getOptions().colors[2] // 경상자수's color
+      }],
+    center: [100, 80],
+    size: 100,
+    showInLegend: false,
+    dataLabels: {
+      enabled: false
+    }
+  }]
+});
+
+
+</script>
+
+
+<!--###################################################  -->
+
+
+
+
+
+
+
+
+
+
 
   <div class="w3-row-padding" id="about">
     <div class="w3-col l4 m7">
@@ -1057,6 +1170,7 @@ error:function(request,status,error){
     <h3>Our Hotels</h3>
     <h6>You can find our hotels anywhere in the world:</h6>
   </div>
+  
   
   <div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
     <div class="w3-half w3-margin-bottom">
@@ -1163,7 +1277,6 @@ function myMap()
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 -->
-
 
 <div id="id01" class="modal">
 
