@@ -10,7 +10,7 @@
 
 <!-- Styles -->
 <style>
-#chartdiv {
+#chartdiv2 {
   width: 100%;
   height: 500px;
 }
@@ -25,7 +25,7 @@
 
 <!-- Chart code -->
 <script>
-var chart = AmCharts.makeChart("chartdiv", {
+var chart = AmCharts.makeChart("chartdiv2", {
   "theme": "none",
   "type": "gauge",
   "axes": [{
@@ -80,7 +80,7 @@ function randomValue() {
 </script>
 
 <!-- HTML -->
-<div id="chartdiv"></div>
+<div id="chartdiv2"></div>
 
 
 </body>

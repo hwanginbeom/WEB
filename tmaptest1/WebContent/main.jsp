@@ -14,6 +14,20 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/none.js"></script>
+
+
+
+
 <style>
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -103,6 +117,15 @@ span.psw {
     font-size: 35px;
     font-weight: bold;
 }
+#chartdiv {
+  width: 100%;
+  height: 700px;
+}	
+
+#chartdiv2 {
+  width: 100%;
+  height: 800px;
+}
 
 .close:hover,
 .close:focus {
@@ -115,6 +138,47 @@ span.psw {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
+
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+    height: 500px;
+    margin: 0;
+    font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+}
+
+#Home {background-color: red;}
+#News {background-color: green;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
+
+
 
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)}
@@ -161,6 +225,7 @@ span.psw {
 .tab button:hover {
     background-color: #ddd;
 }
+
 
 /* Create an active/current tablink class */
 .tab button.active {
@@ -1047,6 +1112,155 @@ error:function(request,status,error){
 		</div>
 
 <br>
+<br>
+<div class="w3-bar w3-large">
+      <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><h4>위험도 </h4></a>
+		</div>
+		
+
+
+<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+<button class="tablink" onclick="openPage('News', this, 'green')" id="defaultOpen">News</button>
+<button class="tablink" onclick="openPage('Contact', this, 'blue')">Contact</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+<div id="Home" class="tabcontent">
+  <h3>Home</h3>
+  <p>Home is where the heart is..</p>
+</div>
+
+<div id="News" class="tabcontent">
+  <h3>News</h3>
+  <div id="chartdiv2" class="w3-third w3-margin-top" style="width:50%; height: 350px;" ></div>
+  <p>Some news this fine day!</p> 
+</div>
+
+<div id="Contact" class="tabcontent">
+  <h3>Contact</h3>
+  <div id="chartdiv" class="w3-third w3-margin-bottom" style="width:50%; height: 350px;"></div>
+  
+  <p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="About" class="tabcontent">
+  <h3>About</h3>
+  <p>Who we are and what we do.</p>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+		
+		
+<div class="w3-row-padding w3-padding-16" style="heigth:500px">
+</div>
+  
+    <script>
+var chart = AmCharts.makeChart( "chartdiv", {
+  "type": "pie",
+  "theme": "light",
+  "dataProvider": [ {
+    "country": "사망자수",
+    "value": ${requestScope.DeadNum };
+  }, {
+    "country": "중상자수",
+    "value": ${requestScope.CriticalNum };
+  }, {
+    "country": "경상자수",
+    "value": ${requestScope.StableNum };
+  }, {
+    "country": "부상자 신고수",
+    "value": ${requestScope.ClaimantNum } ;
+  } ],
+  "valueField": "value",
+  "titleField": "country",
+  "outlineAlpha": 0.4,
+  "depth3D": 15,
+  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+  "angle": 10,
+  "export": {
+    "enabled": true
+  }
+} );
+</script>
+
+
+
+
+
+<script>
+var chart = AmCharts.makeChart("chartdiv2", {
+  "theme": "none",
+  "type": "gauge",
+  "axes": [{
+    "topTextFontSize": 20,
+    "topTextYOffset": 70,
+    "axisColor": "#31d6ea",
+    "axisThickness": 1,
+    "endValue": 4,
+    "gridInside": true,
+    "inside": true,
+    "radius": "60%",
+    "valueInterval": 0.5,
+    "tickColor": "#67b7dc",
+    "startAngle": -90,
+    "endAngle": 90,
+    "unit": "",
+    "bandOutlineAlpha": 0,
+    "bands": [{
+      "color": "#1ee83c",
+      "endValue": 4,
+      "innerRadius": "105%",
+      "radius": "170%",
+      "gradientRatio": [0.5, 0, -0.5],
+      "startValue": 0
+    }, {
+      "color": "#e22b2b",
+      "endValue": 0,
+      "innerRadius": "105%",
+      "radius": "170%",
+      "gradientRatio": [0.5, 0, -0.5],
+      "startValue": 0
+    }]
+  }],
+  "arrows": [{
+    "alpha": 1,
+    "innerRadius": "35%",
+    "nailRadius": 0,
+    "radius": "170%"
+    ,"legendText": "Department wise Min and Max Salary",
+  }]
+});
+
+setInterval(randomValue, 2000);
+
+// set random value
+function randomValue() {
+  var value = 1.4;
+  chart.arrows[0].setValue(value);
+  chart.axes[0].setTopText(value);
+  // adjust darker band to new value
+  chart.axes[0].bands[1].setEndValue(value);
+}
+</script>
+
+
+
 <c:if test="${requestScope.RiskGrade==0.0 }">
 
 </c:if>
@@ -1069,6 +1283,15 @@ error:function(request,status,error){
 <p id="EndLng"><h4>목적지 경도</h4>${requestScope.EndLng }</p>
 
 </c:if>
+
+
+
+
+
+
+
+
+
   <div class="w3-row-padding w3-padding-16">
     <div class="w3-third w3-margin-bottom">
       <img src="/w3images/room_single.jpg" alt="Norway" style="width:100%">
@@ -1131,18 +1354,7 @@ error:function(request,status,error){
     <h6>You can find our hotels anywhere in the world:</h6>
   </div>
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   
   
   <div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
