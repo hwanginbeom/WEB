@@ -56,9 +56,12 @@ var chart = AmCharts.makeChart( "chartdiv", {
 </script>
 
 
-
+  		<img class="w3-image" src="img/kiss.png" alt="The main" style="min-width:1000px" width="1500" height="600">
+		<img src="img/main1.jpg">
 
 <!-- HTML -->
-<div id="chartdiv"></div>
+<div id="chartdiv">
+  		<img src="img\\main1.jpg">
+</div>
 </body>
 </html>
