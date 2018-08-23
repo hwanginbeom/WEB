@@ -21,13 +21,17 @@
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-
-
 <style>
+
+
+
+
+
+
+
 
 
 * {
@@ -84,15 +88,15 @@ body {
   width: 100%;
   height: 500px;
 } 
+
 #gaugediv2 {
   width: 100%;
   height: 500px;
 } 
-#chart3{
+#container {
   width: 100%;
   height: 500px;
 } 
-}
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 80%;
@@ -337,101 +341,112 @@ label {
   </div>
   
   <!-- 고정시키는 부분 -->
-  <div class="w3-row-padding">
+		<div class="w3-row-padding">
 			<div class="w3-col m3">
-            <label><i class="fa fa-cal"></i> 출발</label>
-            <c:if test="${empty requestScope.Start }">
-               <input class="w3-input w3-border" type="text" id="one"
-                  placeholder="출발지">
-            </c:if>
-            <c:if test="${not empty requestScope.Start }">
-               <input class="w3-input w3-border" type="text" id="one"
-                  value="${requestScope.Start }">
-            </c:if>
-         </div>
-         <div class="w3-col m1 ">
-            <button class="btn btn-dark btn-lg" onclick="fun()">출발지</button>
-            <br>
-         </div>
-         <div class="w3-col m3">
-            <label><i class="fa fa-calendar-o"></i> 도착</label>
-            <c:if test="${empty requestScope.End }">
-               <input class="w3-input w3-border" type="text" id="two"
-                  placeholder="도착지">
-            </c:if>
-            <c:if test="${not empty requestScope.End }">
-               <input class="w3-input w3-border" type="text" id="two"
-                  value="${requestScope.End }">
-            </c:if>
-         </div>
-         
+				<label><i class="fa fa-cal"></i> 출발</label>
+				<c:if test="${empty requestScope.Start }">
+					<input class="w3-input w3-border" type="text" id="one"
+						placeholder="출발지">
+				</c:if>
+				<c:if test="${not empty requestScope.Start }">
+					<input class="w3-input w3-border" type="text" id="one"
+						value="${requestScope.Start }">
+				</c:if>
+			</div>
+			<div class="w3-col m1 ">
+				<button class="btn btn-dark btn-lg" onclick="fun()">출발지</button>
+				<br>
+			</div>
+			<div class="w3-col m3">
+				<label><i class="fa fa-calendar-o"></i> 도착</label>
+				<c:if test="${empty requestScope.End }">
+					<input class="w3-input w3-border" type="text" id="two"
+						placeholder="도착지">
+				</c:if>
+				<c:if test="${not empty requestScope.End }">
+					<input class="w3-input w3-border" type="text" id="two"
+						value="${requestScope.End }">
+				</c:if>
+			</div>
+
 			<div class="w3-col m1 ">
 				<button class="btn btn-dark btn-lg" onclick="fun1()">도착지</button>
 				<br>
 			</div>
 			<form action="cont" method="GET">
-				<div class="w3-col m3">
-					<div class="w3-col m2">
-						<input type="hidden"  name="namestring" value="">
-						<input type="hidden" name="command" value="avgRoute">
-						<input type="hidden" name="startlat" value="">
-						<input type="hidden" name="startlng" value="">
-						<input type="hidden" name="endlat" value="">
-						<input type="hidden" name="endlng" value="">
-						<input type="hidden" name="start" value="">
-						<input type="hidden" name="end" value="">
-						<input type="hidden" name="searchoption" value="">
-						<input type="hidden" name="tdistance" value="">
-                 		 <input type="hidden" name="ttime" value="">
-                 		 <input type="hidden" name="tfare" value="">
-                		 <input type="hidden" name="taxifare" value="">
-                		 <input type="hidden" name="totalnamestring" value="">
-                		  
-						
-					</div>
-					<button type="submit" class="btn btn-success btn-lg" ><i class="fa fa-search"></i> Search</button>
-					<button class="btn btn-success btn-lg" onclick="totalsearch()" ><i class="fa fa-search"></i> TotoalSearch</button>
-
-<script>
- var totalnamestring ="";
-
-</script>
-					<script>
-							function totalsearch() {
-								 (function(){
-									   div_sh2(0);
-									   })(),
-									    (function(){
-									   div_sh2(1);
-									   })(),
-									    (function(){
-									   div_sh2(2);
-									   })(),
-									    (function(){
-									   div_sh2(3);
-									   })(),
-									    (function(){
-									   div_sh2(4);
-									   })(),
-									    (function(){
-									   div_sh2(10);
-									   })(),  (function(){
-									   div_sh2(12);
-									   })()
-									   
-							}
-							
-							</script>
+				<div class="w3-col m1">
+					
+						<input type="hidden" name="namestring" value=""> <input
+							type="hidden" name="command" value="avgRoute"> <input
+							type="hidden" name="startlat" value=""> <input
+							type="hidden" name="startlng" value=""> <input
+							type="hidden" name="endlat" value=""> <input
+							type="hidden" name="endlng" value=""> <input
+							type="hidden" name="start" value=""> <input type="hidden"
+							name="end" value=""> <input type="hidden"
+							name="searchoption" value=""> <input type="hidden"
+							name="tdistance" value=""> <input type="hidden"
+							name="ttime" value=""> <input type="hidden" name="tfare"
+							value=""> <input type="hidden" name="taxifare" value="">
 
 
 
+					
+					<button type="submit" class="btn btn-success btn-lg">
+						<i class="fa fa-search"></i> Search
+					</button>
 
 				</div>
 			</form>
-
+			<form name="allAvgRoute" action="cont" method="GET">
+				<div class="w3-col m1">
+					<input type="hidden" name="command" value="allAvgRoute"> <input
+						type="hidden" name="totalnamestring" value=""><input
+							type="hidden" name="startlat" value=""> <input
+							type="hidden" name="startlng" value=""> <input
+							type="hidden" name="endlat" value=""> <input
+							type="hidden" name="endlng" value=""> <input
+							type="hidden" name="start" value=""> <input type="hidden"
+							name="end" value="">
+					<button class="btn btn-success btn-lg" onclick="totalsearch()">
+						<i class="fa fa-search"></i> TotoalSearch
+					</button>
+				</div>
+			</form>
 		</div>
 
-<div id="map_div" class=" w3-padding w3-col w3-container" style="max-width:1200px" width="680" height="550"; >
+
+
+		<script>
+		var totalnamestring ="";
+				function totalsearch() {
+						(function(){
+							div_sh2(0);
+							})(),
+						(function(){
+							div_sh2(1);
+							})(),
+						(function(){
+							div_sh2(2);
+							})(),
+						(function(){
+							div_sh2(3);
+							})(),
+						(function(){
+							div_sh2(4);
+							})(),
+						(function(){
+							div_sh2(10);
+						})(),  
+						(function(){
+							div_sh2(12);
+							})()
+							
+							document.getElementByName("allAvgRoute").submit();	
+				}
+				
+		</script>
+		<div id="map_div" class=" w3-padding w3-col w3-container" style="max-width:1200px" width="680" height="550"; >
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b"></script>
 
@@ -933,7 +948,7 @@ function div_sh(dd) {
 	var headers = {}; 
 	headers["appKey"]="f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 	var search = dd;
-//	alert(this.resultlat_s2+"//"+this.resultlon_s2+"//"+this.resultlat_e2+"//"+this.resultlon_e2);
+	//alert(this.resultlat_s2+"//"+this.resultlon_s2+"//"+this.resultlat_e2+"//"+this.resultlon_e2);
 	$.ajax({
 	   
 	   method:"POST",
@@ -1151,7 +1166,7 @@ if(dd>12){
 else {
 search = dd;
 }
-alert(this.resultlat_s2+"//"+this.resultlon_s2+"//"+this.resultlat_e2+"//"+this.resultlon_e2);
+//alert(this.resultlat_s2+"//"+this.resultlon_s2+"//"+this.resultlat_e2+"//"+this.resultlon_e2);
 $.ajax({
    
    method:"POST",
@@ -1349,7 +1364,7 @@ $.ajax({
  	if(dd==2){
  	    var uniqList2 = uniqArr(List2);
  	 	var namestring2="";
- 	for(var i=0;i<uniqList.length;i++){
+ 	for(var i=0;i<uniqList2.length;i++){
  		namestring2+=uniqList2[i];
  		if(i<uniqList2.length-1){
  			namestring2+="q";
@@ -1403,34 +1418,6 @@ $.ajax({
 	}
 	}
  	
- 	/* 
- 	switch (dd){
- 	case 0 :
- 	 	alert("00000"+namestring);
- 	break;
- 	case 1 :
- 	 	alert("11111"+namestring1);
- 	break;
- 	case 2 :
- 	 	alert("22222"+namestring2);
- 	break;
- 	case 3 : 
- 	 	alert("33333"+namestring3);
- 	break;
- 	case 4 :
- 	 	alert("4444444"+namestring4);
- 	break;
- 	case 10 :
- 	 	alert("1010101010"+namestring10);
- 	 	break;
- 	case 12 :
- 	 	alert("12121212"+namestring12);
- 	 	break;
- 	default :
- 	 	alert("damn it!");
- 	}
- 	
- 	 */
  	 
  	switch (dd){
  	case 0 :
@@ -1453,6 +1440,7 @@ $.ajax({
  	 	break;
  	case 12 :
  		totalnamestring=totalnamestring+"w"+namestring12;
+ 		$('input[name=totalnamestring]').attr('value',totalnamestring);
  	 	break;
  	default :
  	 	alert("damn it!");
@@ -1476,7 +1464,7 @@ $.ajax({
  	var end = document.getElementById("two").value;
  	
  	//값 넣기
- 	$('input[name=totalnamestring]').attr('value',totalnamestring);
+ 	
  	
 
  	
@@ -1544,11 +1532,15 @@ error:function(request,status,error){
 
 (function(){
    div_sh(${requestScope.SearchOption});
+
    })()
-document.getElementById("searchsection").click();
 </script>
 </c:if>		
-
+<c:if test="${not empty requestScope.Start }">
+<script>
+document.getElementById("searchsection").click();
+</script>
+</c:if>
 <div class="w3-bar w3-large">
       <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><h4>Search Option</h4></a>
 		</div>
@@ -1601,8 +1593,8 @@ document.getElementById("searchsection").click();
 
 <br>
 
-<c:if test="${requestScope.RiskGrade!=0.0 }">
- 
+<c:if test="${empty requestScope.AccidentNum0}">
+ <c:if test="${requestScope.RiskGrade!=0.0 }">
 			<!-- Chart code -->
 <script>
 var chart = AmCharts.makeChart( "chartdiv", {
@@ -1623,15 +1615,18 @@ var chart = AmCharts.makeChart( "chartdiv", {
   } ],
   "valueField": "value",
   "titleField": "country",
-  "outlineAlpha": 0.4,
+  "outlineAlpha": 2,
   "depth3D": 15,
-  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+  "balloonText": "[[title]]<br><span style='font-size:25px'><b>[[value]]</b> ([[percents]]%)</span>",
   "angle": 10,
   "export": {
     "enabled": true
   }
 } );
 </script>
+
+
+
 <script>
 var chart2 = AmCharts.makeChart("gaugediv", {
   "theme": "none",
@@ -1741,19 +1736,11 @@ function randomValue2() {
   var value2 = ${requestScope.RiskGrade};
   value2=(value2);
   chart4.arrows[0].setValue(value2);
-  chart4.axes[0].setTopText(value2);
+  chart4.axes[0].setTopText(value2 + "등급");
   // adjust darker band to new value
   chart4.axes[0].bands[1].setEndValue(value2);
 }
 </script>
-
-
-
-
-<!-- total 차트 -->
-
-
-
 
 
 
@@ -1773,183 +1760,183 @@ function randomValue2() {
        <button class="tablink" onclick="openPage('RouteInfo', this, 'red')">해당 경로 데이터</button>
 <button class="tablink" onclick="openPage('RiskPercent', this, 'green')" id="defaultOpen">평균 위험도</button>
 <button class="tablink" onclick="openPage('AccidentInfo', this, 'blue')">사고 평균 데이터</button>
-<button class="tablink" onclick="openPage('About', this, 'orange')">전체경로 데이터 분석</button>
+
          
       </div>
       </div>
       
 		<div class="w3-margin-left w3-center">
+		
+		
+		
+           <div id="RouteInfo" class="tabcontent">
+
+               <div class="row">
+                  <div class="column"  ">
+                  <div class="card" >
 
 
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <h4>선택 경로 : ${requestScope.SearchOption }</h4>
+                     &nbsp;&nbsp;&nbsp;
+                     <h2><%@ page import="java.util.*, java.text.*"%>
+                        <%
+                           java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
+                              String time = formatter.format(new java.util.Date());
+                              out.println("현재 시간 : " + time);
+                        %>
+                     </h2>
+                     <br>
+                     <h1>
+                        <font color="green">${requestScope.TTime } 분</font>
+                     </h1>
+                     
+                     <br><br><br><br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                  
+                  
 
+                  </div>
+                  </div>
+                  
+                  
+                  
+                  <div class="column"  ">
+                  <div class="card" >
+                     <br>
+                     <br>
+                     <br>
+                     <c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
 
-				<div id="RouteInfo" class="tabcontent">
+                     <c:choose>
+                        <c:when test="${RiskRatio_icon <= 3.0}">
+                           <img class="w3-image" src="img/kiss.png" alt="The main"
+                              style="width: 50%; height: 70%; align-self:center;">
+                           <br>
+                           <h1>
+                              <font color="green">매우 안전-!</font>
+                           </h1>
+                        </c:when>
+                        <c:when test="${RiskRatio_icon <= 6.0}">
+                           <img class="w3-image" src="img/happiness2.png" alt="The main"
+                              style="width: 50%; height: 70%;align-self:center;">
+                           <br>
+                           <h1>
+                              <font color="green">안전-!</font>
+                           </h1>
+                        </c:when>
+                        <c:when test="${RiskRatio_icon <= 9.0}">
+                           <img class="w3-image" src="img/happiness.png" alt="The main"
+                              style="width: 50%; height: 70%; align-self:center;">
+                           <br>
+                           <br>
+                           <br>
+                           <h1>
+                              <font color="green">보통</font>
+                           </h1>
+                        </c:when>
+                        <c:when test="${RiskRatio_icon <= 12.0}">
+                           <img class="w3-image" src="img/sad.png" alt="The main"
+                              style="width: 50%; height: 70%; align-self:center;">
+                           <br>
+                           <h1>
+                              <font color="green">위험-!</font>
+                           </h1>
+                        </c:when>
+                        <c:when test="${RiskRatio_icon <= 15.0}">
+                           <img class="w3-image" src="img/angry.png" alt="The main"
+                              style="width: 50%; height: 70%; align-self:center;">
+                           <br>
+                           <h1>
+                              <font color="green">매우 위험-!</font>
+                           </h1>
+                        </c:when>
+                        <c:when test="${RiskRatio_icon <= 35.0}">
+                           <img class="w3-image" src="img/dead.png" alt="The main"
+                              style="width: 50%; height: 70%;  align-self:center;;">
+                           <br>
+                           <h1>
+                              <font color="green">죽음의 길-!</font>
+                           </h1>
+                        </c:when>
 
-					<div class="row">
-						<div class="column"  ">
-						<div class="card" >
+                     </c:choose>
 
+                  </div>
+                  </div>
+                  
+                  
+                  
+                  <div class="column"  ">
+                  <div class="card" >
+                     <p id="SearchOption">
+                     <h4>
+                        경로 유형 : ${requestScope.SearchOption }번 째 경로
+                        </p>
+                     </h4>
+                     <br>
+                     <br>
 
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<h4>선택 경로 : ${requestScope.SearchOption }</h4>
-							&nbsp;&nbsp;&nbsp;
-							<h2><%@ page import="java.util.*, java.text.*"%>
-								<%
-									java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
-										String time = formatter.format(new java.util.Date());
-										out.println("현재 시간 : " + time);
-								%>
-							</h2>
-							<br>
-							<h1>
-								<font color="green">${requestScope.TTime } 분</font>
-							</h1>
-							
-							<br><br><br><br>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
-						
-						
+                     <p id="RiskRatio">
+                     <h4>
+                        도로별 평균 위험도 : ${requestScope.RiskRatio }
+                        </p>
+                     </h4>
+                     <br>
+                     <br>
 
-						</div>
-						</div>
-						
-						
-						
-						<div class="column"  ">
-						<div class="card" >
-							<br>
-							<br>
-							<br>
-							<c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
+                     <p id="RiskGrade">
+                     <h4>
+                        도로별 평균 위험 등급 : ${requestScope.RiskGrade } 등급
+                        </p>
+                     </h4>
+                     <br>
+                     <br>
 
-							<c:choose>
-								<c:when test="${RiskRatio_icon <= 3.0}">
-									<img class="w3-image" src="img/kiss.png" alt="The main"
-										style="width: 50%; height: 70%; align-self:center;">
-									<br>
-									<h1>
-										<font color="green">매우 안전-!</font>
-									</h1>
-								</c:when>
-								<c:when test="${RiskRatio_icon <= 6.0}">
-									<img class="w3-image" src="img/happiness2.png" alt="The main"
-										style="width: 50%; height: 70%;align-self:center;">
-									<br>
-									<h1>
-										<font color="green">안전-!</font>
-									</h1>
-								</c:when>
-								<c:when test="${RiskRatio_icon <= 9.0}">
-									<img class="w3-image" src="img/happiness.png" alt="The main"
-										style="width: 50%; height: 70%; align-self:center;">
-									<br>
-									<br>
-									<br>
-									<h1>
-										<font color="green">보통</font>
-									</h1>
-								</c:when>
-								<c:when test="${RiskRatio_icon <= 12.0}">
-									<img class="w3-image" src="img/sad.png" alt="The main"
-										style="width: 50%; height: 70%; align-self:center;">
-									<br>
-									<h1>
-										<font color="green">위험-!</font>
-									</h1>
-								</c:when>
-								<c:when test="${RiskRatio_icon <= 15.0}">
-									<img class="w3-image" src="img/angry.png" alt="The main"
-										style="width: 50%; height: 70%; align-self:center;">
-									<br>
-									<h1>
-										<font color="green">매우 위험-!</font>
-									</h1>
-								</c:when>
-								<c:when test="${RiskRatio_icon <= 35.0}">
-									<img class="w3-image" src="img/dead.png" alt="The main"
-										style="width: 50%; height: 70%;  align-self:center;;">
-									<br>
-									<h1>
-										<font color="green">죽음의 길-!</font>
-									</h1>
-								</c:when>
+                     <p id="AccidentNum">
+                     <h4>
+                        총 거리 : ${requestScope.TDistance  } km
+                        </p>
+                     </h4>
+                     <br>
+                     <br>
 
-							</c:choose>
+                     <p id="TTime">
+                     <h4>
+                        총 시간 : ${requestScope.TTime  } 분
+                        </p>
+                     </h4>
+                     <br>
+                     <br>
 
-						</div>
-						</div>
-						
-						
-						
-						<div class="column"  ">
-						<div class="card" >
-							<p id="SearchOption">
-							<h4>
-								경로 유형 : ${requestScope.SearchOption }번 째 경로
-								</p>
-							</h4>
-							<br>
-							<br>
+                     <p id="TFare">
+                     <h4>
+                        통행 비용 : ${requestScope.TFare } 원
+                        </p>
+                     </h4>
+                     <br>
+                     <br>
 
-							<p id="RiskRatio">
-							<h4>
-								도로별 평균 위험도 : ${requestScope.RiskRatio }
-								</p>
-							</h4>
-							<br>
-							<br>
+                     <p id="TaxiFare">
+                     <h4>
+                        예상 택시 요금 : ${requestScope.TaxiFare  } 원
+                        </p>
+                     </h4>
+                     <br>
+                  </div>
+               </div>
+               </div>
+               </div>
 
-							<p id="RiskGrade">
-							<h4>
-								도로별 평균 위험 등급 : ${requestScope.RiskGrade } 등급
-								</p>
-							</h4>
-							<br>
-							<br>
-
-							<p id="AccidentNum">
-							<h4>
-								총 거리 : ${requestScope.TDistance  } km
-								</p>
-							</h4>
-							<br>
-							<br>
-
-							<p id="TTime">
-							<h4>
-								총 시간 : ${requestScope.TTime  } 분
-								</p>
-							</h4>
-							<br>
-							<br>
-
-							<p id="TFare">
-							<h4>
-								통행 비용 : ${requestScope.TFare } 원
-								</p>
-							</h4>
-							<br>
-							<br>
-
-							<p id="TaxiFare">
-							<h4>
-								예상 택시 요금 : ${requestScope.TaxiFare  } 원
-								</p>
-							</h4>
-							<br>
-						</div>
-					</div>
-					</div>
-					</div>
 
 
 
@@ -1964,21 +1951,25 @@ function randomValue2() {
 					</div>
 
 					<div id="AccidentInfo" class="tabcontent">
-						<div class="w3-row-padding w3-padding-16">
-							<div id="chartdiv" class="w3-third w3-margin-bottom"
-								style="width: 100%"></div>
+               <div class="w3-row-padding w3-padding-16">
+                  <div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 100%"></div>
+               </div>
+            </div>
+			
 
-						</div>
-					</div>
-					<div id="About" class="tabcontent">
-						<div class="w3-row-padding w3-padding-16">
-							<div id="chart3" style="width: 100%"></div>
-							<script>
+         </div>
+</c:if>
+</c:if>
+
+<c:if test="${not empty requestScope.AccidentNum0 }">
+ 
+  
+  <script>
 
 
-var chart3 = Highcharts.chart('chart3', {
+var chart3 = Highcharts.chart('AllRoutes', {
   title: {
-    text: '     　　　　　　　   경로 별 사고 평균 '
+    text: '경로 별 사고 평균'
   },
   xAxis: {
     categories: ['경로 1 ', '경로 2', '경로 3', '경로 4', '경로 5','경로 6', '경로 7']
@@ -1996,45 +1987,54 @@ var chart3 = Highcharts.chart('chart3', {
   series: [{
     type: 'column',
     name: '사망자수',
-    data: [${requestScope.AccidentNum }, ${requestScope.DeadNum }, ${requestScope.CriticalNum }, ${requestScope.StableNum }, ${requestScope.ClaimantNum },5,3]
+    data: [${requestScope.DeadNum0}, ${requestScope.DeadNum1}, ${requestScope.DeadNum2}, ${requestScope.DeadNum3}, ${requestScope.DeadNum4},${requestScope.DeadNum10},${requestScope.DeadNum12}]
   }, {
     type: 'column',
     name: '중상자수',
-    data: [2, 3, 5, 7, 6,7,6]
+    data: [${requestScope.CriticalNum0}, ${requestScope.CriticalNum1}, ${requestScope.CriticalNum2}, ${requestScope.CriticalNum3}, ${requestScope.CriticalNum4},${requestScope.CriticalNum10},${requestScope.CriticalNum12}]
   }, {
     type: 'column',
     name: '경상자수',
-    data: [4, 3, 3, 9, 2,5,1]
+    data: [${requestScope.StableNum0}, ${requestScope.StableNum1}, ${requestScope.StableNum2}, ${requestScope.StableNum3}, ${requestScope.StableNum4},${requestScope.StableNum10},${requestScope.StableNum12}]
   },{
-	    type: 'column',
-	    name: '부상신고자수',
-	    data: [4, 3, 3, 9, 3,5,1]
-	  },
+       type: 'column',
+       name: '부상신고자수',
+       data: [${requestScope.ClaimantNum0}, ${requestScope.ClaimantNum1}, ${requestScope.ClaimantNum2}, ${requestScope.ClaimantNum3}, ${requestScope.ClaimantNum4},${requestScope.ClaimantNum10},${requestScope.ClaimantNum12}]
+     },
   
-	
+   
 
   {
     type: 'spline',
     name: '사고건수',
-    data: [3, 2.67, 3, 6.33, 3.33,2.5,4.5],
+    data: [${requestScope.AccidentNum0}, ${requestScope.AccidentNum1}, ${requestScope.AccidentNum2}, ${requestScope.AccidentNum3}, ${requestScope.AccidentNum4},${requestScope.AccidentNum10},${requestScope.AccidentNum12}],
     marker: {
       lineWidth: 2,
       lineColor: Highcharts.getOptions().colors[3],
       fillColor: 'white'
     }
-  }, ]
+  } ]
 });
 
 
 </script>
+               
+<div class="w3-container" style="padding: 64px 16px" id="about">
+      <div class="tab">
+      
+       <button class="tablink" onclick="openPage('AllRouteInfo', this, 'orange')">경로 별 사고 통계</button>
+       </div>
+      </div>
+      <div class="w3-margin-left w3-center">
+      <div id="AllRouteInfo" class="tabcontent">
+				<div class="w3-row-padding w3-padding-16">
+				 <div id="AllRoutes" style="min-width: 310px; height: 400px; margin: 0 auto"></div>					
+				<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				</div>
+			</div>
+      </div>
+</c:if>
 
-
-						</div>
-					</div>
-
-
-
-				</div></c:if>
 
 
 
@@ -2054,29 +2054,6 @@ var chart3 = Highcharts.chart('chart3', {
 			<p>Phone : 010-3967-3325, 010-9003-4096, 010-7202-8295 Copyright(c) 2018   Email : glee1228@naver.com   <a href="localhost:8088/Security_Navigation_Web/main.jsp" target="_blank" class="w3-hover-text-green"> www.solidium.com </a>Allright Reserved.</p>
 </footer>
 
-<!-- Add Google Maps -->
-<script>
-function myMap()
-{
-  myCenter=new google.maps.LatLng(41.878114, -87.629798);
-  var mapOptions= {
-    center:myCenter,
-    zoom:12, scrollwheel: false, draggable: false,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
-
-  var marker = new google.maps.Marker({
-    position: myCenter,
-  });
-  marker.setMap(map);
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
 
 
 <div id="id01" class="modal">
