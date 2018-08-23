@@ -448,7 +448,7 @@ label {
 		</script>
 		<div id="map_div" class=" w3-padding w3-col w3-container" style="max-width:1200px" width="680" height="550"; >
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b"></script>
+<script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
 
 <script>
 function openPage(pageName, elmnt, color) {
@@ -530,7 +530,7 @@ data:{
    "fullAddr" : start, //주소 정보 입니다, 도로명 주소 표준 표기 방법을 지원합니다.  
    "page" : "1",//페이지 번호 입니다.
    "count" : "20",//페이지당 출력 갯수 입니다.
-   "appKey" : "f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
+   "appKey" : "ec633e08-ce42-48a8-9674-a3e09c7bea73",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 },
 //데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
 success:function(response){
@@ -743,7 +743,7 @@ $.ajax({
       "fullAddr" : start, //주소 정보 입니다, 도로명 주소 표준 표기 방법을 지원합니다.  
       "page" : "1",//페이지 번호 입니다.
       "count" : "20",//페이지당 출력 갯수 입니다.
-      "appKey" : "f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
+      "appKey" : "ec633e08-ce42-48a8-9674-a3e09c7bea73",//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
    },
    //데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
    success:function(response){
@@ -946,7 +946,7 @@ $.ajax({
 
 function div_sh(dd) {
 	var headers = {}; 
-	headers["appKey"]="f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
+	headers["appKey"]="ec633e08-ce42-48a8-9674-a3e09c7bea73";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 	var search = dd;
 	//alert(this.resultlat_s2+"//"+this.resultlon_s2+"//"+this.resultlat_e2+"//"+this.resultlon_e2);
 	$.ajax({
@@ -1158,7 +1158,7 @@ function div_sh(dd) {
 
 function div_sh2(dd) {
 var headers = {}; 
-headers["appKey"]="f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
+headers["appKey"]="ec633e08-ce42-48a8-9674-a3e09c7bea73";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 var search =0;
 if(dd>12){
 	search = dd-13;
@@ -1780,20 +1780,24 @@ function randomValue2() {
                      <br>
                      <br>
                      <br>
-                     <br>
-                     <br>
-                     <h4>선택 경로 : ${requestScope.SearchOption }</h4>
-                     &nbsp;&nbsp;&nbsp;
-                     <h2><%@ page import="java.util.*, java.text.*"%>
+                     <h3>선택 경로 : ${requestScope.SearchOption }  &nbsp;&nbsp;
+                     <%@ page import="java.util.*, java.text.*"%>
                         <%
                            java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
                               String time = formatter.format(new java.util.Date());
                               out.println("현재 시간 : " + time);
                         %>
-                     </h2>
+                     </h3>
+                     <br>
+                     <br>
+                     <br>
+                     
+                     &nbsp;&nbsp;&nbsp;
+                     
+                     
                      <br>
                      <h1>
-                        <font color="green">${requestScope.TTime } 분</font>
+                        <font color="green" >${requestScope.TTime } 분</font>
                      </h1>
                      
                      <br><br><br><br>
@@ -1814,7 +1818,7 @@ function randomValue2() {
                   <div class="card" >
                      <br>
                      <br>
-                     <br>
+                     <br><br><br><br><br>
                      <c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
 
                      <c:choose>
