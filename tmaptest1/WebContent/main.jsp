@@ -1968,6 +1968,20 @@ function randomValue2() {
 <c:if test="${not empty requestScope.AccidentNum0 }">
  
   
+
+               
+<div class="w3-container" style="padding: 64px 16px" id="about">
+      <div class="tab">
+      
+       <button class="tablink" onclick="openPage('AllRouteInfo', this, 'orange')">경로 별 사고 통계</button>
+       </div>
+      </div>
+      <div class="w3-margin-left w3-center">
+      <div id="AllRouteInfo" class="tabcontent">
+				<div class="w3-row-padding w3-padding-16">
+				 <div id="AllRoutes" style="min-width: 310px; height: 400px; margin: 0 auto"></div>	
+				 
+				 
   <script>
 
 
@@ -2019,20 +2033,10 @@ var chart3 = Highcharts.chart('AllRoutes', {
     }
   } ]
 });
-
-
+				 
 </script>
-               
-<div class="w3-container" style="padding: 64px 16px" id="about">
-      <div class="tab">
-      
-       <button class="tablink" onclick="openPage('AllRouteInfo', this, 'orange')">경로 별 사고 통계</button>
-       </div>
-      </div>
-      <div class="w3-margin-left w3-center">
-      <div id="AllRouteInfo" class="tabcontent">
-				<div class="w3-row-padding w3-padding-16">
-				 <div id="AllRoutes" style="min-width: 310px; height: 400px; margin: 0 auto"></div>					
+
+				 				
 				<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 				</div>
 			</div>
