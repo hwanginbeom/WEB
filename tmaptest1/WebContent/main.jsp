@@ -1834,7 +1834,7 @@ function randomValue2() {
 							<c:choose>
 								<c:when test="${RiskRatio_icon <= 3.0}">
 									<img class="w3-image" src="img/kiss.png" alt="The main"
-										style="width: 70%; height: 70%; align:right;">
+										style="width: 50%; height: 70%; align-self:center;">
 									<br>
 									<h1>
 										<font color="green">매우 안전-!</font>
@@ -1842,7 +1842,7 @@ function randomValue2() {
 								</c:when>
 								<c:when test="${RiskRatio_icon <= 6.0}">
 									<img class="w3-image" src="img/happiness2.png" alt="The main"
-										style="width: 70%; height: 70%;align:right;">
+										style="width: 50%; height: 70%;align-self:center;">
 									<br>
 									<h1>
 										<font color="green">안전-!</font>
@@ -1850,7 +1850,7 @@ function randomValue2() {
 								</c:when>
 								<c:when test="${RiskRatio_icon <= 9.0}">
 									<img class="w3-image" src="img/happiness.png" alt="The main"
-										style="width: 70%; height: 70%; align:right;">
+										style="width: 50%; height: 70%; align-self:center;">
 									<br>
 									<br>
 									<br>
@@ -1860,7 +1860,7 @@ function randomValue2() {
 								</c:when>
 								<c:when test="${RiskRatio_icon <= 12.0}">
 									<img class="w3-image" src="img/sad.png" alt="The main"
-										style="width: 70%; height: 70%; align:right;">
+										style="width: 50%; height: 70%; align-self:center;">
 									<br>
 									<h1>
 										<font color="green">위험-!</font>
@@ -1868,7 +1868,7 @@ function randomValue2() {
 								</c:when>
 								<c:when test="${RiskRatio_icon <= 15.0}">
 									<img class="w3-image" src="img/angry.png" alt="The main"
-										style="width: 70%; height: 70%; align:right;">
+										style="width: 50%; height: 70%; align-self:center;">
 									<br>
 									<h1>
 										<font color="green">매우 위험-!</font>
@@ -1876,7 +1876,7 @@ function randomValue2() {
 								</c:when>
 								<c:when test="${RiskRatio_icon <= 35.0}">
 									<img class="w3-image" src="img/dead.png" alt="The main"
-										style="width: 70%; height: 70%;  align:center;">
+										style="width: 50%; height: 70%;  align-self:center;;">
 									<br>
 									<h1>
 										<font color="green">죽음의 길-!</font>
