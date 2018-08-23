@@ -21,16 +21,27 @@
 <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
 <style>
 
 #chartdiv {
   width: 100%;
-  height: 500px;
+  height: 700px;
 }    
 #gaugediv {
   width: 100%;
   height: 500px;
 } 
+#chart3{
+  width: 100%;
+  height: 500px;
+} 
+}
 /* Full-width input fields */
 input[type=text], input[type=password] {
     width: 80%;
@@ -871,7 +882,7 @@ function div_sh(dd) {
 	var headers = {}; 
 	headers["appKey"]="f70ef694-e6b4-4f17-b5e6-7255a2b3ab9b";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
 	var search = dd;
-	alert(this.resultlat_s2+"//"+this.resultlon_s2+"//"+this.resultlat_e2+"//"+this.resultlon_e2);
+//	alert(this.resultlat_s2+"//"+this.resultlon_s2+"//"+this.resultlat_e2+"//"+this.resultlon_e2);
 	$.ajax({
 	   
 	   method:"POST",
@@ -1004,7 +1015,7 @@ function div_sh(dd) {
 	 	console.log(namestring);
 	 	
 	 	
-	 	alert(namestring);
+	 	//alert(namestring);
 
 	 	
 	 	
@@ -1400,7 +1411,7 @@ $.ajax({
  
  	
  	
- 	alert(totalnamestring);
+ 	//alert(totalnamestring);
  	
  	
  	
@@ -1582,7 +1593,7 @@ var chart2 = AmCharts.makeChart("gaugediv", {
     "endValue": 100,
     "gridInside": true,
     "inside": true,
-    "radius": "40%",
+    "radius": "55%",
     "valueInterval": 10,
     "tickColor": "#67b7dc",
     "startAngle": -90,
@@ -1625,6 +1636,18 @@ function randomValue() {
   chart2.axes[0].bands[1].setEndValue(value);
 }
 </script>
+
+
+<!-- total 차트 -->
+
+
+
+
+
+
+
+
+
 <!-- 
 <div class="w3-row-padding w3-padding-16">
 <div id="gaugediv" class="w3-third w3-margin-top" style="width:50%"></div>
@@ -1638,7 +1661,7 @@ function randomValue() {
        <button class="tablink" onclick="openPage('RouteInfo', this, 'red')">해당 경로 데이터</button>
 <button class="tablink" onclick="openPage('RiskPercent', this, 'green')" id="defaultOpen">평균 위험도</button>
 <button class="tablink" onclick="openPage('AccidentInfo', this, 'blue')">사고 평균 데이터</button>
-<button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+<button class="tablink" onclick="openPage('About', this, 'orange')">전체경로 데이터 분석</button>
          
       </div>
       </div>
@@ -1700,6 +1723,9 @@ function randomValue() {
 
                   </c:choose>
                </div>
+               
+               
+               
                <div class="w3-half " style="position:relative; bottom:16px">
             
                <p id="msg">${requestScope.msg }</p>
@@ -1764,16 +1790,76 @@ function randomValue() {
 
             <div id="AccidentInfo" class="tabcontent">
                <div class="w3-row-padding w3-padding-16">
-                  <div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 100%"></div>
+               <div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 100%"></div>
+                  
+               </div>
+            </div>
+            <div id="About" class="tabcontent">
+               <div class="w3-row-padding w3-padding-16">
+               <h4>경로 유형</h4>
+					<div id="chart3" style="width: 100%"></div>
+					<script>
+
+var chart3 = Highcharts.chart('chart3', {
+  title: {
+    text: '     　　　　　　　   경로 별 사고 평균 '
+  },
+  xAxis: {
+    categories: ['경로 1 ', '경로 2', '경로 3', '경로 4', '경로 5','경로 6', '경로 7']
+  },
+  labels: {
+    items: [{
+      html: '',
+      style: {
+        left: '50px',
+        top: '18px',
+        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+      }
+    }]
+  },
+  series: [{
+    type: 'column',
+    name: '사망자수',
+    data: [3, 2, 1, 3, 4,5,3]
+  }, {
+    type: 'column',
+    name: '중상자수',
+    data: [2, 3, 5, 7, 6,7,6]
+  }, {
+    type: 'column',
+    name: '경상자수',
+    data: [4, 3, 3, 9, 2,5,1]
+  },{
+	    type: 'column',
+	    name: '부상신고자수',
+	    data: [4, 3, 3, 9, 3,5,1]
+	  },
+  
+	
+
+  {
+    type: 'spline',
+    name: '사고건수',
+    data: [3, 2.67, 3, 6.33, 3.33,2.5,4.5],
+    marker: {
+      lineWidth: 2,
+      lineColor: Highcharts.getOptions().colors[3],
+      fillColor: 'white'
+    }
+  }, ]
+});
+
+
+</script>
+					
+                  
                </div>
             </div>
 
+			
 
-         </div>
+			</div>
 </c:if>
-
-
-
 
 
 

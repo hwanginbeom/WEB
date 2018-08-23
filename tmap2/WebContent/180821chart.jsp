@@ -12,12 +12,12 @@
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="totalchart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 
 <script>
 
-Highcharts.chart('container', {
+Highcharts.chart('totalchart', {
   title: {
     text: '     　　　　　　　   경로 별 사고 평균 '
   },
