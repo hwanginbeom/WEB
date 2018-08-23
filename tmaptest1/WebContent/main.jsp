@@ -29,11 +29,62 @@
 
 <style>
 
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 33.3%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+
+
+
+
 #chartdiv {
   width: 100%;
   height: 700px;
 }    
 #gaugediv {
+  width: 100%;
+  height: 500px;
+} 
+#gaugediv2 {
   width: 100%;
   height: 500px;
 } 
@@ -1629,13 +1680,74 @@ setInterval(randomValue, 2000);
 // set random value
 function randomValue() {
   var value = ${requestScope.RiskRatio};
-  value=(value/16)*100;
+  value=(value/16).toFixed(4)*100;
   chart2.arrows[0].setValue(value);
   chart2.axes[0].setTopText(value+" %");
   // adjust darker band to new value
   chart2.axes[0].bands[1].setEndValue(value);
 }
 </script>
+
+
+
+
+<script>
+var chart4 = AmCharts.makeChart("gaugediv2", {
+  "theme": "none",
+  "type": "gauge",
+  "axes": [{
+    "topTextFontSize": 20,
+    "topTextYOffset": 70,
+    "axisColor": "#31d6ea",
+    "axisThickness": 1,
+    "endValue": 4,
+    "gridInside": true,
+    "inside": true,
+    "radius": "55%",
+    "valueInterval": 0.5,
+    "tickColor": "#67b7dc",
+    "startAngle": -90,
+    "endAngle": 90,
+    "unit": "등급",
+    "bandOutlineAlpha": 0,
+    "bands": [{
+      "color": "#1ee83c",
+      "endValue": 4,
+      "innerRadius": "105%",
+      "radius": "170%",
+      "gradientRatio": [0.5, 0, -0.5],
+      "startValue": 0
+    }, {
+      "color": "#e22b2b",
+      "endValue": 0,
+      "innerRadius": "105%",
+      "radius": "170%",
+      "gradientRatio": [0.5, 0, -0.5],
+      "startValue": 0
+    }]
+  }],
+  "arrows": [{
+    "alpha": 1,
+    "innerRadius": "35%",
+    "nailRadius": 0,
+    "radius": "170%"
+  }]
+});
+
+setInterval(randomValue2, 2000);
+
+// set random value
+function randomValue2() {
+  var value2 = ${requestScope.RiskGrade};
+  value2=(value2);
+  chart4.arrows[0].setValue(value2);
+  chart4.axes[0].setTopText(value2);
+  // adjust darker band to new value
+  chart4.axes[0].bands[1].setEndValue(value2);
+}
+</script>
+
+
 
 
 <!-- total 차트 -->
@@ -1667,138 +1779,202 @@ function randomValue() {
       </div>
       
 		<div class="w3-margin-left w3-center">
-         <div id="RouteInfo" class="tabcontent" style="background-color:#C4E0F3">
-               <div class="w3-bar w3-white w3-large">
-               <h4>${requestScope.Start }...${requestScope.End }</h4>
-               </div>
-               <div class="w3-row-padding" >
-                  <div class="w3-quarter" style="position: relative; bottom: 16px">
-                     <h4>선택 경로 : ${requestScope.SearchOption }</h4>
-                     &nbsp;&nbsp;&nbsp;
-                     <h5><%@ page import="java.util.*, java.text.*"%>
-                        <%
-                           java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
-                              String time = formatter.format(new java.util.Date());
-                              out.println("현재 시간 : " + time);
-                        %>
-                     </h5>
-                     <br>
-                     <h1>
-                        <font color="green">${requestScope.TTime } 분</font>
-                     </h1>
-                  </div>
-                  <div class="w3-quarter">
-               <c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
-                  <c:choose>
-                     <c:when test= "${RiskRatio_icon <= 3.0}">
-                        <img class="w3-image" src="img/kiss.png" alt="The main"
-                           style="width:70%; height:70%;">
-                           <h1><font color="green">매우 안전-!</font></h1>
-                     </c:when>
-                     <c:when test= "${RiskRatio_icon <= 6.0}">
-                        <img class="w3-image" src="img/happiness2.png" alt="The main"
-                           style="width:70%; height:70%;">
-                           <h1><font color="green">안전-!</font></h1>
-                     </c:when>
-                     <c:when test= "${RiskRatio_icon <= 9.0}">
-                        <img class="w3-image" src="img/happiness.png" alt="The main"
-                           style="width:70%; height:70%;">
-                           <h1><font color="green">보통</font></h1>
-                     </c:when>
-                     <c:when test= "${RiskRatio_icon <= 12.0}">
-                        <img class="w3-image" src="img/sad.png" alt="The main"
-                           style="width:70%; height:70%;">
-                           <h1><font color="green">위험-!</font></h1>
-                     </c:when>
-                     <c:when test= "${RiskRatio_icon <= 15.0}">
-                        <img class="w3-image" src="img/angry.png" alt="The main"
-                           style="width:70%; height:70%;">
-                           <h1><font color="green">매우 위험-!</font></h1>
-                     </c:when>
-                        <c:when test= "${RiskRatio_icon <= 35.0}">
-                        <img class="w3-image" src="img/dead.png" alt="The main"
-                           style="width:70%; height:70%;">
-                           <h1><font color="green">죽음의 길-!</font></h1>
-                     </c:when>
 
-                  </c:choose>
-               </div>
-               
-               
-               
-               <div class="w3-half " style="position:relative; bottom:16px">
-            
-               <p id="msg">${requestScope.msg }</p>
-               <p id="SearchOption">
-               
-               <h4>경로 유형</h4>${requestScope.SearchOption }</p>
-               <p id="RiskRatio">
-               
-               <h4>도로별 평균 위험도</h4>${requestScope.RiskRatio }</p>
-               <p id="RiskGrade">
-               
-               <h4>도로별 평균 위험 등급</h4>${requestScope.RiskGrade }</p>
-               <p id="AccidentNum">
-               
-               <h4>도로별 평균 사고건수</h4>${requestScope.AccidentNum }</p>
-               <p id="DeadNum">
-               
-               <h4>도로별 평균 사망자 수</h4>${requestScope.DeadNum }</p>
-               <p id="CriticalNum">
-               
-               <h4>도로별 평균 중상자 수</h4>${requestScope.CriticalNum }</p>
-               <p id="StableNum">
-               
-               <h4>도로별 평균 경상자 수</h4>${requestScope.StableNum }</p>
-               <p id="ClaimantNum">
-               
-               <h4>도로별 평균 부상신고자 수</h4>${requestScope.ClaimantNum }</p>
-               
-               <p id="StartLat">
-               
-               <h4>출발지 위도</h4>${requestScope.StartLat }</p>
-               <p id="StartLng">
-               
-               <h4>출발지 경도</h4>${requestScope.StartLng }</p>
-               <p id="EndLat">
-               
-               <h4>목적지 위도</h4>${requestScope.EndLat }</p>
-               <p id="EndLng">
-               
-               <h4>목적지 경도</h4>${requestScope.EndLng }</p>
-               <p id="TDistance">
-               
-               <h4>총 거리</h4>${requestScope.TDistance  }</p>
-               <p id="TTime">
-               
-               <h4>총 시간</h4>${requestScope.TTime  }</p>
-               <p id="TFare">
-               
-               <h4>통행 비용</h4>${requestScope.TFare }</p>
-               <p id="TaxiFare">
-               
-               <h4>예상 택시 요금</h4>${requestScope.TaxiFare  }</p>
-               </div>
-               </div>
-            </div>
 
-            <div id="RiskPercent" class="tabcontent">
-            <div class="w3-row-padding w3-padding-16">
-               <div id="gaugediv" class="w3-third w3-margin-top"style="width: 100%"></div>
-            </div>
-            </div>
 
-            <div id="AccidentInfo" class="tabcontent">
-               <div class="w3-row-padding w3-padding-16">
-               <div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 100%"></div>
-                  
-               </div>
-            </div>
-            <div id="About" class="tabcontent">
-               <div class="w3-row-padding w3-padding-16">
-               <h4>경로 유형</h4>
-					<div id="chart3" style="width: 100%"></div>
-					<script>
+
+				<div id="RouteInfo" class="tabcontent">
+
+					<div class="row">
+						<div class="column"  ">
+						<div class="card" >
+
+
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<h4>선택 경로 : ${requestScope.SearchOption }</h4>
+							&nbsp;&nbsp;&nbsp;
+							<h2><%@ page import="java.util.*, java.text.*"%>
+								<%
+									java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
+										String time = formatter.format(new java.util.Date());
+										out.println("현재 시간 : " + time);
+								%>
+							</h2>
+							<br>
+							<h1>
+								<font color="green">${requestScope.TTime } 분</font>
+							</h1>
+							
+							<br><br><br><br>
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+						
+						
+
+						</div>
+						</div>
+						
+						
+						
+						<div class="column"  ">
+						<div class="card" >
+							<br>
+							<br>
+							<br>
+							<c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
+
+							<c:choose>
+								<c:when test="${RiskRatio_icon <= 3.0}">
+									<img class="w3-image" src="img/kiss.png" alt="The main"
+										style="width: 70%; height: 70%; align:right;">
+									<br>
+									<h1>
+										<font color="green">매우 안전-!</font>
+									</h1>
+								</c:when>
+								<c:when test="${RiskRatio_icon <= 6.0}">
+									<img class="w3-image" src="img/happiness2.png" alt="The main"
+										style="width: 70%; height: 70%;align:right;">
+									<br>
+									<h1>
+										<font color="green">안전-!</font>
+									</h1>
+								</c:when>
+								<c:when test="${RiskRatio_icon <= 9.0}">
+									<img class="w3-image" src="img/happiness.png" alt="The main"
+										style="width: 70%; height: 70%; align:right;">
+									<br>
+									<br>
+									<br>
+									<h1>
+										<font color="green">보통</font>
+									</h1>
+								</c:when>
+								<c:when test="${RiskRatio_icon <= 12.0}">
+									<img class="w3-image" src="img/sad.png" alt="The main"
+										style="width: 70%; height: 70%; align:right;">
+									<br>
+									<h1>
+										<font color="green">위험-!</font>
+									</h1>
+								</c:when>
+								<c:when test="${RiskRatio_icon <= 15.0}">
+									<img class="w3-image" src="img/angry.png" alt="The main"
+										style="width: 70%; height: 70%; align:right;">
+									<br>
+									<h1>
+										<font color="green">매우 위험-!</font>
+									</h1>
+								</c:when>
+								<c:when test="${RiskRatio_icon <= 35.0}">
+									<img class="w3-image" src="img/dead.png" alt="The main"
+										style="width: 70%; height: 70%;  align:center;">
+									<br>
+									<h1>
+										<font color="green">죽음의 길-!</font>
+									</h1>
+								</c:when>
+
+							</c:choose>
+
+						</div>
+						</div>
+						
+						
+						
+						<div class="column"  ">
+						<div class="card" >
+							<p id="SearchOption">
+							<h4>
+								경로 유형 : ${requestScope.SearchOption }번 째 경로
+								</p>
+							</h4>
+							<br>
+							<br>
+
+							<p id="RiskRatio">
+							<h4>
+								도로별 평균 위험도 : ${requestScope.RiskRatio }
+								</p>
+							</h4>
+							<br>
+							<br>
+
+							<p id="RiskGrade">
+							<h4>
+								도로별 평균 위험 등급 : ${requestScope.RiskGrade } 등급
+								</p>
+							</h4>
+							<br>
+							<br>
+
+							<p id="AccidentNum">
+							<h4>
+								총 거리 : ${requestScope.TDistance  } km
+								</p>
+							</h4>
+							<br>
+							<br>
+
+							<p id="TTime">
+							<h4>
+								총 시간 : ${requestScope.TTime  } 분
+								</p>
+							</h4>
+							<br>
+							<br>
+
+							<p id="TFare">
+							<h4>
+								통행 비용 : ${requestScope.TFare } 원
+								</p>
+							</h4>
+							<br>
+							<br>
+
+							<p id="TaxiFare">
+							<h4>
+								예상 택시 요금 : ${requestScope.TaxiFare  } 원
+								</p>
+							</h4>
+							<br>
+						</div>
+					</div>
+					</div>
+					</div>
+
+
+
+					<div id="RiskPercent" class="tabcontent">
+						<div class="w3-row-padding w3-padding-16">
+							<div id="gaugediv" class="w3-third w3-margin-top"
+								style="width: 50%"></div>
+							<div id="gaugediv2" class="w3-third w3-margin-top"
+								style="width: 50%"></div>
+
+						</div>
+					</div>
+
+					<div id="AccidentInfo" class="tabcontent">
+						<div class="w3-row-padding w3-padding-16">
+							<div id="chartdiv" class="w3-third w3-margin-bottom"
+								style="width: 100%"></div>
+
+						</div>
+					</div>
+					<div id="About" class="tabcontent">
+						<div class="w3-row-padding w3-padding-16">
+							<div id="chart3" style="width: 100%"></div>
+							<script>
+
 
 var chart3 = Highcharts.chart('chart3', {
   title: {
@@ -1820,7 +1996,7 @@ var chart3 = Highcharts.chart('chart3', {
   series: [{
     type: 'column',
     name: '사망자수',
-    data: [3, 2, 1, 3, 4,5,3]
+    data: [${requestScope.AccidentNum }, ${requestScope.DeadNum }, ${requestScope.CriticalNum }, ${requestScope.StableNum }, ${requestScope.ClaimantNum },5,3]
   }, {
     type: 'column',
     name: '중상자수',
@@ -1851,15 +2027,14 @@ var chart3 = Highcharts.chart('chart3', {
 
 
 </script>
-					
-                  
-               </div>
-            </div>
 
-			
 
-			</div>
-</c:if>
+						</div>
+					</div>
+
+
+
+				</div></c:if>
 
 
 
