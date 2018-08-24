@@ -391,10 +391,7 @@ label {
 
 
 
-					
-					<button type="submit" class="btn btn-success btn-lg">
-						<i class="fa fa-search"></i> Search
-					</button>
+				
 
 				</div>
 			</form>
@@ -408,9 +405,7 @@ label {
 							type="hidden" name="endlng" value=""> <input
 							type="hidden" name="start" value=""> <input type="hidden"
 							name="end" value="">
-					<button class="btn btn-success btn-lg" onclick="totalsearch()">
-						<i class="fa fa-search"></i> TotoalSearch
-					</button>
+					
 				</div>
 			</form>
 		</div>
@@ -1747,19 +1742,14 @@ function randomValue2() {
 
 
 
-<!-- 
-<div class="w3-row-padding w3-padding-16">
-<div id="gaugediv" class="w3-third w3-margin-top" style="width:50%"></div>
-<div id="chartdiv" class="w3-third w3-margin-bottom" style="width:50%"></div>
-</div>
--->
+
 
 <div class="w3-container" style="padding: 64px 16px" id="about">
       <div class="tab">
       
-       <button class="tablink" onclick="openPage('RouteInfo', this, 'red')">해당 경로 데이터</button>
-<button class="tablink" onclick="openPage('RiskPercent', this, 'green')" id="defaultOpen">평균 위험도</button>
-<button class="tablink" onclick="openPage('AccidentInfo', this, 'blue')">사고 평균 데이터</button>
+       <button class="tablink" onclick="openPage()">해당 경로 데이터</button>
+<button class="tablink" onclick="openPage()" id="defaultOpen">평균 위험도</button>
+<button class="tablink" onclick="openPage()">사고 평균 데이터</button>
 
          
       </div>

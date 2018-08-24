@@ -241,7 +241,7 @@ public class AllController extends HttpServlet {
          }
       } else {
          System.out.println("Error");
-         response.sendRedirect("main.jsp");
+         response.sendRedirect("main2.jsp");
       }      
    }
    //로그인
