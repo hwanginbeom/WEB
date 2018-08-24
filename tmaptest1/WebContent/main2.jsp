@@ -2091,7 +2091,7 @@ var chart3 = Highcharts.chart('AllRoutes', {
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <label for="id"><b>Email</b></label><br>
+      <label for="id"><b>id</b></label><br>
       <input type="text" placeholder="Enter Id" name="id" required><br>
 
       <label for="pw"><b>Password</b></label><br>

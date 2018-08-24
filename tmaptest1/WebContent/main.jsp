@@ -405,7 +405,7 @@ label {
 
 
 					
-					<button type="submit" class="btn btn-success btn-lg" >
+					<button type="submit" class="btn btn-success btn-lg" style="border-left-width: 1px; margin-left: 20px;" >
 						<i class="fa fa-search"></i> Search
 					</button>
 
@@ -421,7 +421,7 @@ label {
 							type="hidden" name="endlng" value=""> <input
 							type="hidden" name="start" value=""> <input type="hidden"
 							name="end" value="">
-					<button class="btn btn-success btn-lg" onclick="totalsearch()" style="border-left-width: 1px; margin-left: 30px;">
+					<button class="btn btn-success btn-lg" onclick="totalsearch()" style="border-left-width: 1px; margin-left: 60px;">
 
     
    
@@ -1598,6 +1598,11 @@ document.getElementById("searchsection").click();
 					id="radio-7-set" value="12" onclick="div_sh(12);"><label
 					for="radio-7-set">이 륜 차 도 로 우 선</label>
 			</div>
+					<div class="w3-col m3">
+				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
+					id="radio-7-set" value="12" onclick="div_sh(12);"><label
+					for="radio-7-set">   a  b  o  u  t   </label>
+			</div>
 			<br>
 		</div>
 <br>
@@ -1776,6 +1781,8 @@ function randomValue2() {
        <button class="tablink" onclick="openPage('RouteInfo', this, 'red')">해당 경로 데이터</button>
 <button class="tablink" onclick="openPage('RiskPercent', this, 'green')" id="defaultOpen">평균 위험도</button>
 <button class="tablink" onclick="openPage('AccidentInfo', this, 'blue')">사고 평균 데이터</button>
+<button class="tablink" onclick="openPage()">about</button>
+
 
          
       </div>
@@ -2056,6 +2063,15 @@ var chart3 = Highcharts.chart('AllRoutes', {
 				 				
 				</div>
 			</div>
+			
+			 <div id="" class="tabcontent">
+
+               <div class="row">
+                  <div class="column"  ">
+			
+			
+			
+			
       </div>
       				 </div>
       
