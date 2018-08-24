@@ -405,7 +405,7 @@ label {
 
 
 					
-					<button type="submit" class="btn btn-success btn-lg">
+					<button type="submit" class="btn btn-success btn-lg" >
 						<i class="fa fa-search"></i> Search
 					</button>
 
@@ -421,7 +421,10 @@ label {
 							type="hidden" name="endlng" value=""> <input
 							type="hidden" name="start" value=""> <input type="hidden"
 							name="end" value="">
-					<button class="btn btn-success btn-lg" onclick="totalsearch()">
+					<button class="btn btn-success btn-lg" onclick="totalsearch()" style="border-left-width: 1px; margin-left: 30px;">
+
+    
+   
 						<i class="fa fa-search"></i> TotoalSearch
 					</button>
 				</div>
@@ -1555,7 +1558,7 @@ document.getElementById("searchsection").click();
 </script>
 </c:if>
 <div class="w3-bar w3-large">
-      <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile"><h4>Search Option</h4></a>
+      <a href="#rooms" class="w3-bar-item w3-button w3-left w3-left-grey w3-mobile"><h4>Search Option</h4></a>
 		</div>
 		<div class="w3-row-padding w3-col w3-margin-top">
 			<div class="w3-col m3">
