@@ -1969,6 +1969,8 @@ function randomValue2() {
  
   
 
+							<div class="w3-margin-left w3-center">
+					
                
 <div class="w3-container" style="padding: 64px 16px" id="about">
       <div class="tab">
@@ -1979,8 +1981,7 @@ function randomValue2() {
       <div class="w3-margin-left w3-center">
       <div id="AllRouteInfo" class="tabcontent">
 				<div class="w3-row-padding w3-padding-16">
-				 <div id="AllRoutes" style="min-width: 310px; height: 400px; margin: 0 auto"></div>	
-				 
+				 <div id="AllRoutes" class="w3-third w3-margin-bottom"style="width: 100%"></div>	
 				 
   <script>
 
@@ -1990,7 +1991,7 @@ var chart3 = Highcharts.chart('AllRoutes', {
     text: '경로 별 사고 평균'
   },
   xAxis: {
-    categories: ['경로 1 ', '경로 2', '경로 3', '경로 4', '경로 5','경로 6', '경로 7']
+    categories: ['교통최적 + 추천 ', '교통최적+무료우선', '교통최적+최소시간', '교통최적+초보', '교통최적+고속도로우선','최단거리', '이륜차도로우선']
   },
   labels: {
     items: [{
@@ -2037,10 +2038,11 @@ var chart3 = Highcharts.chart('AllRoutes', {
 </script>
 
 				 				
-				<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 				</div>
 			</div>
       </div>
+      				 </div>
+      
 </c:if>
 
 
