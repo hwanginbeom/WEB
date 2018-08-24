@@ -310,9 +310,7 @@ label {
   <a href="#" class="w3-bar-item w3-button w3-black w3-mobile"><i class="fa fa-map w3-margin-right"></i>HOME</a>
   <a href="#rooms" id="searchsection" class="w3-bar-item w3-button w3-mobile">SEARCH</a>
        <a class ="w3-bar-item w3-button" onclick="document.getElementById('id02').style.display='block'" >SIGNUP</a>
-       
-      <a class ="w3-bar-item w3-button" onclick = 'location.href="cont?command=logout"'id="button_logout" ><i class="fa fa-sign-in"></i>LOGOUT</a>
-      
+      <a class ="w3-bar-item w3-button" onclick="document.getElementById('id01').style.display='block'" >LOGIN</a>
   <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">SEARCH NOW</a>
 	   
     

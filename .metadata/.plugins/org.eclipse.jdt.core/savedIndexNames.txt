@@ -15,7 +15,6 @@ INDEX VERSION 1.130+C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.jdt.core
 397070980.index
 3594799400.index
 1220308574.index
-3429910636.index
 362242403.index
 2706165635.index
 1223105597.index

@@ -225,7 +225,7 @@ public class AllController extends HttpServlet {
          try {
             if (CustomerDAO.signup(id, pw,name)) {
                System.out.println("Complete SignUp");
-               response.sendRedirect("index.html");
+               response.sendRedirect("main.jsp");
             } else {
                request.setAttribute("msg", "Error SignUp");
                try {
@@ -241,7 +241,7 @@ public class AllController extends HttpServlet {
          }
       } else {
          System.out.println("Error");
-         response.sendRedirect("index2.html");
+         response.sendRedirect("main.jsp");
       }      
    }
    //로그인
@@ -254,12 +254,13 @@ public class AllController extends HttpServlet {
       if (id != null && pw != null) {
          try {
             String name = CustomerDAO.loginCheck(id, pw);
+            System.out.println(name);
             if (name != null) { 
                HttpSession session = request.getSession();
-               session.setAttribute("dataAll", PlaceDAO.typeSearchAll());
+              // session.setAttribute("dataAll", PlaceDAO.typeSearchAll());
                session.setAttribute("name", name);
                session.setAttribute("type", type);
-               response.sendRedirect("loginSucc.jsp");
+               response.sendRedirect("main.jsp");
             } else { 
                request.setAttribute("msg", "Error");
                request.getRequestDispatcher("msgView.jsp").forward(request, response);
@@ -281,7 +282,7 @@ public class AllController extends HttpServlet {
       session.invalidate();
       session = null;
       //response.sendRedirect("byView.jsp");
-      response.sendRedirect("index.html");
+      response.sendRedirect("main2.jsp");
 
    }
    
