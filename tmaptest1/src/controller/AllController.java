@@ -229,7 +229,7 @@ public class AllController extends HttpServlet {
             } else {
                request.setAttribute("msg", "Error SignUp");
                try {
-                  request.getRequestDispatcher("msgView.jsp").forward(request, response);
+                  request.getRequestDispatcher("main2.jsp").forward(request, response);
                } catch (ServletException e) {
                   // TODO Auto-generated catch block
                   e.printStackTrace();
@@ -263,13 +263,13 @@ public class AllController extends HttpServlet {
                response.sendRedirect("main.jsp");
             } else { 
                request.setAttribute("msg", "Error");
-               request.getRequestDispatcher("msgView.jsp").forward(request, response);
+               request.getRequestDispatcher("main2.jsp").forward(request, response);
             }
          } catch (SQLException e) {
             e.printStackTrace();
          }
       } else {
-         response.sendRedirect("main.jsp");
+         response.sendRedirect("main2.jsp");
       }
 
    }
