@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-     <%@ page import="java.util.ArrayList"%>
-    <%@page import="java.util.HashMap"%>
-    
-         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@page import="java.util.HashMap"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,337 +12,388 @@
 <title>SOLIDIUM : search the safety route</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script
+	src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet"
+	href="https://www.amcharts.com/lib/3/plugins/export/export.css"
+	type="text/css" media="all" />
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <style>
-
-
-
-
-
-
-
-
-
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Float four columns side by side */
 .column {
-  float: left;
-  width: 33.3%;
-  padding: 0 10px;
+	float: left;
+	width: 33.3%;
+	padding: 0 10px;
 }
 
 /* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
+.row {
+	margin: 0 -5px;
+}
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 
 /* Responsive columns */
 @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    display: block;
-    margin-bottom: 20px;
-  }
+	.column {
+		width: 100%;
+		display: block;
+		margin-bottom: 20px;
+	}
 }
 
 /* Style the counter cards */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #f1f1f1;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	padding: 16px;
+	text-align: center;
+	background-color: #f1f1f1;
 }
 
-
-
-
-
 #chartdiv {
-  width: 100%;
-  height: 700px;
-}    
+	width: 100%;
+	height: 700px;
+}
+
 #gaugediv {
-  width: 100%;
-  height: 500px;
-} 
+	width: 100%;
+	height: 500px;
+}
 
 #gaugediv2 {
-  width: 100%;
-  height: 500px;
-} 
+	width: 100%;
+	height: 500px;
+}
+
 #container {
-  width: 100%;
-  height: 500px;
-} 
+	width: 100%;
+	height: 500px;
+}
 /* Full-width input fields */
 input[type=text], input[type=password] {
-    width: 80%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+	width: 80%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
 }
 
 button {
-  
-    padding: 14px 20px;
-    margin: 8px 0;
-    width: auto;
+	padding: 14px 20px;
+	margin: 8px 0;
+	width: auto;
 }
 
 /* Extra styles for the cancel button */
 .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-.loginbtn{
-	width :auto;
+	width: auto;
 	padding: 10px 18px;
-	background-color: #616161;	
+	background-color: #f44336;
+}
+
+.loginbtn {
+	width: auto;
+	padding: 10px 18px;
+	background-color: #616161;
 }
 /* Center the image and position the close button */
 .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
+	text-align: center;
+	margin: 24px 0 12px 0;
+	position: relative;
 }
 
 img.avatar {
-    width: 75%;
-    border-radius: 10%;
+	width: 75%;
+	border-radius: 10%;
 }
 
 .container {
-    padding: 16px;
+	padding: 16px;
 }
 
 span.psw {
-    float: right;
-    padding-top: 16px;
+	float: right;
+	padding-top: 16px;
 }
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	padding-top: 60px;
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 35%; /* Could be more or less, depending on screen size */
+	background-color: #fefefe;
+	margin: 5% auto 15% auto;
+	/* 5% from the top, 15% from the bottom and centered */
+	border: 1px solid #888;
+	width: 35%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
 .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
+	position: absolute;
+	right: 25px;
+	top: 0;
+	color: #000;
+	font-size: 35px;
+	font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
+.close:hover, .close:focus {
+	color: red;
+	cursor: pointer;
 }
 
 /* Add Zoom Animation */
 .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
 }
 
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
+@
+-webkit-keyframes animatezoom {
+	from {-webkit-transform: scale(0)
 }
 
-@keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
+to {
+	-webkit-transform: scale(1)
+}
+
+}
+@
+keyframes animatezoom {
+	from {transform: scale(0)
+}
+
+to {
+	transform: scale(1)
+}
+
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
+	span.psw {
+		display: block;
+		float: none;
+	}
+	.cancelbtn {
+		width: 100%;
+	}
 }
 /* Style tab links */
 .tablink {
-  background-color: #555;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
+	background-color: #555;
+	color: white;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	font-size: 17px;
+	width: 25%;
 }
 
 .tablink:hover {
-  background-color: #777;
+	background-color: #777;
 }
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-  color: black;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
+	color: black;
+	display: none;
+	padding: 100px 20px;
+	height: 100%;
 }
 
-#RiskPercent {background-color: white;}
-#AccidentInfo {background-color: white;}
-#RouteInfo {background-color: white;}
-#About {background-color: white;}
+#RiskPercent {
+	background-color: white;
+}
+
+#AccidentInfo {
+	background-color: white;
+}
+
+#RouteInfo {
+	background-color: white;
+}
+
+#About {
+	background-color: white;
+}
 
 /* Fade in tabs */
-@-webkit-keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+@
+-webkit-keyframes fadeEffect {
+	from {opacity: 0;
 }
 
-@keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+to {
+	opacity: 1;
 }
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
-p{
-text-align:center;
+
+}
+@
+keyframes fadeEffect {
+	from {opacity: 0;
+}
+
+to {
+	opacity: 1;
+}
+
+}
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Raleway", Arial, Helvetica, sans-serif
+}
+
+p {
+	text-align: center;
 }
 /* Radio Button CSS*/
 label {
-    display: inline;
+	display: inline;
 }
-.radio-1 {
-    width: 193px;
-}
-.button-holder {
-    float: left;
-    margin-left: 6px;
-    margin-top: 16px;
-}
-.regular-radio {
-    display: none;
-}
-.regular-radio + label {
-    background-color: #fafafa;
-    border: 2px solid #cacece;
-    border-radius: 50px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 -15px 10px -12px rgba(0, 0, 0, 0.05) inset;
-    display: inline-block;
-    padding: 11px;
-    position: relative;
 
+.radio-1 {
+	width: 193px;
 }
-.regular-radio:checked + label:after {
-    background: none repeat scroll 0 0 #94E325;
-    border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
-    content: " ";
-    font-size: 36px;
-    height: 8px;
-    left: 7px;
-    position: absolute;
-    top: 7px;
-    width: 8px;
+
+.button-holder {
+	float: left;
+	margin-left: 6px;
+	margin-top: 16px;
 }
-.regular-radio:checked + label {
-    background-color: #e9ecee;
-    border: 2px solid #adb8c0;
-    color: #99a1a7;
-    padding: 11px;
+
+.regular-radio {
+	display: none;
 }
-.regular-radio + label:active, .regular-radio:checked + label:active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+
+.regular-radio+label {
+	background-color: #fafafa;
+	border: 2px solid #cacece;
+	border-radius: 50px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 -15px 10px -12px
+		rgba(0, 0, 0, 0.05) inset;
+	display: inline-block;
+	padding: 11px;
+	position: relative;
+}
+
+.regular-radio:checked+label:after {
+	background: none repeat scroll 0 0 #94E325;
+	border-radius: 50px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
+	content: " ";
+	font-size: 36px;
+	height: 8px;
+	left: 7px;
+	position: absolute;
+	top: 7px;
+	width: 8px;
+}
+
+.regular-radio:checked+label {
+	background-color: #e9ecee;
+	border: 2px solid #adb8c0;
+	color: #99a1a7;
+	padding: 11px;
+}
+
+.regular-radio+label:active, .regular-radio:checked+label:active {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1)
+		inset;
 }
 </style>
 <body class="w3-light-grey">
- 
-<!-- Navigation Bar -->
 
-<div class="w3-bar w3-white w3-large">
-  <a href="#" class="w3-bar-item w3-button w3-black w3-mobile"><i class="fa fa-map w3-margin-right"></i>HOME</a>
-  <a href="#rooms" id="searchsection" class="w3-bar-item w3-button w3-mobile">SEARCH</a>
-       <a class ="w3-bar-item w3-button" onclick="document.getElementById('id02').style.display='block'" >SIGNUP</a>
-      <a class ="w3-bar-item w3-button" onclick="document.getElementById('id01').style.display='block'" >LOGIN</a>
-  <a href="#rooms" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">SEARCH NOW</a>
-	   
-    
-</div>
+	<!-- Navigation Bar -->
+
+	<div class="w3-bar w3-white w3-large">
+		<a href="#" class="w3-bar-item w3-button w3-black w3-mobile"><i
+			class="fa fa-map w3-margin-right"></i>HOME</a> <a href="#rooms"
+			id="searchsection" class="w3-bar-item w3-button w3-mobile">SEARCH</a>
+		<a class="w3-bar-item w3-button"
+			onclick="document.getElementById('id02').style.display='block'">SIGNUP</a>
+		<a class="w3-bar-item w3-button"
+			onclick="document.getElementById('id01').style.display='block'">LOGIN</a>
+		<a href="#rooms"
+			class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">SEARCH
+			NOW</a>
 
 
-<!-- Header -->
-<header class="w3-display-container w3-content" style="max-width:1500px;">
-  
-  <img class="w3-image" src="img/main1.jpg" alt="The main" style="min-width:1000px" width="1500" height="350">
-  
-  <div class="w3-display-left w3-padding w3-col l6 m8">
-    <!-- <div class="w3-container w3-black">
+	</div>
+
+
+	<!-- Header -->
+	<header class="w3-display-container w3-content"
+		style="max-width:1500px;"> <img class="w3-image"
+		src="img/main1.jpg" alt="The main" style="min-width: 1000px"
+		width="1500" height="350">
+
+	<div class="w3-display-left w3-padding w3-col l6 m8">
+		<!-- <div class="w3-container w3-black">
       <h2><i class="fa fa-map w3-margin-right"></i>Hotel Name</h2>
     </div>
- -->    <p>
- 	<img src="img/SOLIDIUM4.png" align="center" class="w3-image w3-center" style="min-width:500px" width="680" height="325">
-      </p>
-     
-</header>
+ -->
+		<p>
+			<img src="img/SOLIDIUM4.png" align="center"
+				class="w3-image w3-center" style="min-width: 500px" width="680"
+				height="325">
+		</p>
+	</header>
 
 
 
-<!-- Page content -->
-<div class="w3-content" style="max-width:1532px;">
+	<!-- Page content -->
+	<div class="w3-content" style="max-width: 1532px;">
 
-  <div class="w3-container w3-margin-top" id="rooms">
-    <h3>SEARCH NOW </h3>
-    <p>We always search the safety route where you are.</p>
-  </div>
-  
-  <!-- 고정시키는 부분 -->
+		<div class="w3-container w3-margin-top" id="rooms">
+			<h3>SEARCH NOW</h3>
+			<p>We always search the safety route where you are.</p>
+		</div>
+
+		<!-- 고정시키는 부분 -->
 		<div class="w3-row-padding">
 			<div class="w3-col m3">
 				<label><i class="fa fa-cal"></i> 출발</label>
@@ -377,23 +428,23 @@ label {
 			</div>
 			<form action="cont" method="GET">
 				<div class="w3-col m1">
-					
-						<input type="hidden" name="namestring" value=""> <input
-							type="hidden" name="command" value="avgRoute"> <input
-							type="hidden" name="startlat" value=""> <input
-							type="hidden" name="startlng" value=""> <input
-							type="hidden" name="endlat" value=""> <input
-							type="hidden" name="endlng" value=""> <input
-							type="hidden" name="start" value=""> <input type="hidden"
-							name="end" value=""> <input type="hidden"
-							name="searchoption" value=""> <input type="hidden"
-							name="tdistance" value=""> <input type="hidden"
-							name="ttime" value=""> <input type="hidden" name="tfare"
-							value=""> <input type="hidden" name="taxifare" value="">
+
+					<input type="hidden" name="namestring" value=""> <input
+						type="hidden" name="command" value="avgRoute"> <input
+						type="hidden" name="startlat" value=""> <input
+						type="hidden" name="startlng" value=""> <input
+						type="hidden" name="endlat" value=""> <input type="hidden"
+						name="endlng" value=""> <input type="hidden" name="start"
+						value=""> <input type="hidden" name="end" value="">
+					<input type="hidden" name="searchoption" value=""> <input
+						type="hidden" name="tdistance" value=""> <input
+						type="hidden" name="ttime" value=""> <input type="hidden"
+						name="tfare" value=""> <input type="hidden"
+						name="taxifare" value="">
 
 
 
-				
+
 
 				</div>
 			</form>
@@ -401,13 +452,12 @@ label {
 				<div class="w3-col m1">
 					<input type="hidden" name="command" value="allAvgRoute"> <input
 						type="hidden" name="totalnamestring" value=""><input
-							type="hidden" name="startlat" value=""> <input
-							type="hidden" name="startlng" value=""> <input
-							type="hidden" name="endlat" value=""> <input
-							type="hidden" name="endlng" value=""> <input
-							type="hidden" name="start" value=""> <input type="hidden"
-							name="end" value="">
-					
+						type="hidden" name="startlat" value=""> <input
+						type="hidden" name="startlng" value=""> <input
+						type="hidden" name="endlat" value=""> <input type="hidden"
+						name="endlng" value=""> <input type="hidden" name="start"
+						value=""> <input type="hidden" name="end" value="">
+
 				</div>
 			</form>
 		</div>
@@ -443,11 +493,14 @@ label {
 				}
 				
 		</script>
-		<div id="map_div" class=" w3-padding w3-col w3-container" style="max-width:1200px" width="680" height="550"; >
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
+		<div id="map_div" class=" w3-padding w3-col w3-container"
+			style="max-width: 1200px" width="680" height="550"; >
+			<script type="text/javascript"
+				src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script type="text/javascript"
+				src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ec633e08-ce42-48a8-9674-a3e09c7bea73"></script>
 
-<script>
+			<script>
 function openPage(pageName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
@@ -468,8 +521,8 @@ function openPage(pageName, elmnt, color) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-<p id="result">   
-<script>   
+			<p id="result">
+				<script>   
    // 1. 지도 띄우기
    // map 생성
    // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
@@ -494,24 +547,24 @@ var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap
 var marker_e = new Tmap.Marker(new Tmap.LonLat(resultlon_e2.toString(), resultlat_e2.toString()).transform("EPSG:4326", "EPSG:3857"), icon);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
 markerLayer.addMarker(marker_e);//마커 레이어에 마커 추가
 </script>
-</p>
-</div>
+			</p>
+		</div>
 
-<script>
+		<script>
 var resultlon_s2  ;
 var resultlat_s2  ;
 var resultlon_e2 ;
 var resultlat_e2 ;
 </script>
-<c:if test="${not empty requestScope.Start }">
-<script>
+		<c:if test="${not empty requestScope.Start }">
+			<script>
 resultlat_s2=${requestScope.StartLat };
 resultlon_s2=${requestScope.StartLng };
 resultlat_e2=${requestScope.EndLat };
 resultlon_e2=${requestScope.EndLng };
 </script>
-</c:if>
-<script>
+		</c:if>
+		<script>
 function fun() {
    
    //입력한 문자열을 읽어온다.
@@ -1523,77 +1576,90 @@ error:function(request,status,error){
 
 </script>
 
-<!--고정시키는 부분  -->
-<c:if test="${not empty requestScope.SearchOption }">
-<script>
+		<!--고정시키는 부분  -->
+		<c:if test="${not empty requestScope.SearchOption }">
+			<script>
 
 (function(){
    div_sh(${requestScope.SearchOption});
 
    })()
 </script>
-</c:if>		
-<c:if test="${not empty requestScope.Start }">
-<script>
+		</c:if>
+		<c:if test="${not empty requestScope.Start }">
+			<script>
 document.getElementById("searchsection").click();
 </script>
-</c:if>
-<div class="w3-bar w3-large">
-      <a href="#rooms" class="w3-bar-item w3-button w3-left w3-left-grey w3-mobile"><h4>Search Option</h4></a>
+		</c:if>
+		<div class="w3-bar w3-large">
+			<a href="#rooms"
+				class="w3-bar-item w3-button w3-left w3-left-grey w3-mobile"><h4>Search
+					Option</h4></a>
 		</div>
 		<div class="w3-row-padding w3-col w3-margin-top">
 			<div class="w3-col m3">
-				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
-					id="radio-1-set" value="0" onclick="div_sh(0);"><label
-					for="radio-1-set">교&nbsp;&nbsp;통&nbsp;&nbsp;최&nbsp;&nbsp;적&nbsp;+&nbsp;추&nbsp;&nbsp;천</label>
+				<button type="radio" checked=""
+					class="btn btn-outline-primary btn-lg" name="ww" id="radio-1-set"
+					value="0" onclick="div_sh(0);">
+					<label for="radio-1-set">교&nbsp;&nbsp;통&nbsp;&nbsp;최&nbsp;&nbsp;적&nbsp;+&nbsp;추&nbsp;&nbsp;천</label>
 			</div>
 			<div class="w3-col m3">
-				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
-					id="radio-2-set" value="1" onclick="div_sh(1);"><label
-					for="radio-2-set">교통최적+무료우선</label>
+				<button type="radio" checked=""
+					class="btn btn-outline-primary btn-lg" name="ww" id="radio-2-set"
+					value="1" onclick="div_sh(1);">
+					<label for="radio-2-set">교통최적+무료우선</label>
 			</div>
 			<div class="w3-col m3">
-				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
-					id="radio-3-set" value="2" onclick="div_sh(2);"><label
-					for="radio-3-set">교통최적+최소시간</label>
+				<button type="radio" checked=""
+					class="btn btn-outline-primary btn-lg" name="ww" id="radio-3-set"
+					value="2" onclick="div_sh(2);">
+					<label for="radio-3-set">교통최적+최소시간</label>
 			</div>
 			<div class="w3-col m3">
-				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
-					id="radio-4-set" value="3" onclick="div_sh(3);"><label
-					for="radio-4-set">교 통 최 적 + 초 보</label>
+				<button type="radio" checked=""
+					class="btn btn-outline-primary btn-lg" name="ww" id="radio-4-set"
+					value="3" onclick="div_sh(3);">
+					<label for="radio-4-set">교 통 최 적 + 초 보</label>
 			</div>
-			</div>
-			<div class="w3-row-padding w3-col w3-margin-top">
+		</div>
+		<div class="w3-row-padding w3-col w3-margin-top">
 			<div class="w3-col m3">
-				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
-					id="radio-5-set" value="4" onclick="div_sh(4);"><label
-					for="radio-5-set">교통최적+고속도로우선</label>
+				<button type="radio" checked=""
+					class="btn btn-outline-primary btn-lg" name="ww" id="radio-5-set"
+					value="4" onclick="div_sh(4);">
+					<label for="radio-5-set">교통최적+고속도로우선</label>
 			</div>
 			<div class="w3-col m3">
-				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
-					id="radio-6-set" value="10" onclick="div_sh(10);"><label
-					for="radio-6-set">&nbsp;  최&nbsp;&nbsp;&nbsp;&nbsp;단 &nbsp;&nbsp;&nbsp;거 &nbsp;&nbsp;&nbsp;&nbsp;리  &nbsp;</label>
+				<button type="radio" checked=""
+					class="btn btn-outline-primary btn-lg" name="ww" id="radio-6-set"
+					value="10" onclick="div_sh(10);">
+					<label for="radio-6-set">&nbsp; 최&nbsp;&nbsp;&nbsp;&nbsp;단
+						&nbsp;&nbsp;&nbsp;거 &nbsp;&nbsp;&nbsp;&nbsp;리 &nbsp;</label>
+			</div>
+			<div class="w3-col m3">
+				<button type="radio" checked=""
+					class="btn btn-outline-primary btn-lg" name="ww" id="radio-7-set"
+					value="12" onclick="div_sh(12);">
+					<label for="radio-7-set">이 륜 차 도 로 우 선</label>
 			</div>
 			<div class="w3-col m3">
 				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-7-set" value="12" onclick="div_sh(12);"><label
-					for="radio-7-set">이 륜 차 도 로 우 선</label>
+					for="radio-7-set">&nbsp;&nbsp;   a&nbsp; &nbsp;    b&nbsp;  &nbsp;   o&nbsp;  &nbsp;   u&nbsp;&nbsp;     t&nbsp; &nbsp;  </label>
 			</div>
 			<br>
 		</div>
-<br>
+		<br> <br>
+		<c:if test="${requestScope.RiskGrade==0.0 }">
 
-<br>
-<c:if test="${requestScope.RiskGrade==0.0 }">
+		</c:if>
 
-</c:if>
+		<br>
 
-<br>
-
-<c:if test="${empty requestScope.AccidentNum0}">
- <c:if test="${requestScope.RiskGrade!=0.0 }">
-			<!-- Chart code -->
-<script>
+		<c:if test="${empty requestScope.AccidentNum0}">
+			<c:if test="${requestScope.RiskGrade!=0.0 }">
+				<!-- Chart code -->
+				<script>
 var chart = AmCharts.makeChart( "chartdiv", {
   "type": "pie",
   "theme": "light",
@@ -1624,7 +1690,7 @@ var chart = AmCharts.makeChart( "chartdiv", {
 
 
 
-<script>
+				<script>
 var chart2 = AmCharts.makeChart("gaugediv", {
   "theme": "none",
   "type": "gauge",
@@ -1683,7 +1749,7 @@ function randomValue() {
 
 
 
-<script>
+				<script>
 var chart4 = AmCharts.makeChart("gaugediv2", {
   "theme": "none",
   "type": "gauge",
@@ -1746,192 +1812,179 @@ function randomValue2() {
 
 
 
-<div class="w3-container" style="padding: 64px 16px" id="about">
-      <div class="tab">
-      
-       <button class="tablink" onclick="openPage()">해당 경로 데이터</button>
-<button class="tablink" onclick="openPage()" id="defaultOpen">평균 위험도</button>
-<button class="tablink" onclick="openPage()">사고 평균 데이터</button>
+				<div class="w3-container" style="padding: 64px 16px" id="about">
+					<div class="tab">
 
-         
-      </div>
-      </div>
-      
-		<div class="w3-margin-left w3-center">
-		
-		
-		
-           <div id="RouteInfo" class="tabcontent">
-
-               <div class="row">
-                  <div class="column"  ">
-                  <div class="card" >
+						<button class="tablink" onclick="openPage()">해당 경로 데이터</button>
+						<button class="tablink" onclick="openPage()" id="defaultOpen">평균
+							위험도</button>
+						<button class="tablink" onclick="openPage()">사고 평균 데이터</button>
+						<button class="tablink" onclick="openPage()">about</button>
 
 
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <h3>선택 경로 : ${requestScope.SearchOption }  &nbsp;&nbsp;
-                     <%@ page import="java.util.*, java.text.*"%>
-                        <%
+					</div>
+				</div>
+
+				<div class="w3-margin-left w3-center">
+
+
+
+					<div id="RouteInfo" class="tabcontent">
+
+						<div class="row">
+							<div class="column"">
+								<div class="card">
+
+
+									<br> <br> <br> <br>
+									<h3>
+										선택 경로 : ${requestScope.SearchOption } &nbsp;&nbsp;
+										<%@ page import="java.util.*, java.text.*"%>
+										<%
                            java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HH:mm");
                               String time = formatter.format(new java.util.Date());
                               out.println("현재 시간 : " + time);
                         %>
-                     </h3>
-                     <br>
-                     <br>
-                     <br>
-                     
-                     &nbsp;&nbsp;&nbsp;
-                     
-                     
-                     <br>
-                     <h1>
-                        <font color="green" >${requestScope.TTime } 분</font>
-                     </h1>
-                     
-                     <br><br><br><br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br>
-                  
-                  
+									</h3>
+									<br> <br> <br> &nbsp;&nbsp;&nbsp; <br>
+									<h1>
+										<font color="green">${requestScope.TTime } 분</font>
+									</h1>
 
-                  </div>
-                  </div>
-                  
-                  
-                  
-                  <div class="column"  ">
-                  <div class="card" >
-                     <br>
-                     <br>
-                     <br><br><br><br><br>
-                     <c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
+									<br>
+									<br>
+									<br>
+									<br> <br> <br> <br> <br> <br>
 
-                     <c:choose>
-                        <c:when test="${RiskRatio_icon <= 3.0}">
-                           <img class="w3-image" src="img/kiss.png" alt="The main"
-                              style="width: 50%; height: 70%; align-self:center;">
-                           <br>
-                           <h1>
-                              <font color="green">매우 안전-!</font>
-                           </h1>
-                        </c:when>
-                        <c:when test="${RiskRatio_icon <= 6.0}">
-                           <img class="w3-image" src="img/happiness2.png" alt="The main"
-                              style="width: 50%; height: 70%;align-self:center;">
-                           <br>
-                           <h1>
-                              <font color="green">안전-!</font>
-                           </h1>
-                        </c:when>
-                        <c:when test="${RiskRatio_icon <= 9.0}">
-                           <img class="w3-image" src="img/happiness.png" alt="The main"
-                              style="width: 50%; height: 70%; align-self:center;">
-                           <br>
-                           <br>
-                           <br>
-                           <h1>
-                              <font color="green">보통</font>
-                           </h1>
-                        </c:when>
-                        <c:when test="${RiskRatio_icon <= 12.0}">
-                           <img class="w3-image" src="img/sad.png" alt="The main"
-                              style="width: 50%; height: 70%; align-self:center;">
-                           <br>
-                           <h1>
-                              <font color="green">위험-!</font>
-                           </h1>
-                        </c:when>
-                        <c:when test="${RiskRatio_icon <= 15.0}">
-                           <img class="w3-image" src="img/angry.png" alt="The main"
-                              style="width: 50%; height: 70%; align-self:center;">
-                           <br>
-                           <h1>
-                              <font color="green">매우 위험-!</font>
-                           </h1>
-                        </c:when>
-                        <c:when test="${RiskRatio_icon <= 35.0}">
-                           <img class="w3-image" src="img/dead.png" alt="The main"
-                              style="width: 50%; height: 70%;  align-self:center;;">
-                           <br>
-                           <h1>
-                              <font color="green">죽음의 길-!</font>
-                           </h1>
-                        </c:when>
 
-                     </c:choose>
 
-                  </div>
-                  </div>
-                  
-                  
-                  
-                  <div class="column"  ">
-                  <div class="card" >
-                     <p id="SearchOption">
-                     <h4>
-                        경로 유형 : ${requestScope.SearchOption }번 째 경로
-                        </p>
-                     </h4>
-                     <br>
-                     <br>
+								</div>
+							</div>
 
-                     <p id="RiskRatio">
-                     <h4>
-                        도로별 평균 위험도 : ${requestScope.RiskRatio }
-                        </p>
-                     </h4>
-                     <br>
-                     <br>
 
-                     <p id="RiskGrade">
-                     <h4>
-                        도로별 평균 위험 등급 : ${requestScope.RiskGrade } 등급
-                        </p>
-                     </h4>
-                     <br>
-                     <br>
 
-                     <p id="AccidentNum">
-                     <h4>
-                        총 거리 : ${requestScope.TDistance  } km
-                        </p>
-                     </h4>
-                     <br>
-                     <br>
+							<div class="column"">
+								<div class="card">
+									<br> <br> <br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
 
-                     <p id="TTime">
-                     <h4>
-                        총 시간 : ${requestScope.TTime  } 분
-                        </p>
-                     </h4>
-                     <br>
-                     <br>
+									<c:choose>
+										<c:when test="${RiskRatio_icon <= 3.0}">
+											<img class="w3-image" src="img/kiss.png" alt="The main"
+												style="width: 50%; height: 70%; align-self: center;">
+											<br>
+											<h1>
+												<font color="green">매우 안전-!</font>
+											</h1>
+										</c:when>
+										<c:when test="${RiskRatio_icon <= 6.0}">
+											<img class="w3-image" src="img/happiness2.png" alt="The main"
+												style="width: 50%; height: 70%; align-self: center;">
+											<br>
+											<h1>
+												<font color="green">안전-!</font>
+											</h1>
+										</c:when>
+										<c:when test="${RiskRatio_icon <= 9.0}">
+											<img class="w3-image" src="img/happiness.png" alt="The main"
+												style="width: 50%; height: 70%; align-self: center;">
+											<br>
+											<br>
+											<br>
+											<h1>
+												<font color="green">보통</font>
+											</h1>
+										</c:when>
+										<c:when test="${RiskRatio_icon <= 12.0}">
+											<img class="w3-image" src="img/sad.png" alt="The main"
+												style="width: 50%; height: 70%; align-self: center;">
+											<br>
+											<h1>
+												<font color="green">위험-!</font>
+											</h1>
+										</c:when>
+										<c:when test="${RiskRatio_icon <= 15.0}">
+											<img class="w3-image" src="img/angry.png" alt="The main"
+												style="width: 50%; height: 70%; align-self: center;">
+											<br>
+											<h1>
+												<font color="green">매우 위험-!</font>
+											</h1>
+										</c:when>
+										<c:when test="${RiskRatio_icon <= 35.0}">
+											<img class="w3-image" src="img/dead.png" alt="The main"
+												style="width: 50%; height: 70%; align-self: center;">
+											<br>
+											<h1>
+												<font color="green">죽음의 길-!</font>
+											</h1>
+										</c:when>
 
-                     <p id="TFare">
-                     <h4>
-                        통행 비용 : ${requestScope.TFare } 원
-                        </p>
-                     </h4>
-                     <br>
-                     <br>
+									</c:choose>
 
-                     <p id="TaxiFare">
-                     <h4>
-                        예상 택시 요금 : ${requestScope.TaxiFare  } 원
-                        </p>
-                     </h4>
-                     <br>
-                  </div>
-               </div>
-               </div>
-               </div>
+								</div>
+							</div>
+
+
+
+							<div class="column"">
+								<div class="card">
+									<p id="SearchOption">
+									<h4>
+										경로 유형 : ${requestScope.SearchOption }번 째 경로
+										</p>
+									</h4>
+									<br> <br>
+
+									<p id="RiskRatio">
+									<h4>
+										도로별 평균 위험도 : ${requestScope.RiskRatio }
+										</p>
+									</h4>
+									<br> <br>
+
+									<p id="RiskGrade">
+									<h4>
+										도로별 평균 위험 등급 : ${requestScope.RiskGrade } 등급
+										</p>
+									</h4>
+									<br> <br>
+
+									<p id="AccidentNum">
+									<h4>
+										총 거리 : ${requestScope.TDistance  } km
+										</p>
+									</h4>
+									<br> <br>
+
+									<p id="TTime">
+									<h4>
+										총 시간 : ${requestScope.TTime  } 분
+										</p>
+									</h4>
+									<br> <br>
+
+									<p id="TFare">
+									<h4>
+										통행 비용 : ${requestScope.TFare } 원
+										</p>
+									</h4>
+									<br> <br>
+
+									<p id="TaxiFare">
+									<h4>
+										예상 택시 요금 : ${requestScope.TaxiFare  } 원
+										</p>
+									</h4>
+									<br>
+								</div>
+							</div>
+						</div>
+					</div>
 
 
 
@@ -1947,35 +2000,39 @@ function randomValue2() {
 					</div>
 
 					<div id="AccidentInfo" class="tabcontent">
-               <div class="w3-row-padding w3-padding-16">
-                  <div id="chartdiv" class="w3-third w3-margin-bottom"style="width: 100%"></div>
-               </div>
-            </div>
-			
+						<div class="w3-row-padding w3-padding-16">
+							<div id="chartdiv" class="w3-third w3-margin-bottom"
+								style="width: 100%"></div>
+						</div>
+					</div>
 
-         </div>
-</c:if>
-</c:if>
 
-<c:if test="${not empty requestScope.AccidentNum0 }">
- 
-  
+				</div>
+			</c:if>
+		</c:if>
 
-							<div class="w3-margin-left w3-center">
-					
-               
-<div class="w3-container" style="padding: 64px 16px" id="about">
-      <div class="tab">
-      
-       <button class="tablink" onclick="openPage('AllRouteInfo', this, 'orange')">경로 별 사고 통계</button>
-       </div>
-      </div>
-      <div class="w3-margin-left w3-center">
-      <div id="AllRouteInfo" class="tabcontent">
-				<div class="w3-row-padding w3-padding-16">
-				 <div id="AllRoutes" class="w3-third w3-margin-bottom"style="width: 100%"></div>	
-				 
-  <script>
+		<c:if test="${not empty requestScope.AccidentNum0 }">
+
+
+
+			<div class="w3-margin-left w3-center">
+
+
+				<div class="w3-container" style="padding: 64px 16px" id="about">
+					<div class="tab">
+
+						<button class="tablink"
+							onclick="openPage('AllRouteInfo', this, 'orange')">경로 별
+							사고 통계</button>
+					</div>
+				</div>
+				<div class="w3-margin-left w3-center">
+					<div id="AllRouteInfo" class="tabcontent">
+						<div class="w3-row-padding w3-padding-16">
+							<div id="AllRoutes" class="w3-third w3-margin-bottom"
+								style="width: 100%"></div>
+
+							<script>
 
 
 var chart3 = Highcharts.chart('AllRoutes', {
@@ -2028,91 +2085,107 @@ var chart3 = Highcharts.chart('AllRoutes', {
 });
 				 
 </script>
+						</div>
+					</div>
 
-				 				
+					<div id="" class="tabcontent">
+
+						<div class="row">
+							<div class="column""></div>
+						</div>
+		</c:if>
+
+
+
+
+
+		<!-- Footer -->
+		<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+		<h5>Find Us On</h5>
+		<div class="w3-xlarge w3-padding-16">
+			<i class="fa fa-facebook-official w3-hover-opacity"></i> <i
+				class="fa fa-instagram w3-hover-opacity"></i> <i
+				class="fa fa-snapchat w3-hover-opacity"></i> <i
+				class="fa fa-pinterest-p w3-hover-opacity"></i> <i
+				class="fa fa-twitter w3-hover-opacity"></i> <i
+				class="fa fa-linkedin w3-hover-opacity"></i>
+		</div>
+		<!-- copyright -->
+		<h3>SOLIDIUM.</h3>
+		<p>
+			Phone : 010-3967-3325, 010-9003-4096, 010-7202-8295 Copyright(c) 2018
+			Email : glee1228@naver.com <a
+				href="localhost:8088/Security_Navigation_Web/main.jsp"
+				target="_blank" class="w3-hover-text-green"> www.solidium.com </a>Allright
+			Reserved.
+		</p>
+		</footer>
+
+
+
+		<div id="id01" class="modal">
+
+			<form class="modal-content animate" action="cont">
+				<input type="hidden" name="command" value="login">
+				<div class="imgcontainer">
+					<span
+						onclick="document.getElementById('id01').style.display='none'"
+						class="close" title="Close Modal">&times;</span>
+					<h2>
+						SOLIDIUM<br>: search the safety route
+					</h2>
 				</div>
-			</div>
-      </div>
-      				 </div>
-      
-</c:if>
 
+				<div class="container">
+					<label for="id"><b>UserID</b></label><br> <input type="text"
+						placeholder="Enter ID" name="id" required><br> <label
+						for="pw"><b>Password</b></label><br> <input type="password"
+						placeholder="Enter Password" name="pw" required>
 
+				</div>
 
+				<div class="container w3-center" style="background-color: #f1f1f1">
+					<button type="button"
+						onclick="document.getElementById('id01').style.display='none'"
+						class="cancelbtn">Cancel</button>
+					<button type="submit" class="loginbtn">Login</button>
+				</div>
+			</form>
+		</div>
 
+		<div id="id02" class="modal">
+			<span onclick="document.getElementById('id02').style.display='none'"
+				class="close" title="Close Modal">&times;</span>
+			<form class="modal-content" action="cont">
+				<input type="hidden" name="command" value="signup">
+				<div class="container">
+					<h1>Sign Up</h1>
+					<p>Please fill in this form to create an account.</p>
+					<hr>
+					<label for="id"><b>id</b></label><br> <input type="text"
+						placeholder="Enter Id" name="id" required><br> <label
+						for="pw"><b>Password</b></label><br> <input type="password"
+						placeholder="Enter Password" name="pw" required><br>
 
-<!-- Footer -->
-<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
-  <h5>Find Us On</h5>
-  <div class="w3-xlarge w3-padding-16">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div><!-- copyright -->
-			<h3>SOLIDIUM.</h3>
-			<p>Phone : 010-3967-3325, 010-9003-4096, 010-7202-8295 Copyright(c) 2018   Email : glee1228@naver.com   <a href="localhost:8088/Security_Navigation_Web/main.jsp" target="_blank" class="w3-hover-text-green"> www.solidium.com </a>Allright Reserved.</p>
-</footer>
+					<label for="pw-repeat"><b>Repeat Password</b></label><br> <input
+						type="password" placeholder="Repeat Password" name="pw-repeat"
+						required><br> <label for="name"><b>Name</b></label><br>
+					<input type="text" placeholder="Enter Name" name="name" required><br>
 
+					<div class="clearfix w3-center">
+						<button type="button"
+							onclick="document.getElementById('id02').style.display='none'"
+							class="cancelbtn">Cancel</button>
+						<button type="submit" class="w3-bar-item w3-button">
+							<i class="fa fa-user-plus"></i>Sign Up
+						</button>
+					</div>
 
+				</div>
+			</form>
+		</div>
 
-<div id="id01" class="modal">
-
-  <form class="modal-content animate" action="cont">
-  <input type="hidden"name="command" value="login">
-    <div class="imgcontainer" >
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <h2>SOLIDIUM<br>: search the safety route</h2>
-    </div>
-
-    <div class="container">
-      <label for="id"><b>UserID</b></label><br>
-       <input type="text" placeholder="Enter ID" name="id" required><br>
-
-      <label for="pw"><b>Password</b></label><br>
-      <input type="password" placeholder="Enter Password" name="pw" required>
-      
-    </div>
-
-    <div class="container w3-center" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    	<button type="submit" class="loginbtn">Login</button>
-    </div>
-  </form>
-</div>
-
-<div id="id02" class="modal">
-  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="cont">
-  <input type="hidden"name="command" value="signup">
-    <div class="container">
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-      <label for="id"><b>id</b></label><br>
-      <input type="text" placeholder="Enter Id" name="id" required><br>
-
-      <label for="pw"><b>Password</b></label><br>
-      <input type="password" placeholder="Enter Password" name="pw" required><br>
-
-      <label for="pw-repeat"><b>Repeat Password</b></label><br>
-      <input type="password" placeholder="Repeat Password" name="pw-repeat" required><br>
-      
-      <label for="name"><b>Name</b></label><br>
-      <input type="text" placeholder="Enter Name" name="name" required><br>
-      
-      <div class="clearfix w3-center">
-        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="w3-bar-item w3-button"><i class="fa fa-user-plus"></i>Sign Up</button>
-      </div>
-     
-    </div>
-  </form>
-</div>
-
-<script>
+		<script>
 // Get the modal
 var modal = document.getElementById('id02');
 
@@ -2124,7 +2197,7 @@ window.onclick = function(event) {
     
 }
 </script>
-<script>
+		<script>
 // Get the modal
 var modal = document.getElementById('id01');
 
@@ -2135,15 +2208,17 @@ window.onclick = function(event) {
     }
 }
 </script>
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-
-
+		<!-- Modal for full size images on click-->
+		<div id="modal01" class="w3-modal w3-black"
+			onclick="this.style.display='none'">
+			<span
+				class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright"
+				title="Close Modal Image">×</span>
+			<div
+				class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+				<img id="img01" class="w3-image">
+				<p id="caption" class="w3-opacity w3-large"></p>
+			</div>
+		</div>
 </body>
 </html>

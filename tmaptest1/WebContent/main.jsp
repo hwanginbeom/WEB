@@ -344,6 +344,7 @@ label {
   </div>
   
   <!-- login alert -->
+  
   <c:if test="${empty requestScope.SearchOption}">
   <script>
   
@@ -1601,7 +1602,7 @@ document.getElementById("searchsection").click();
 					<div class="w3-col m3">
 				<button type="radio" checked="" class="btn btn-outline-primary btn-lg" name="ww"
 					id="radio-7-set" value="12" onclick="div_sh(12);"><label
-					for="radio-7-set">   a  b  o  u  t   </label>
+					for="radio-7-set">&nbsp;&nbsp;   a&nbsp; &nbsp;    b&nbsp;  &nbsp;   o&nbsp;  &nbsp;   u&nbsp;&nbsp;     t&nbsp; &nbsp;  </label>
 			</div>
 			<br>
 		</div>
@@ -1696,11 +1697,11 @@ setInterval(randomValue, 2000);
 // set random value
 function randomValue() {
   var value = ${requestScope.RiskRatio};
-  value=(value/16).toFixed(4)*100;
-  chart2.arrows[0].setValue(value);
-  chart2.axes[0].setTopText(value+" %");
+  value=(value/16)*100;
+  chart2.arrows[0].setValue(value.toFixed(1));
+  chart2.axes[0].setTopText(value.toFixed(1)+" %");
   // adjust darker band to new value
-  chart2.axes[0].bands[1].setEndValue(value);
+  chart2.axes[0].bands[1].setEndValue(value.toFixed(1));
 }
 </script>
 
@@ -1845,7 +1846,7 @@ function randomValue2() {
                      <c:set var="RiskRatio_icon" value="${requestScope.RiskRatio }"></c:set>
 
                      <c:choose>
-                        <c:when test="${RiskRatio_icon <= 3.0}">
+                        <c:when test="${RiskRatio_icon <= 7.0}">
                            <img class="w3-image" src="img/kiss.png" alt="The main"
                               style="width: 50%; height: 70%; align-self:center;">
                            <br>
@@ -1853,7 +1854,7 @@ function randomValue2() {
                               <font color="green">매우 안전-!</font>
                            </h1>
                         </c:when>
-                        <c:when test="${RiskRatio_icon <= 6.0}">
+                        <c:when test="${RiskRatio_icon <= 7.5}">
                            <img class="w3-image" src="img/happiness2.png" alt="The main"
                               style="width: 50%; height: 70%;align-self:center;">
                            <br>
@@ -1861,7 +1862,7 @@ function randomValue2() {
                               <font color="green">안전-!</font>
                            </h1>
                         </c:when>
-                        <c:when test="${RiskRatio_icon <= 9.0}">
+                        <c:when test="${RiskRatio_icon <= 8.0}">
                            <img class="w3-image" src="img/happiness.png" alt="The main"
                               style="width: 50%; height: 70%; align-self:center;">
                            <br>
@@ -1871,7 +1872,7 @@ function randomValue2() {
                               <font color="green">보통</font>
                            </h1>
                         </c:when>
-                        <c:when test="${RiskRatio_icon <= 12.0}">
+                        <c:when test="${RiskRatio_icon <= 8.5}">
                            <img class="w3-image" src="img/sad.png" alt="The main"
                               style="width: 50%; height: 70%; align-self:center;">
                            <br>
@@ -1879,7 +1880,7 @@ function randomValue2() {
                               <font color="green">위험-!</font>
                            </h1>
                         </c:when>
-                        <c:when test="${RiskRatio_icon <= 15.0}">
+                        <c:when test="${RiskRatio_icon <= 9.0}">
                            <img class="w3-image" src="img/angry.png" alt="The main"
                               style="width: 50%; height: 70%; align-self:center;">
                            <br>
@@ -1887,7 +1888,7 @@ function randomValue2() {
                               <font color="green">매우 위험-!</font>
                            </h1>
                         </c:when>
-                        <c:when test="${RiskRatio_icon <= 35.0}">
+                        <c:when test="${RiskRatio_icon <= 15.0}">
                            <img class="w3-image" src="img/dead.png" alt="The main"
                               style="width: 50%; height: 70%;  align-self:center;;">
                            <br>
