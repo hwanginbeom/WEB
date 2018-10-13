@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+ </head>
+ <body>
+    <form>
+    <p>
+        <label>param1</label>
+        <input type="text" name="param1" value="">
+    </p>
+    <p>
+        <label>param2</label>
+        <input type="text" name="param2" value="">
+    </p>
+    </form>
+	<a href="javascript:void(0);" onclick="goActEvent()">ajax로 값 전달</a>
+	<script>
+		// ajax로 값 전달
+		function goActEvent() {
+			$.ajax({
+				url				: '/dev/ajax/act.php',
+				data			: $('form').serialize(),
+				type			: 'POST',
+				dataType		: 'json',
+				success		: function(result) {
+					if(result.success == false) {
+						alert(result.msg);
+                        return;
+					}
+
+					alert(result.data);
+				}
+			});
+		}
+	</script>
+ </body>
+</html>
+
