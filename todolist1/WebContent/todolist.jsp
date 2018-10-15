@@ -125,6 +125,10 @@ input {
 }
 </style>
 </head>
+
+
+
+
 <body>
 
 <div id="myDIV" class="header">
@@ -141,6 +145,9 @@ input {
   <li>Read a book</li>
   <li>Organize office</li>
 </ul>
+
+
+
 
 <script>
 // Create a "close" button and append it to each list item

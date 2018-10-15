@@ -161,7 +161,20 @@
 </Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\tmaptest1" path="/tmaptest1" reloadable="true" source="org.eclipse.jst.jee.server:tmaptest1">
 	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="30" maxWaitMillis="-1" name="jdbc/myoracle" password="TIGER" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1523:xe" username="SCOTT"/>
 
-</Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\todolist1" path="/todolist1" reloadable="true" source="org.eclipse.jst.jee.server:todolist1"/></Host>
+</Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\todolist1" path="/todolist1" reloadable="true" source="org.eclipse.jst.jee.server:todolist1"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\step04_CP_t" path="/step04_CP_t" reloadable="true" source="org.eclipse.jst.jee.server:step04_CP_t">
+
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="TIGER" type="javax.sql.DataSource" url="jdbc:oracle:thin:@70.12.241.196:1523:xe" username="SCOTT"/>
+	
+</Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\todolist-web" path="/todolist-web" reloadable="true" source="org.eclipse.jst.jee.server:todolist-web"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\todolist3" path="/todolist3" reloadable="true" source="org.eclipse.jst.jee.server:todolist3"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\todolist4" path="/todolist4" reloadable="true" source="org.eclipse.jst.jee.server:todolist4">
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="30" maxWaitMillis="-1" name="jdbc/myoracle" password="TIGER" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1523:xe" username="SCOTT"/>
+
+</Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\todolist6" path="/todolist6" reloadable="true" source="org.eclipse.jst.jee.server:todolist6"/><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Model2-Board" path="/Model2-Board" reloadable="true" source="org.eclipse.jst.jee.server:Model2-Board">
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="30" maxWaitMillis="-1" name="jdbc/myoracle" password="TIGER" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1523:xe" username="SCOTT"/>
+
+</Context><Context docBase="C:\ITStudty\4.web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\todolist7" path="/todolist7" reloadable="true" source="org.eclipse.jst.jee.server:todolist7">
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="30" maxWaitMillis="-1" name="jdbc/myoracle" password="TIGER" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1523:xe" username="SCOTT"/>
+
+</Context></Host>
     </Engine>
   </Service>
 </Server>
